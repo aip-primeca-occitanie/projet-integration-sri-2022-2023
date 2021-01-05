@@ -69,3 +69,46 @@ def showImage(cvIamge):
     cv2.imshow('image', cvIamge)
     cv2.waitKey(1)
 
+def process_image(smiMsg):
+    """
+    Convert a Sensor message image (RBG) from ROS to an OpenCV image. 
+    Then apply some usefull functions to this new image. 
+    It will publish on the target_point_into_image topic the target position in a PoseStamped format. 
+    Args : 
+    smiMsg = sensor message image which represents the rgb image from the camera
+    Output :
+    nothing, it just calls functions 
+    """
+    try:
+        # convert sensor_msgs/Image to OpenCV Image
+        bridge = CvBridge()
+        orig = bridge.imgmsg_to_cv2(smiMsg, "bgr8")
+        cvDrawImg = orig
+
+    except Exception as err:
+        print(err)
+
+    # show the image 
+    #rospy.sleep(1)
+    #showImage(cvDrawImg)
+    
+    # find the position of the target in the image plan 
+    color_based_detection(cvDrawImg)
+    ix,iy = template_matching_detection(cvDrawImg) # image frame
+
+    fz = getDepth(iy,ix) # openCV and the realsense depth don't use the same x and y
+
+    # publish in the target_point topic 
+    pub = rospy.Publisher('target_point_into_image', PointStamped, queue_size=10)
+
+    psGoal = PointStamped()
+    psGoal.header.stamp = rospy.get_rostime()
+    psGoal.header.frame_id = "camera_color_optical_frame"
+    psGoal.point.x = ix
+    psGoal.point.y = iy
+    psGoal.point.z = fz
+    rospy.loginfo(psGoal)
+    pub.publish(psGoal)
+    
+
+
