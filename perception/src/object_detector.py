@@ -139,6 +139,33 @@ def getDepth(ix,iy):
     return fPreviousDepth
 
 
+def process_image_depth(smiMsg):
+    """
+    Convert a Sensor message image (depth) from ROS to a numpy array image and save the result in the naDepth_array variable
+
+    Args : 
+    smiMsg = sensor message image which represents the depth image from the camera
+
+    Output :
+    nothing 
+    """
+    try:
+        # convert sensor_msgs/Image to OpenCV Image
+        bridge = CvBridge()
+        orig = bridge.imgmsg_to_cv2(smiMsg, "passthrough")
+        # convert the OpenCV Image in a bumpy array
+        global naDepth_array 
+        naDepth_array = np.array(orig, dtype=np.uint16) * 0.001
+        cvDrawImg = orig
+
+    except Exception as err:
+        print(err)
+
+    # show the image 
+    #showImage(cvDrawImg)
+    #getDepth(naDepth_array)
+
+
 if __name__ == '__main__':
     try:
         # run the main program to start the node
