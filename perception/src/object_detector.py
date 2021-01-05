@@ -150,8 +150,8 @@ def start_node():
     rospy.init_node('main_detect')
     rospy.loginfo('main_detect node started')
     # subscribe to topics 
-    rospy.Subscriber("/camera/color/image_raw", Image, process_image)
-    rospy.Subscriber("/camera/depth/image_rect_raw", Image, process_image_depth)
+    rospy.Subscriber("/xtion/rgb/image_color", Image, process_image)
+    rospy.Subscriber("/xtion/depth_registered/image_raw", Image, process_image_depth)
 
     rospy.spin()
 
