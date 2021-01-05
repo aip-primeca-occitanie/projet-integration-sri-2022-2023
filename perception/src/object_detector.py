@@ -109,6 +109,40 @@ def process_image(smiMsg):
     psGoal.point.z = fz
     rospy.loginfo(psGoal)
     pub.publish(psGoal)
-    
 
+def getDepth(ix,iy):
+    """
+    Get the value of the depth with a position (x,y) in the image. 
+    The value is computed by applying the median filter idea and a mean. It helps to remove high pic of noise and small noise. 
+    Args : 
+    ix = the x position of a point in the image
+    iy = the y position of a point in the image
+    Output :  
+    fMean = the depth of the (x,y) point
+    """
+    lfNeighboors = []
+    for i in range(-1,2):
+        for j in range(-1,2):
+            lfNeighboors.append(naDepth_array[ix+i][iy+j])
+        
+    sorted(lfNeighboors)
+    # remove higher and lower value to reduce potential noise
+    lSub_neighboors = lfNeighboors[1:8]
+    # compute the mean of neighboors
+    fMean = np.mean(lSub_neighboors)
+
+    if fMean > 0.0:
+        global fPreviousDepth
+        fPreviousDepth = fMean
+        return fMean
+
+    return fPreviousDepth
+
+
+if __name__ == '__main__':
+    try:
+        # run the main program to start the node
+        start_node()
+    except rospy.ROSInterruptException:
+        pass
 
