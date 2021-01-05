@@ -5,3 +5,5 @@ Projet d'intégration ROS SRI 2020 2021
 
 Planification de tâches: François Mahe
 Package: tiago_demo_sri_g2_2021
+
+Perception: Moufdi
