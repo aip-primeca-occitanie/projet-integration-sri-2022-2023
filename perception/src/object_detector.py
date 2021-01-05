@@ -7,6 +7,39 @@ import cv2
 import math
 import numpy as np
 
+def template_matching_detection(inputImage):
+    global iX_target, iY_target
+    npInputimage = inputImage.copy()
+    npSegmentedInputimage = color_based_detection(npInputimage)
+    #print(np.shape(npInputimage))
+    npBlurredInputImage = cv2.GaussianBlur(npSegmentedInputimage, (79, 79), 0)
+    npTemplate = cv2.imread('/home/moufdi/catkin_ws/src/Perception/detect_rgb/nodes/bouleTemplate.png') 
+    npSegmentedTemplate = color_based_detection(npTemplate)
+
+    # Application of the normalized correlation
+    npCorrelatedImage = cv2.matchTemplate(npBlurredInputImage[:,:,1],npSegmentedTemplate[:,:,1],cv2.TM_CCORR_NORMED)
+    #print(np.shape(npCorrelatedImage))
+
+    iMin_val, iMax_val, iMin_loc, iMax_loc = cv2.minMaxLoc(npCorrelatedImage)
+
+    #print("val {}".format(iMax_val))
+  
+    #Drawing the bounding box
+    if(iMax_val>0.5):
+        iX_target = iMax_loc[0] + np.shape(npTemplate)[0]//2 
+        iY_target = iMax_loc[1] + np.shape(npTemplate)[1]//2
+        cv2.circle(npSegmentedInputimage,(iX_target,iY_target),1,255,thickness=2)
+        cv2.rectangle(npSegmentedInputimage,(iMax_loc[0],iMax_loc[1]),((iMax_loc[0]+np.shape(npTemplate)[1]) ,(iMax_loc[1]+np.shape(npTemplate)[0])),255,thickness=2)
+        cv2.putText(npSegmentedInputimage,"Boule", (iMax_loc[0],iMax_loc[1]-10), cv2.FONT_HERSHEY_DUPLEX, 1, 100,thickness=2)
+        
+    demo(inputImage,npSegmentedInputimage)
+    return iX_target, iY_target
+
+def demo(inputImage, outputImage):
+    cv2.imshow("images", np.hstack([inputImage, outputImage]))
+    cv2.waitKey(1)
+
+
 def color_based_detection(inputImage):
     npInputimage = inputImage.copy()
     npBlurredInputImage = cv2.GaussianBlur(npInputimage, (31, 31), 0)
