@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/etudiant/Documents/Projet_Ros/simulation_ws/devel/setup.sh
