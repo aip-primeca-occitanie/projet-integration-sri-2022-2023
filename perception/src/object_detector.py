@@ -138,6 +138,22 @@ def getDepth(ix,iy):
 
     return fPreviousDepth
 
+def start_node():
+    """
+    Initialise the node and subscribe to topic. 
+    Args : 
+    void
+    Output :
+    nothing
+    """
+    # initialisation the node 
+    rospy.init_node('main_detect')
+    rospy.loginfo('main_detect node started')
+    # subscribe to topics 
+    rospy.Subscriber("/camera/color/image_raw", Image, process_image)
+    rospy.Subscriber("/camera/depth/image_rect_raw", Image, process_image_depth)
+
+    rospy.spin()
 
 if __name__ == '__main__':
     try:
