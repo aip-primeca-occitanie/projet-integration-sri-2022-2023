@@ -96,6 +96,7 @@ class PickAruco(object):
 		rospy.loginfo("Connected!")
 		rospy.sleep(1.0)
 		rospy.loginfo("Done initializing PickAruco.")
+	
 
    	def strip_leading_slash(self, s):
 		return s[1:] if s.startswith("/") else s
@@ -135,7 +136,7 @@ class PickAruco(object):
 
 		if string_operation == "pick":
 
-                        rospy.loginfo("Setting cube pose based on ArUco detection")
+                        rospy.loginfo("Setting ball pose based on Perception")
 			pick_g.object_pose.pose.position = aruco_ps.pose.position
                         pick_g.object_pose.pose.position.z -= 0.1*(1.0/2.0)
 
@@ -154,17 +155,25 @@ class PickAruco(object):
 				return
 
 			# Move torso to its maximum height
-                        self.lift_torso()
+            self.lift_torso()
 
-                        # Raise arm
+            # Raise arm
 			rospy.loginfo("Moving arm to a safe pose")
 			pmg = PlayMotionGoal()
-                        pmg.motion_name = 'pick_final_pose'
+            pmg.motion_name = 'pick_final_pose'
 			pmg.skip_planning = False
 			self.play_m_as.send_goal_and_wait(pmg)
 			rospy.loginfo("Raise object done.")
 
-                        # Place the object back to its position
+			# Place the object to safe navigation position
+			rospy.loginfo("Gonna place the ball near my heart..")
+			pmg = PlayMotionGoal()
+			pmg.motion_name = 'keep_ball_pose'
+			self.play_m_as.send_goal_and_wait(pmg)
+			pmg.skip_planning = False
+
+
+			# Place the object back to its position
 			rospy.loginfo("Gonna place near where it was")
 			pick_g.object_pose.pose.position.z += 0.05
 			self.place_as.send_goal_and_wait(pick_g)
