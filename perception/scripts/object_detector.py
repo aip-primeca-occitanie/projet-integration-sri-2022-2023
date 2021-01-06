@@ -6,14 +6,18 @@ from cv_bridge import CvBridge
 import cv2
 import math
 import numpy as np
+global iX_target, iY_target,fPreviousDepth
+iX_target = 0 
+iY_target = 0
+fPreviousDepth = 0
 
 def template_matching_detection(inputImage):
     global iX_target, iY_target
-    npInputimage = inputImage.copy()
+    npInputimage = np.copy(inputImage)
     npSegmentedInputimage = color_based_detection(npInputimage)
     #print(np.shape(npInputimage))
     npBlurredInputImage = cv2.GaussianBlur(npSegmentedInputimage, (79, 79), 0)
-    npTemplate = cv2.imread('/home/moufdi/catkin_ws/src/Perception/detect_rgb/nodes/bouleTemplate.png') 
+    npTemplate = cv2.imread('/home/etudiant/ros_integration_ws/src/projet-integration-sri-2020-2021/perception/scripts/cube.png') 
     npSegmentedTemplate = color_based_detection(npTemplate)
 
     # Application of the normalized correlation
@@ -30,7 +34,7 @@ def template_matching_detection(inputImage):
         iY_target = iMax_loc[1] + np.shape(npTemplate)[1]//2
         cv2.circle(npSegmentedInputimage,(iX_target,iY_target),1,255,thickness=2)
         cv2.rectangle(npSegmentedInputimage,(iMax_loc[0],iMax_loc[1]),((iMax_loc[0]+np.shape(npTemplate)[1]) ,(iMax_loc[1]+np.shape(npTemplate)[0])),255,thickness=2)
-        cv2.putText(npSegmentedInputimage,"Boule", (iMax_loc[0],iMax_loc[1]-10), cv2.FONT_HERSHEY_DUPLEX, 1, 100,thickness=2)
+        cv2.putText(npSegmentedInputimage,"Cube", (iMax_loc[0],iMax_loc[1]-10), cv2.FONT_HERSHEY_DUPLEX, 1, 100,thickness=2)
         
     demo(inputImage,npSegmentedInputimage)
     return iX_target, iY_target
@@ -41,12 +45,13 @@ def demo(inputImage, outputImage):
 
 
 def color_based_detection(inputImage):
-    npInputimage = inputImage.copy()
+    npInputimage = np.copy(inputImage)
     npBlurredInputImage = cv2.GaussianBlur(npInputimage, (31, 31), 0)
     # color segmentation boundaries  
     #lower, upper = [51, 0, 102], [100, 51, 200] #sac
     #lower, upper = [0, 153, 112], [128, 255,221 ] # boule verte
-    iLower, iUpper = [40, 32, 104], [110, 75,255 ] # boule rouge
+    ###iLower, iUpper = [40, 32, 104], [110, 75,255 ] # boule rouge
+    iLower, iUpper = [1, 101, 2], [100, 255,100 ] # cube vert test simulation
    
     # Create NumPy arrays from the boundaries
     iLower, iUpper = np.array(iLower, dtype = "uint8"), np.array(iUpper, dtype = "uint8")
