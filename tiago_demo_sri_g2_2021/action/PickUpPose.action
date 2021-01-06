@@ -1,0 +1,8 @@
+# Define the goal
+geometry_msgs/PointStamped item_target  # indique la position de l'objet a saisir
+---
+# Define the result
+uint32 result_code #un numero pour défenir le resultat de la plannification
+---
+# Define a feedback message
+geometry_msgs/PoseStamped tool_pose
