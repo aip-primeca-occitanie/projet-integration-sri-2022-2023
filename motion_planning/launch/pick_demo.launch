@@ -28,6 +28,9 @@
 
   <!-- Node exposing service to start looking for the object and trigger the picking -->
   <node name="pick_client" pkg="tiago_pick_demo" type="pick_client.py" output="screen"/>  
+  
+  <!-- Launch the node to know if the object is in the hand -->
+  <node name="node_prise" pkg="tiago_pick_demo" type="node_prise.py" output="screen"/>  
 
   <group if="$(arg rviz)">
       <node name="pick_demo_rviz" pkg="rviz" type="rviz" args="-d $(find tiago_pick_demo)/config/rviz/tiago_pick_demo.rviz" />
