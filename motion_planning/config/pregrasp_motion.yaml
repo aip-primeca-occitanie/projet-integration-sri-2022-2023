@@ -27,3 +27,4 @@ play_motion:
       points:  
       - positions: [0.34, 0.21, -0.2, -2.2, 1.15, -1.57, 0.2, 0.0]
         time_from_start: 10.0
+    ball_near_

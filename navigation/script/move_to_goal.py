@@ -60,18 +60,6 @@ if __name__ == '__main__':
     try:
        # Initializes a rospy node to let the SimpleActionClient publish and subscribe
         rospy.init_node('movebase_client_py')
-
-        # create tf listener
-        listener = tf.TransformListener()
-        try:
-            # listen to transform
-            (trans,rot) = listener.lookupTransform('/map', '/base_link', rospy.Time(0))
-            # print the transform
-            rospy.loginfo('---------')
-            rospy.loginfo('Translation: ' + str(trans))
-            rospy.loginfo('Rotation: ' + str(rot))
-        except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
-            rospy.loginfo('problrm...')
         result = movebase_client(point, quaternion, frame)
         if result:
             rospy.loginfo("Goal execution done!")
