@@ -15,8 +15,11 @@
   <!-- Node exposing service to start looking for the object and trigger the picking -->
   <node name="pick_client" pkg="motion_planning" type="pick_client.py" output="screen"/>
 
+  <!-- Node interface motion planning server -->
+  <node name="motion_planning_server" pkg="motion_planning" type="motion_planning_server.py" output="screen"/>
+
   <!-- Launch the node to know if the object is in the hand -->
   <node name="node_prise" pkg="motion_planning" type="node_prise.py" output="screen"/>  
 
-
+	
 </launch>
