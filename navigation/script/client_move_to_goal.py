@@ -10,7 +10,7 @@ import actionlib
 import actionlib_tutorials.msg
 import navigation.msg
 
-def fibonacci_client():
+def navigation_client():
     # Creates the SimpleActionClient, passing the type of the action
     # (FibonacciAction) to the constructor.
     client = actionlib.SimpleActionClient('navigation', navigation.msg.NavigationAction)
@@ -45,7 +45,7 @@ if __name__ == '__main__':
         # Initializes a rospy node so that the SimpleActionClient can
         # publish and subscribe over ROS.
         rospy.init_node('navigation_client_py')
-        result = fibonacci_client()
+        result = navigation_client()
         print("Result: ", result.result_code)
     except rospy.ROSInterruptException:
         print("program interrupted before completion", file=sys.stderr)
