@@ -73,7 +73,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file://../models/Cellule_lite.dae</uri>
+              <uri>model://Cellule_lite.dae</uri>
             </mesh>
           </geometry>
         </visual>
