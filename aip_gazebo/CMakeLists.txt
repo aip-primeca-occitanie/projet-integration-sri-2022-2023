@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(tiago_demo_sri_g2_2021)
+project(aip_gazebo)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -7,15 +7,7 @@ project(tiago_demo_sri_g2_2021)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS
-  actionlib
-  actionlib_msgs
-  message_generation
-  roscpp
-  rospy
-  std_msgs
-  geometry_msgs
-)
+find_package(catkin REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -65,18 +57,17 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate actions in the 'action' folder
-add_action_files(
-	DIRECTORY
-	action
-	FILES
-	Navigation.action
-)
+# add_action_files(
+#   FILES
+#   Action1.action
+#   Action2.action
+# )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-	DEPENDENCIES
-	actionlib_msgs	std_msgs geometry_msgs
-)
+# generate_messages(
+#   DEPENDENCIES
+#   std_msgs  # Or other packages containing msgs
+# )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -109,8 +100,8 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES tiago_demo_sri_g2_2021
-	CATKIN_DEPENDS actionlib actionlib_msgs message_generation roscpp rospy std_msgs
+#  LIBRARIES aip_gazebo
+#  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
 
@@ -122,12 +113,12 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
 # include
-  ${catkin_INCLUDE_DIRS}
+# ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/tiago_demo_sri_g2_2021.cpp
+#   src/${PROJECT_NAME}/aip_gazebo.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -138,8 +129,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(navigation_client src/navigation_client.cpp)
-add_executable(navigation_server src/navigation_server.cpp)
+# add_executable(${PROJECT_NAME}_node src/aip_gazebo_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -147,30 +137,14 @@ add_executable(navigation_server src/navigation_server.cpp)
 ## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
 # set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
 
-## Specify libraries to link a library or executable target against
-target_link_libraries(
-	navigation_client
-	${catkin_LIBRARIES}
-)
-
-target_link_libraries(
-	navigation_server
-	${catkin_LIBRARIES}
-)
-
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(
-	navigation_client 
-	${${PROJECT_NAME}_EXPORTED_TARGETS}
-)
+# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
-add_dependencies(
-	navigation_server 
-	${${PROJECT_NAME}_EXPORTED_TARGETS}
-)
-
-
+## Specify libraries to link a library or executable target against
+# target_link_libraries(${PROJECT_NAME}_node
+#   ${catkin_LIBRARIES}
+# )
 
 #############
 ## Install ##
@@ -219,7 +193,7 @@ add_dependencies(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_tiago_demo_sri_g2_2021.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_aip_gazebo.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
