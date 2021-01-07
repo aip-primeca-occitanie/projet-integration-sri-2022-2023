@@ -32,6 +32,7 @@ public:
     ros::Rate r(1);
     bool success = true;
 
+
     // publish info to the console for the user
     ROS_INFO("%s: Executing, PickUpPose sequence to grab item detected in frame : %s at location x = %f y = %f z = %f ", action_name_.c_str(), goal->item_target.header.frame_id.c_str(), goal->item_target.point.x, goal->item_target.point.y, goal->item_target.point.z);
 
@@ -44,7 +45,8 @@ public:
       {
         ROS_INFO("%s: Preempted", action_name_.c_str());
         // set the action state to preempted
-        as_.setPreempted();
+		result_.result_code = 1;
+        as_.setPreempted(result_);
         success = false;
         break;
       }
@@ -56,7 +58,9 @@ public:
     {
       ROS_INFO("%s: Succeeded", action_name_.c_str());
       // set the action state to succeeded
+	  result_.result_code = 0;
       as_.setSucceeded(result_);
+	
     }
   }
 

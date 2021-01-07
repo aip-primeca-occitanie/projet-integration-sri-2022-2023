@@ -44,7 +44,8 @@ public:
       {
         ROS_INFO("%s: Preempted", action_name_.c_str());
         // set the action state to preempted
-        as_.setPreempted();
+	result_.result_code = 1;
+        as_.setPreempted(result_);
         success = false;
         break;
       }
@@ -56,6 +57,7 @@ public:
     {
       ROS_INFO("%s: Succeeded", action_name_.c_str());
       // set the action state to succeeded
+      result_.result_code = 0;
       as_.setSucceeded(result_);
     }
   }
