@@ -143,6 +143,7 @@ add_executable(navigation_client src/navigation_client.cpp)
 add_executable(navigation_server src/navigation_server.cpp)
 add_executable(pickUpPose_client src/pickUpPose_client.cpp)
 add_executable(pickUpPose_server src/pickUpPose_server.cpp)
+add_executable(tiago_demo src/tiago_demo.cpp)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -170,6 +171,11 @@ target_link_libraries(
 	${catkin_LIBRARIES}
 )
 
+target_link_libraries(
+	tiago_demo
+	${catkin_LIBRARIES}
+)
+
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 add_dependencies(
@@ -189,6 +195,11 @@ add_dependencies(
 
 add_dependencies(
 	pickUpPose_server 
+	${${PROJECT_NAME}_EXPORTED_TARGETS}
+)
+
+add_dependencies(
+	tiago_demo 
 	${${PROJECT_NAME}_EXPORTED_TARGETS}
 )
 
