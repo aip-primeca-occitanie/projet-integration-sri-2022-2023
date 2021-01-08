@@ -12,7 +12,7 @@ from std_msgs.msg import Bool
 
 
 def callback(data):
-	rospy.loginfo(rospy.get_caller_id() + "Entendu : %s", data.effort[7])
+	#rospy.loginfo(rospy.get_caller_id() + "Entendu : %s", data.effort[7])
 	if ( data.effort[7] < -0.25):
 		isGripped = True # on a la balle
 	else:
@@ -20,7 +20,7 @@ def callback(data):
 
 	pub = rospy.Publisher('node_prise', Bool, queue_size=10)
 
-	rospy.loginfo(isGripped)
+	#rospy.loginfo(isGripped)
 	pub.publish(isGripped)
 
 
