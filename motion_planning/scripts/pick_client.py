@@ -22,7 +22,7 @@
 
 import rospy
 import time
-from tiago_pick_demo.msg import PickUpPoseAction, PickUpPoseGoal
+from motion_planning.msg import PickUpPoseAction, PickUpPoseGoal
 from geometry_msgs.msg import PoseStamped, Pose
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 from play_motion_msgs.msg import PlayMotionAction, PlayMotionGoal

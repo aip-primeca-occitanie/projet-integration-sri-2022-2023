@@ -56,7 +56,7 @@
   </group>
 
   <group unless="$(arg public_sim)">
-    <node pkg="navigation" name="update_map.py" type="update_map.py" args="$(arg map)"> 
+    <node pkg="navigation" name="update_rviz_map" type="update_rviz_map.py" args="$(arg map)"> 
      </node>
   </group>
 
