@@ -39,21 +39,7 @@
 
   <group ns="$(arg namespace)">
 
-    <include file="$(find aip_gazebo)/launch/aip_gazebo.launch">
-    </include>
-
-    <include file="$(find tiago_2dnav_gazebo)/launch/navigation.launch">
-      <arg name="state"          value="localization"/>
-      <arg name="planner"        value="$(arg planner)"/>
-      <arg name="global_planner" value="$(arg global_planner)"/>
-      <arg name="local_planner"  value="$(arg local_planner)"/>
-      <arg name="localization"   value="$(arg localization)"/>
-      <arg name="map"            value="$(arg map)"/>
-      <arg name="public_sim"     value="$(arg public_sim)"/>
-      <arg name="rgbd_sensors"   value="$(arg advanced_navigation)"/>
-      <arg name="laser_model"    value="$(arg laser_model)"/>
-    </include>
-
+    
    <group if="$(arg advanced_navigation)">
       <node name="rviz" pkg="rviz" type="rviz" if="$(arg rviz)"
             args="-d $(find tiago_2dnav)/config/rviz/advanced_navigation.rviz"/>
@@ -70,8 +56,23 @@
     </include>
   </group>
 
-  <!-- pointcloud to laserscan-->
+  <!-- gazebo + navigation + pointcloud to laserscan-->
   <group if="$(arg public_sim)">
+    <include file="$(find aip_gazebo)/launch/aip_gazebo.launch">
+     </include>
+
+    <include file="$(find tiago_2dnav_gazebo)/launch/navigation.launch">
+      <arg name="state"          value="localization"/>
+      <arg name="planner"        value="$(arg planner)"/>
+      <arg name="global_planner" value="$(arg global_planner)"/>
+      <arg name="local_planner"  value="$(arg local_planner)"/>
+      <arg name="localization"   value="$(arg localization)"/>
+      <arg name="map"            value="$(arg map)"/>
+      <arg name="public_sim"     value="$(arg public_sim)"/>
+      <arg name="rgbd_sensors"   value="$(arg advanced_navigation)"/>
+      <arg name="laser_model"    value="$(arg laser_model)"/>
+    </include>
+
     <include file="$(find tiago_laser_sensors)/launch/rgbd_cloud_laser.launch">
       <arg name="cloud" value="/xtion/depth_registered/points"/>
     </include>
