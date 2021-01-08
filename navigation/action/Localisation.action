@@ -1,0 +1,8 @@
+# Define the goal
+uint32 target  # indique la destination
+---
+# Define the result
+uint32 result_code #un numero pour défenir le resultat de la navigation
+---
+# Define a feedback message
+geometry_msgs/PoseStamped current_pose
