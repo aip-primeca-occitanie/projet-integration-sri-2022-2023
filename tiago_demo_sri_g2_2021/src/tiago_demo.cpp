@@ -3,7 +3,8 @@
 #include <actionlib/client/simple_action_client.h>
 #include <actionlib/client/terminal_state.h>
 #include <tiago_demo_sri_g2_2021/PickUpPoseAction.h>
-#include <tiago_demo_sri_g2_2021/NavigationAction.h>
+#include <navigation/NavigationAction.h>
+#include <navigation/LocalisationAction.h>
 #include <string>
 #include <std_msgs/Int32.h>
 
@@ -15,7 +16,7 @@ bool pupServerBusy = false;
 bool perceptionServerBusy = false;
 bool locServerBusy = false;
 
-void navigationCallback(const tiago_demo_sri_g2_2021::NavigationActionResultConstPtr& resultat) 
+void navigationCallback(const navigation::NavigationActionResultConstPtr& resultat) 
 {
 	int resultVal = resultat->result.result_code;
   switch (resultVal)
@@ -40,9 +41,9 @@ void navigationCallback(const tiago_demo_sri_g2_2021::NavigationActionResultCons
 	navServerBusy = false;			
 }
 
-void localisationCallback(const std_msgs::Int32ConstPtr& resultat) 
+void localisationCallback(const navigation::LocalisationActionResultConstPtr& resultat) 
 {
-	int resultVal = resultat->data;
+	int resultVal = resultat->result.result_code;
   switch (resultVal)
 	{
 		case 0 :
@@ -114,33 +115,39 @@ int main(int argc, char **argv)
   pickPlaceGoal.item_target.point.y = 0.0;
   pickPlaceGoal.item_target.point.z = -25.0;
 
-	tiago_demo_sri_g2_2021::NavigationGoal navGoalPick;
-  navGoalPick.target.header.frame_id = "baselink";
-  navGoalPick.target.pose.position.x = 20.0;
-  navGoalPick.target.pose.position.y = 85.0;
+	navigation::NavigationGoal navGoalPick;
+  navGoalPick.target.header.frame_id = "map";
+  navGoalPick.target.pose.position.x = -3.75;
+  navGoalPick.target.pose.position.y = 3.6;
   navGoalPick.target.pose.position.z = 0.0;
-  navGoalPick.target.pose.orientation.x = 1.0;
-  navGoalPick.target.pose.orientation.y = 2.0;
+  navGoalPick.target.pose.orientation.x = 0.0;
+  navGoalPick.target.pose.orientation.y = 0.0;
   navGoalPick.target.pose.orientation.z = 0.0;
   navGoalPick.target.pose.orientation.w = 1.0;
 
-	tiago_demo_sri_g2_2021::NavigationGoal navGoalPlace;
-  navGoalPlace.target.header.frame_id = "baselink";
-  navGoalPlace.target.pose.position.x = 0.0;
-  navGoalPlace.target.pose.position.y = 0.0;
+	navigation::NavigationGoal navGoalPlace;
+	navGoalPlace.target.header.frame_id = "map";
+  navGoalPlace.target.pose.position.x = -2.3;
+  navGoalPlace.target.pose.position.y = 6.39;
   navGoalPlace.target.pose.position.z = 0.0;
-  navGoalPlace.target.pose.orientation.x = 2.0;
-  navGoalPlace.target.pose.orientation.y = 1.0;
+  navGoalPlace.target.pose.orientation.x = 0.0;
+  navGoalPlace.target.pose.orientation.y = 0.0;
   navGoalPlace.target.pose.orientation.z = 0.0;
   navGoalPlace.target.pose.orientation.w = 1.0;
+
+	navigation::LocalisationGoal locGoal;
+  locGoal.target = 0;
 
 	// create the pickUpPose action client
   // true causes the client to spin its own thread
   actionlib::SimpleActionClient<tiago_demo_sri_g2_2021::PickUpPoseAction> pupac("pickuppose", true);
 
+	// true causes the client to spin its own thread
+  actionlib::SimpleActionClient<navigation::LocalisationAction> locac("localisation", true);
+
   // create the navigation action client
   // true causes the client to spin its own thread
-  actionlib::SimpleActionClient<tiago_demo_sri_g2_2021::NavigationAction> navac("navigation", true);
+  actionlib::SimpleActionClient<navigation::NavigationAction> navac("navigation", true);
 
 	ROS_INFO("Waiting for pickUpPose action server to start.");
   // wait for the pickUpPose action server to start
@@ -150,14 +157,19 @@ int main(int argc, char **argv)
   // wait for the pickUpPose action server to start
   navac.waitForServer(); //will wait for infinite time
 
+	ROS_INFO("Waiting for localisation action server to start.");
+  // wait for the pickUpPose action server to start
+  locac.waitForServer(); //will wait for infinite time
+
 	ros::Subscriber pupsub = n.subscribe("/pickuppose/result", 10, pickUpPoseCallback);		
 	ros::Subscriber navsub = n.subscribe("/navigation/result", 10, navigationCallback);
+	ros::Subscriber locsub = n.subscribe("/localisation/result", 10, localisationCallback);
 
 	ros::Publisher perception_pub = n.advertise<std_msgs::Int32>("/perception/result", 10);
   ros::Subscriber perceptionsub = n.subscribe("/perception/result", 10, perceptionCallback);
 
-	ros::Publisher loc_pub = n.advertise<std_msgs::Int32>("/localisation/result", 10);
-  ros::Subscriber locsub = n.subscribe("/localisation/result", 10, localisationCallback);
+	//ros::Publisher loc_pub = n.advertise<std_msgs::Int32>("/localisation/result", 10);
+  //ros::Subscriber locsub = n.subscribe("/localisation/result", 10, localisationCallback);
 	
 	std_msgs::Int32 defaultValue;
 	defaultValue.data = 0;
@@ -175,7 +187,7 @@ int main(int argc, char **argv)
 				if (!locServerBusy)
 				{
 					ROS_INFO("Lancement de la tache de LOCALISATION");
-					loc_pub.publish(defaultValue);
+					locac.sendGoal(locGoal);
 					locServerBusy = true;
 				}
 				break;
