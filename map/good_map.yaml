@@ -1,7 +1,0 @@
-image: good_map.pgm
-resolution: 0.025000
-origin: [-11.960239, -9.426565, 0.000000]
-negate: 0
-occupied_thresh: 0.65
-free_thresh: 0.196
-

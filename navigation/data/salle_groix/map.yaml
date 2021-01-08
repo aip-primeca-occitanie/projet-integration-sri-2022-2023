@@ -1,4 +1,4 @@
-image: salle.pgm
+image: map.pgm
 resolution: 0.025000
 origin: [-11.960239, -9.426565, 0.000000]
 negate: 0
