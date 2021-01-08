@@ -38,22 +38,26 @@
   <node name="update_maps_link" pkg="pal_navigation_sm" type="base_maps_symlink.sh" args="tiago_maps"/>
 
   <group ns="$(arg namespace)">
-
     
    <group if="$(arg advanced_navigation)">
       <node name="rviz" pkg="rviz" type="rviz" if="$(arg rviz)"
             args="-d $(find tiago_2dnav)/config/rviz/advanced_navigation.rviz"/>
-  </group>
-     <group unless="$(arg advanced_navigation)">
-      <node name="rviz" pkg="rviz" type="rviz" if="$(arg rviz)"
-            args="-d $(find tiago_2dnav)/config/rviz/navigation$(arg sim_sufix).rviz"/>
-    </group>
+   </group>
+   <group unless="$(arg advanced_navigation)">
+    <node name="rviz" pkg="rviz" type="rviz" if="$(arg rviz)"
+          args="-d $(find tiago_2dnav)/config/rviz/navigation$(arg sim_sufix).rviz"/>
+   </group>
   </group>
 
   <group unless="$(arg public_sim)">
     <include file="$(find pal_loc_measure)/launch/pal_loc_measure.launch">
       <arg name="training" value="False"/>
     </include>
+  </group>
+
+  <group unless="$(arg public_sim)">
+    <node pkg="navigation" name="update_map.py" type="update_map.py"> 
+     </node>
   </group>
 
   <!-- gazebo + navigation + pointcloud to laserscan-->
