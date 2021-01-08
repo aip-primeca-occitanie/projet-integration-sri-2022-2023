@@ -71,7 +71,7 @@ find_package(catkin REQUIRED COMPONENTS
 #   Action2.action
 # )
 
-add_action_files(DIRECTORY action FILES Navigation.action)
+add_action_files(DIRECTORY action FILES Navigation.action Localisation.action)
 
 ## Generate added messages and services with any dependencies listed here
 # generate_messages(
