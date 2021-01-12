@@ -21,5 +21,10 @@ Marc Girard --> commit au nom de MarcGirard et Etudiant.
 	Merge entre le travail de l'équipe simulation sur gazebo et ce que j'ai fait sur rviz + fichier update_rviz_map.py
 	Tests navigation
 	Videos demo à télécharger: https://filesender.renater.fr/?s=download&token=f393ab8e-c359-439c-9774-c3fc7fe0dc03
-Axel Procino
+Axel porcino
 Sylvain Cadel
+
+Axel Porcino--> commit au nom de Porcino.
+	creation server-action pour mote_to_goal_py
+	creation server-action pour start_localisation.py
+	test Navigation sur la simulation de l'equipe simulation plus la carte slam realisè avec marc et sylvain.
