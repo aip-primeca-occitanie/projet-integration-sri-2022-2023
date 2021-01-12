@@ -24,7 +24,7 @@ Marc Girard --> commit au nom de MarcGirard et Etudiant.
 Axel porcino
 Sylvain Cadel
 
-Axel Porcino--> commit au nom de Porcino.
+Axel Porcino--> commit au nom de Axelito95.
 	creation server-action pour mote_to_goal_py
 	creation server-action pour start_localisation.py
 	test Navigation sur la simulation de l'equipe simulation plus la carte slam realisè avec marc et sylvain.
