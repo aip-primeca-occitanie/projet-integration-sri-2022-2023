@@ -5,6 +5,16 @@ Projet d'intégration ROS SRI 2020 2021
 
 Planification de tâches: François Mahe
 Package: tiago_demo_sri_g2_2021
+	En l'état l'executable tiago_demo permet de lancer sur le robot une séquence plannifiée devant mener le robot a 
+	se localiser puis naviger vers le lieux de saisit de l'objet, saisir l'objet, naviguer vers le lieux de dépose 
+	de l'objet pour	y déposer l'objet.
+	L'ordonnemencement est actuellement en echec car le robot ne parvient pas encore a se localiser convenablement, 
+	ce qui met la tâche de navigation en defaut sur le robot.
+	L'ordonnancement, s'appuit sur les actions du packet ROS actionLib. Chaque groupe a develloper sa partie de manière
+	a fournir une action, instanciée par un serveur. tiago_demo declanche donc des clients, qui viennent commander des 
+	actions au divers servers afin de mener a bien la mission de pick and place du robot. L'ordonnancement est modélisé
+	par une machine a état standard.
+	
 
 Perception: Moufdi
 
