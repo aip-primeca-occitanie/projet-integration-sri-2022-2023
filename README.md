@@ -38,3 +38,9 @@ Axel Porcino--> commit au nom de Axelito95.
 	creation server-action pour mote_to_goal_py
 	creation server-action pour start_localisation.py
 	test Navigation sur la simulation de l'equipe simulation plus la carte slam realisè avec marc et sylvain.
+
+Nicolas Boirel --> commit au nom de NicoBGithub.
+	Equipe simulation
+	Ajout de la cellule robotique dans le modèle 3D de la salle
+	Amélioration de la modélisation de la salle
+	Création des modèles 3D allégés de la cellule seule et des aiguillages, pour un ajout futur dans la simulation Gazebo.
