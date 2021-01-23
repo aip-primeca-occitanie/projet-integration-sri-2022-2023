@@ -44,3 +44,10 @@ Nicolas Boirel --> commit au nom de NicoBGithub.
 	Ajout de la cellule robotique dans le modèle 3D de la salle
 	Amélioration de la modélisation de la salle
 	Création des modèles 3D allégés de la cellule seule et des aiguillages, pour un ajout futur dans la simulation Gazebo.
+
+Plannification de mouvement
+Florent Labrune --> package : motion_planning
+	Etude du code tiago_pick_demo
+	Definition de l'architecture Action Server/Client
+	Etude des points d'approches pour optimiser le motion planning
+	Je n'ai fais aucun commit mais j'ai beaucoup participé à ceux de selimmch
