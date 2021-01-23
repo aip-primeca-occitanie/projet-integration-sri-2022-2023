@@ -51,3 +51,8 @@ Florent Labrune --> package : motion_planning
 	Definition de l'architecture Action Server/Client
 	Etude des points d'approches pour optimiser le motion planning
 	Je n'ai fais aucun commit mais j'ai beaucoup participé à ceux de selimmch
+
+Laura Martinez --> 
+	Etude de la démo Tiago de plannification de mouvement "tiago_pick_demo".
+	Tentative d'installation de la démo sur pc perso pendant toute la semaine sans succès, donc pas de commit effectués.
+	Support pour l'adaptation de la démo dans notre cas d'utilisation (participation aux commits de selimmch). 
