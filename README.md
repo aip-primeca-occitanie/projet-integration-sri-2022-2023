@@ -56,3 +56,8 @@ Laura Martinez -->
 	Etude de la démo Tiago de plannification de mouvement "tiago_pick_demo".
 	Tentative d'installation de la démo sur pc perso pendant toute la semaine sans succès, donc pas de commit effectués.
 	Support pour l'adaptation de la démo dans notre cas d'utilisation (participation aux commits de selimmch). 
+	
+Lila David --> package : motion_planning
+	Etude de la démonstration Tiago de plannification de mouvements avec le tutorial MoveIt : "tiago_pick_demo"
+	Aide pour l'utilisation et la modification de cette démo pour notre problématique (participation aux commits de selimmch).
+	Compétences acquises : meilleure compréhension de l'architecture d'un projet ROS (notamment avec l'utilisation de métapackages), meilleure compréhension et 		utilisation de l'outil git.  
