@@ -61,3 +61,10 @@ Lila David --> package : motion_planning
 	Etude de la démonstration Tiago de plannification de mouvements avec le tutorial MoveIt : "tiago_pick_demo"
 	Aide pour l'utilisation et la modification de cette démo pour notre problématique (participation aux commits de selimmch).
 	Compétences acquises : meilleure compréhension de l'architecture d'un projet ROS (notamment avec l'utilisation de métapackages), meilleure compréhension et 		utilisation de l'outil git.  
+
+Lilia BAHROUN --> commit au nom de Lilia00
+        Equipe Perception avec Moufdi et Maxime. Notre role était de détecter la cible à partir des données RGB de la caméra puis de publier ses coordonnées dans  	  le repère caméra.
+	-Implémentation de l'algorithme de détection de la cible "boule" 
+	-Etude du code de la simulation tiago_tutorials/look_to_point/src/look_to_point.cpp qui permet de controler la tete du tiago pour avoir le champs de   		 vision voulu.
+	-Etude du changement du repère image au repère caméra mais nous n'avons pas pu le tester sur le tiago.
+	C'est un projet très interessant et on était bien encadré. J'ai réussi à bien comprendre le fonctionnement de github ainsi que la création de noeuds ROS.
