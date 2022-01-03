@@ -180,7 +180,7 @@ class PickAndPlaceServer(object):
         rospy.loginfo("Removing any previous 'part' object")
         self.scene.remove_attached_object("arm_tool_link")
         self.scene.remove_world_object("part")
-        self.scene.remove_world_object("table")
+        self.scene.remove_world_object("chair")
         rospy.loginfo("Clearing octomap")
         self.clear_octomap_srv.call(EmptyRequest())
         rospy.sleep(2.0)  # Removing is fast
@@ -192,16 +192,16 @@ class PickAndPlaceServer(object):
         self.scene.add_box("part", object_pose, (self.object_depth, self.object_width, self.object_height))
 
         rospy.loginfo("Second%s", object_pose.pose)
-        table_pose = copy.deepcopy(object_pose)
-
+        chair_pose = copy.deepcopy(object_pose)
+	
         #define a virtual table below the object
-        table_height = object_pose.pose.position.z - self.object_width/2  
-        table_width  = 1.8
-        table_depth  = 0.5
-        table_pose.pose.position.z += -(2*self.object_width)/2 -table_height/2
-        table_height -= 0.008 #remove few milimeters to prevent contact between the object and the table
+        chair_height = object_pose.pose.position.z - self.object_width/2  
+        chair_width  = 0.5
+        chair_depth  = 0.5
+        chair_pose.pose.position.z += -(2*self.object_width)/2 - chair_height/2
+        chair_height -= 0.008 #remove few milimeters to prevent contact between the object and the table
 
-        self.scene.add_box("table", table_pose, (table_depth, table_width, table_height))
+        self.scene.add_box("chair", chair_pose, (chair_depth, chair_width, chair_height))
 
         # # We need to wait for the object part to appear
         self.wait_for_planning_scene_object()
