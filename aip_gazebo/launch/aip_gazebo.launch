@@ -11,7 +11,7 @@
   <arg name="laser_model"  default="sick-571"/>
   <arg name="camera_model"  default="orbbec-astra"/>
   <arg name="multi" default=""/>
-  <arg name="gzpose" default="-x 6.5 -y 2.4 -z 0.0 -R 0.0 -P 0.0 -Y 0.0"/>
+  <arg name="gzpose" default="-x 8.2 -y 2.4 -z 0.0 -R 0.0 -P 0.0 -Y 0.0"/>
   <arg name="gui" default="true"/>
   <arg name="debug" default="false"/>
   <arg name="public_sim" default="true"/>
