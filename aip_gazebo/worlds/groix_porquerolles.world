@@ -19418,6 +19418,11 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose frame=''>6.57572 8.43667 0.3 0 -0 0.054742</pose>
     </model>
+<!-- Cube with ArUco markers on the sides -->
+    <include>
+      <uri>model://aruco_cube</uri>
+      <pose>8.79844 2.4297 1.034214 0 0 0</pose>
+    </include>
     <audio>
       <device>default</device>
     </audio>
