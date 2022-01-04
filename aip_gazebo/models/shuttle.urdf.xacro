@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot name="myfirst">
+  <link name="base_link"/>
+
+  <link name="body">
+    <visual>
+      <geometry>
+        <mesh filename="file:////home/ugo/Desktop/Cours/3A/WORKSPACEROS/src/aip_gazebo/models/shuttle_parts/navette_body.stl" scale="0.03 0.03 0.03"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="file:////home/ugo/Desktop/Cours/3A/WORKSPACEROS/src/aip_gazebo/models/shuttle_parts/navette_body.stl" scale="0.03 0.03 0.03"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+        ixx="1.0" ixy="0.0" ixz="0.0"
+        iyy="1.0" iyz="0.0"
+        izz="1.0"/>
+    </inertial>
+  
+  </link>
+
+
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="body"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+</joint>
+
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/</robotNamespace>
+  </plugin>
+</gazebo>
+
+</robot>
