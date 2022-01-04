@@ -23,17 +23,23 @@ Plannification de mouvement
 ### Monde simple
 Lancer une simulation simple dans groix_porquerolles.world : 
 - Dans un terminal dans la racine du projet, lancer :
+
 	source ./devel/setup.bash
+	
 	roslaunch aip_gazebo aip_gazebo.launch
 	
 ### Saisie
 Lancer une opération de saisie dans la simulation :
 - Dans un 2eme terminal dans la racine du projet, lancer les noeuds ROS :
+
 	source ./devel/setup.bash
+	
 	roslaunch sri_tiago_pick pick_demo.launch
 
 
 - Dans un 3eme terminal dans la racine du projet, lancer le servilc pick and place:
+
 	source ./devel/setup.bash
-	 rosservice call /pick_gui
+	
+	rosservice call /pick_gui
 
