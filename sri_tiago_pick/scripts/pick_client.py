@@ -143,6 +143,10 @@ class PickAruco(object):
 
 			pick_g.object_pose.header.frame_id = 'base_footprint'
 			pick_g.object_pose.pose.orientation.w = 1.0
+			# modif x
+			# on decale legerement la position en x
+                        pick_g.object_pose.pose.position.x += 0.02
+			# end modif x
 			self.detected_pose_pub.publish(pick_g.object_pose)
 			rospy.loginfo("Gonna pick:" + str(pick_g))
 			self.pick_as.send_goal_and_wait(pick_g)
