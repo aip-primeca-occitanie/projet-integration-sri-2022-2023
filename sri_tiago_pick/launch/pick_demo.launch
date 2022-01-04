@@ -16,24 +16,23 @@
   </node>
 
   <!-- Load definition of pregrasp motion into play_motion namespace -->
-<!--
-  <rosparam command="load" file="$(find tiago_pick_demo)/config/pick_motions.yaml" /> 
 
-  
-  <node name="pick_and_place_server" pkg="tiago_pick_demo" type="pick_and_place_server.py" output="screen">
-      <rosparam command="load" file="$(find tiago_pick_demo)/config/pick_and_place_params.yaml" />
+  <rosparam command="load" file="$(find sri_tiago_pick)/config/pick_motions.yaml" /> 
+
+  <!-- Pick & place server -->
+  <node name="pick_and_place_server" pkg="sri_tiago_pick" type="pick_and_place_server.py" output="screen">
+      <rosparam command="load" file="$(find sri_tiago_pick)/config/pick_and_place_params.yaml" />
       <param name="object_width"  value="0.05" />
       <param name="object_height" value="0.1" />
       <param name="object_depth"  value="0.05" />
   </node>
 
-  
-  <node name="pick_client" pkg="tiago_pick_demo" type="pick_client.py" output="screen"/>  
+  <!-- Node exposing service to start looking for the object and trigger the picking -->
+  <node name="pick_client" pkg="sri_tiago_pick" type="pick_client.py" output="screen"/>  
 
   <group if="$(arg rviz)">
-      <node name="pick_demo_rviz" pkg="rviz" type="rviz" args="-d $(find tiago_pick_demo)/config/rviz/tiago_pick_demo.rviz" />
+      <node name="pick_demo_rviz" pkg="rviz" type="rviz" args="-d $(find sri_tiago_pick)/config/rviz/tiago_pick_demo.rviz" />
   </group>
--->
+
 
 </launch>
-

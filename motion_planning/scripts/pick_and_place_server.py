@@ -158,7 +158,7 @@ class PickAndPlaceServer(object):
 
     def wait_for_planning_scene_object(self, object_name='part'):
         rospy.loginfo(
-            "Waiting for object '" + object_name + "'' to appear in planning scene...")
+            "Waiting for object '" + object_name + "' to appear in planning scene...")
         gps_req = GetPlanningSceneRequest()
         gps_req.components.components = gps_req.components.WORLD_OBJECT_NAMES
         
@@ -194,18 +194,18 @@ class PickAndPlaceServer(object):
         rospy.loginfo("Second%s", object_pose.pose)
         chair_pose = copy.deepcopy(object_pose)
 	
-        #define a virtual table below the object
+        #define a virtual chair below the object
         chair_height = object_pose.pose.position.z - self.object_width/2  
         chair_width  = 0.5
         chair_depth  = 0.5
         chair_pose.pose.position.z += -(2*self.object_width)/2 - chair_height/2
-        chair_height -= 0.008 #remove few milimeters to prevent contact between the object and the table
+        chair_height -= 0.008 #remove few milimeters to prevent contact between the object and the chair
 
         self.scene.add_box("chair", chair_pose, (chair_depth, chair_width, chair_height))
 
         # # We need to wait for the object part to appear
         self.wait_for_planning_scene_object()
-        self.wait_for_planning_scene_object("table")
+        self.wait_for_planning_scene_object("chair")
 
                 # compute grasps
         possible_grasps = self.sg.create_grasps_from_object_pose(object_pose)
