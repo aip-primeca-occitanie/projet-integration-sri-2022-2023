@@ -24,10 +24,10 @@ Plannification de mouvement
 Lancer une simulation simple dans groix_porquerolles.world : 
 - Dans un terminal dans la racine du projet, lancer :
 
-'''bash
+```bash
 source ./devel/setup.bash
 roslaunch aip_gazebo aip_gazebo.launch
-'''
+```
 	
 ### Saisie
 Lancer une opération de saisie dans la simulation :
