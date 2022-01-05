@@ -1,7 +1,16 @@
-#README Navigation
+# README Navigation
+
+launch mapping simulation:
+
+Commande pour lancer le mapping dans la salle groix
+
+```code
+roslaunch navigation aip_tiago_mapping
+```
 
 topic ROS pour ordre de navigation : move_base_simple/goal
 
+``` bash
 std_msgs/Header header
   uint32 seq
   time stamp
@@ -16,3 +25,4 @@ geometry_msgs/Pose pose
     float64 y
     float64 z
     float64 w
+```
