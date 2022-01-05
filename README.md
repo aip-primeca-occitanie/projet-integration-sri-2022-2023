@@ -26,6 +26,17 @@ Lancer une simulation simple dans groix_porquerolles.world :
 source ./devel/setup.bash
 roslaunch aip_gazebo aip_gazebo.launch
 ```
+
+### Simulation cellule + navette
+Lancer une simulation de la cellule flexible de la salle groix_porquerolles avec une navette montée sur les rails.
+- Dans un terminal dans la racine du projet, lancer :
+```bash
+source ./devel/setup.bash
+roslaunch aip_gazebo shuttle_only.launch
+```
+
+
+
 	
 ### Saisie
 Lancer une opération de saisie dans la simulation :
