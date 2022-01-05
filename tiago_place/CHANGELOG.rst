@@ -1,5 +1,5 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Changelog for package tiago_pick_demo
+Changelog for package tiago_place
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 2.0.3 (2020-01-28)

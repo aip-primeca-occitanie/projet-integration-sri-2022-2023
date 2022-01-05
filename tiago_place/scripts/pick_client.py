@@ -135,17 +135,17 @@ class PickAruco(object):
 
 		if string_operation == "pick":
 
-                        rospy.loginfo("Setting cube pose based on ArUco detection")
+            rospy.loginfo("Setting cube pose based on ArUco detection")
 			pick_g.object_pose.pose.position = aruco_ps.pose.position
-                        pick_g.object_pose.pose.position.z -= 0.1*(1.0/2.0)
+				pick_g.object_pose.pose.position.z -= 0.1*(1.0/2.0)
 
-                        rospy.loginfo("aruco pose in base_footprint:" + str(pick_g))
+				rospy.loginfo("aruco pose in base_footprint:" + str(pick_g))
 
 			pick_g.object_pose.header.frame_id = 'base_footprint'
 			pick_g.object_pose.pose.orientation.w = 1.0
 			self.detected_pose_pub.publish(pick_g.object_pose)
 			rospy.loginfo("Gonna pick:" + str(pick_g))
-			self.pick_as.send_goal_and_wait(pick_g)
+			#self.pick_as.send_goal_and_wait(pick_g)
 			rospy.loginfo("Done!")
 
 			result = self.pick_as.get_result()

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>tiago_pick_demo</name>
+  <name>tiago_place</name>
   <version>2.0.3</version>
   <description>Example of TIAGo picking an object with an ArUco marker placed on top of a table</description>
 
