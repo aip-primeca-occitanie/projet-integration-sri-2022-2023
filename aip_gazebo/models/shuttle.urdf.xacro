@@ -57,65 +57,152 @@
 
   <link name="cylinder1">
     <collision>
-      <origin xyz="0 0 0.065" rpy="0 0 0"/>
-
       <geometry>
         <cylinder radius="0.05" length="0.07"/>
       </geometry>
     </collision>
-    <inertial>
-      <origin xyz="0 0 0.01" rpy="0 0 0"/>
-      <mass value="0"/>
-      <inertia
-        ixx="0.01" ixy="0" ixz="0"
-        iyy="0.02" iyz="0"
-        izz="0.001"/>
-    </inertial>
-  </link>
+      <inertial>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <mass value="0.000010000" />
+        <inertia ixx="0.000000010" ixy="0.000000000" ixz="0.000000000" iyy="0.000000010" iyz="0.000000000" izz="0.000000013"/>
+      </inertial>
+    </link>
 
 
   <link name="cylinder2">
     <collision>
-      <origin xyz="0 0 0.065" rpy="0 0 0"/>
-
       <geometry>
         <cylinder radius="0.05" length="0.07"/>
       </geometry>
     </collision>
+      <inertial>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <mass value="0.000010000" />
+        <inertia ixx="0.000000010" ixy="0.000000000" ixz="0.000000000" iyy="0.000000010" iyz="0.000000000" izz="0.000000013"/>
+      </inertial>
+    </link>
+
+  <link name="head_plate">
+    <visual>
+      <geometry>
+        <box size="0.03 0.05 0.01" />
+      </geometry>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="0.03 0.05 0.01" />
+      </geometry>
+    </collision>
+
     <inertial>
-      <origin xyz="0 0 0.01" rpy="0 0 0"/>
-      <mass value="0"/>
-      <inertia
-        ixx="0.01" ixy="0" ixz="0"
-        iyy="0.02" iyz="0"
-        izz="0.001"/>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <mass value="0.000010000" />
+      <inertia ixx="0.000000002" ixy="0.000000000" ixz="0.000000000" iyy="0.000000001" iyz="0.000000000" izz="0.000000003"/>
     </inertial>
-  </link>
+        </link>
+
+  <link name="free_wheel_1">
+
+    <visual>
+      <geometry>
+        <cylinder radius="0.01" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.01" length="0.02"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <mass value="0.000010000" />
+      <inertia ixx="0.000000001" ixy="0.000000000" ixz="0.000000000" iyy="0.000000001" iyz="0.000000000" izz="0.000000001"/>
+    </inertial>
+      </link>
+
+  <link name="free_wheel_2">
+    <visual>
+      <geometry>
+        <cylinder radius="0.01" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.01" length="0.02"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <mass value="0.000010000" />
+      <inertia ixx="0.000000001" ixy="0.000000000" ixz="0.000000000" iyy="0.000000001" iyz="0.000000000" izz="0.000000001"/>
+    </inertial>
+    </link>
 
 
 
-  <joint name="base_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="body"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+
+
+
+
+
+
+
+
+
+<joint name="base_joint" type="fixed">
+  <parent link="base_link"/>
+  <child link="body"/>
+  <origin xyz="0 0 0" rpy="0 0 0"/>
 </joint>
 
-<joint name="cylinder1_joint" type="fixed">
+<joint name="cylinder1_joint" type="continuous">
+<parent link="body"/>
+<child link="cylinder1"/>
+<axis xyz="0 0 1"/>
+<origin xyz="0 0.07 0.065" rpy="0 0 0"/>
+</joint>
+
+
+<joint name="cylinder2_joint" type="continuous">
+<parent link="body"/>
+<child link="cylinder2"/>
+<axis xyz="0 0 1"/>
+<origin xyz="0 -0.07 0.065" rpy="0 0 0"/>
+</joint>
+
+
+<joint name="free_plate" type="fixed">
   <parent link="body"/>
-  <child link="cylinder1"/>
-  <origin xyz="0 0.07 0" rpy="0 0 0"/>
+  <child link="head_plate"/>
+  <axis xyz="0 0 1"/>
+  <origin xyz="0.3 0 0.11" rpy="0 0 0"/>
+</joint>
+
+
+<joint name="free_wheel_1_joint" type="fixed">
+  <parent link="head_plate"/>
+  <child link="free_wheel_1"/>
+  <axis xyz="0 0 1"/>
+  <origin xyz="0 0.03 -0.01" rpy="0 0 0"/>
+</joint>
+
+<joint name="free_wheel_2_joint" type="continuous">
+  <parent link="head_plate"/>
+  <child link="free_wheel_2"/>
+  <axis xyz="0 0 1"/>
+  <origin xyz="0 -0.03 -0.01" rpy="0 0 0"/>
 </joint>
 
 
 
-<joint name="cylinder2_joint" type="fixed">
-  <parent link="body"/>
-  <child link="cylinder2"/>
-  <origin xyz="0 -0.07 0" rpy="0 0 0"/>
-</joint>
 
 
 
+
+ 
 <gazebo reference="body">
   <material>Gazebo/Green</material>
 
