@@ -32,14 +32,14 @@ roslaunch aip_gazebo aip_gazebo.launch
 ### Saisie
 Lancer une opération de saisie dans la simulation :
 - Dans un 2eme terminal dans la racine du projet, lancer les noeuds ROS :
-'''bash
+```bash
 source ./devel/setup.bash
 roslaunch sri_tiago_pick pick_demo.launch
-'''
+```
 
 - Dans un 3eme terminal dans la racine du projet, lancer le servilc pick and place:
-'''bash
+```bash
 source ./devel/setup.bash
 rosservice call /pick_gui
-'''
+```
 
