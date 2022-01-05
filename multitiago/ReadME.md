@@ -1,10 +1,10 @@
 #### Dépendances : 
 
-# tiago_gazebo
-# tiago_multi
-# aip_gazebo
-# gazebo_ros 
-# pal_gazebo_worlds
+ tiago_gazebo
+ tiago_multi
+ aip_gazebo
+ gazebo_ros 
+ pal_gazebo_worlds
 
 
 
