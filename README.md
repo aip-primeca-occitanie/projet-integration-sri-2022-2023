@@ -3,15 +3,13 @@ Projet d'intégration ROS SRI 2021 2022
 
 # Organization:
 
-Planification de tâches: 
-	
+[Planification de tâches]()
 
-Perception: 
+[Perception]()
 
-Simulation: 
+[Simulation](aip_gazebo) 
 
-
-Navigation:
+[Navigation](navigation/README.md):
 
 
 Plannification de mouvement
