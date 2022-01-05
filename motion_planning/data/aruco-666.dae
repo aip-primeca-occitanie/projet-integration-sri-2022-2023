@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0</authoring_tool>
     </contributor>
-    <created>2022-01-05T16:24:44</created>
-    <modified>2022-01-05T16:24:44</modified>
+    <created>2022-01-05T18:26:46</created>
+    <modified>2022-01-05T18:26:46</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -101,18 +101,14 @@
       </extra>
     </light>
   </library_lights>
-  <library_images>
-    <image id="aruco-666_png" name="aruco-666_png">
-      <init_from>aruco-666.png</init_from>
-    </image>
-  </library_images>
+  <library_images/>
   <library_effects>
-    <effect id="Material_002-effect">
+    <effect id="Material_014-effect">
       <profile_COMMON>
         <technique sid="common">
           <phong>
             <emission>
-              <color sid="emission">0 0 0 1</color>
+              <color sid="emission">1 1 1 1</color>
             </emission>
             <ambient>
               <color sid="ambient">0 0 0 1</color>
@@ -133,42 +129,76 @@
         </technique>
       </profile_COMMON>
     </effect>
+    <effect id="Material_015-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">1 1 1 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0.64 0.003923339 0.006084114 1</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
   </library_effects>
   <library_materials>
-    <material id="Material_002-material" name="Material_002">
-      <instance_effect url="#Material_002-effect"/>
+    <material id="Material_014-material" name="Material_014">
+      <instance_effect url="#Material_014-effect"/>
+    </material>
+    <material id="Material_015-material" name="Material_015">
+      <instance_effect url="#Material_015-effect"/>
     </material>
   </library_materials>
   <library_geometries>
-    <geometry id="Plane-mesh" name="Plane">
+    <geometry id="Cube-mesh" name="Cube">
       <mesh>
-        <source id="Plane-mesh-positions">
-          <float_array id="Plane-mesh-positions-array" count="12">-0.04999995 -0.04999995 0 0.04999995 -0.04999995 0 -0.04999995 0.04999995 0 0.04999995 0.04999995 0</float_array>
+        <source id="Cube-mesh-positions">
+          <float_array id="Cube-mesh-positions-array" count="24">-0.04999995 -0.04999995 -0.04999995 -0.04999995 -0.04999995 0.04999995 -0.04999995 0.04999995 -0.04999995 -0.04999995 0.04999995 0.04999995 0.04999995 -0.04999995 -0.04999995 0.04999995 -0.04999995 0.04999995 0.04999995 0.04999995 -0.04999995 0.04999995 0.04999995 0.04999995</float_array>
           <technique_common>
-            <accessor source="#Plane-mesh-positions-array" count="4" stride="3">
+            <accessor source="#Cube-mesh-positions-array" count="8" stride="3">
               <param name="X" type="float"/>
               <param name="Y" type="float"/>
               <param name="Z" type="float"/>
             </accessor>
           </technique_common>
         </source>
-        <source id="Plane-mesh-normals">
-          <float_array id="Plane-mesh-normals-array" count="3">0 0 1</float_array>
+        <source id="Cube-mesh-normals">
+          <float_array id="Cube-mesh-normals-array" count="18">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
           <technique_common>
-            <accessor source="#Plane-mesh-normals-array" count="1" stride="3">
+            <accessor source="#Cube-mesh-normals-array" count="6" stride="3">
               <param name="X" type="float"/>
               <param name="Y" type="float"/>
               <param name="Z" type="float"/>
             </accessor>
           </technique_common>
         </source>
-        <vertices id="Plane-mesh-vertices">
-          <input semantic="POSITION" source="#Plane-mesh-positions"/>
+        <vertices id="Cube-mesh-vertices">
+          <input semantic="POSITION" source="#Cube-mesh-positions"/>
         </vertices>
-        <triangles material="Material_002-material" count="2">
-          <input semantic="VERTEX" source="#Plane-mesh-vertices" offset="0"/>
-          <input semantic="NORMAL" source="#Plane-mesh-normals" offset="1"/>
-          <p>1 0 2 0 0 0 1 0 3 0 2 0</p>
+        <triangles material="Material_014-material" count="10">
+          <input semantic="VERTEX" source="#Cube-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube-mesh-normals" offset="1"/>
+          <p>1 0 2 0 0 0 3 1 6 1 2 1 7 2 4 2 6 2 5 3 0 3 4 3 6 4 0 4 2 4 1 0 3 0 2 0 3 1 7 1 6 1 7 2 5 2 4 2 5 3 1 3 0 3 6 4 4 4 0 4</p>
+        </triangles>
+        <triangles material="Material_015-material" count="2">
+          <input semantic="VERTEX" source="#Cube-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube-mesh-normals" offset="1"/>
+          <p>3 5 5 5 7 5 3 5 1 5 5 5</p>
         </triangles>
       </mesh>
     </geometry>
@@ -184,12 +214,13 @@
         <matrix sid="transform">-0.2908646 -0.7711008 0.5663932 1.402624 0.9551712 -0.1998834 0.2183912 2.109544 -0.05518906 0.6045247 0.7946723 6.601625 0 0 0 1</matrix>
         <instance_light url="#Lamp-light"/>
       </node>
-      <node id="Plane" name="Plane" type="NODE">
-        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
-        <instance_geometry url="#Plane-mesh" name="Plane">
+      <node id="Cube" name="Cube" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 0.01 0 0 0 0 1</matrix>
+        <instance_geometry url="#Cube-mesh" name="Cube">
           <bind_material>
             <technique_common>
-              <instance_material symbol="Material_002-material" target="#Material_002-material"/>
+              <instance_material symbol="Material_014-material" target="#Material_014-material"/>
+              <instance_material symbol="Material_015-material" target="#Material_015-material"/>
             </technique_common>
           </bind_material>
         </instance_geometry>
