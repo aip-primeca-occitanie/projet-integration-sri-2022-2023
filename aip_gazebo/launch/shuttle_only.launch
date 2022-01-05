@@ -44,22 +44,22 @@
 
 
   <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find aip_gazebo)/models/shuttle.urdf.xacro'" />
-  <arg name="x" default="0"/>
-  <arg name="y" default="0"/>
-  <arg name="z" default="0.5"/>
+  <arg name="x" default="0.0044"/>
+  <arg name="y" default="-2.59"/>
+  <arg name="z" default="0.748"/>
   
   <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
         args="-urdf -param robot_description -model test -x $(arg x) -y $(arg y) -z $(arg z)" />
 
-<!--
-  <param name="cellule" command="$(find xacro)/xacro inorder '$(find aip_gazebo)/models/cellule.urdf.xacro'" />
+
+  <param name="cellule" command="$(find xacro)/xacro --inorder '$(find aip_gazebo)/models/cellule.urdf.xacro'" />
   <arg name="x_" default="0"/>
-  <arg name="y_" default="10"/>
+  <arg name="y_" default="0"/>
   <arg name="z_" default="0"/>
   
   <node name="cellule_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
         args="-urdf -param cellule -model cellule -x $(arg x_) -y $(arg y_) -z $(arg z_)" />
--->
+
       
 
 

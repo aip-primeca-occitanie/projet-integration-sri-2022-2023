@@ -66,22 +66,7 @@
         <kinematic>0</kinematic>
       </link>
     </model>
-    <model name='my_mesh'>
-      <pose frame=''>0 0 0 0 -0 0</pose>
-      <static>1</static>
-      <link name='body'>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>model://Cellule_lite.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
+
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type='adiabatic'/>
