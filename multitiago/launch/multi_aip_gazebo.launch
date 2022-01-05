@@ -11,8 +11,8 @@
     <env name="LC_NUMERIC" value="C" />
 
     <!-- Gazebo start -->
-    <include file="$./aip_gazebo.launch"><!--(find aip_multi_navsimu)-->
-        <arg name="world_name" value="$../worlds/$(arg world).world"/><!-- pareil-->
+    <include file="$(find aip_multi_navsimu)/launch/aip_gazebo.launch">
+        <arg name="world_name" value="$(find aip_multi_navsimu)/worlds/$(arg world).world"/>
         <arg name="gui" value="$(arg gui)"/>
         <arg name="debug" value="$(arg debug)"/>
     </include>
