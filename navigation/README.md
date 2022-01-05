@@ -5,7 +5,7 @@ launch mapping simulation:
 Commande pour lancer le mapping dans la salle groix
 
 ```code
-roslaunch navigation aip_tiago_mapping
+roslaunch navigation aip_tiago_mapping.launch
 ```
 
 topic ROS pour ordre de navigation : move_base_simple/goal
