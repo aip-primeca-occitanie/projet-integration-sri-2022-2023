@@ -14,14 +14,10 @@ source ./devel/setup.bash
 roslaunch tiago_pick_demo pick_simulation.launch
 ```
 Lancement des noeuds :
-/aruco_single: ArUco marker detector node
-
-/pick_and_place_server: node in charge of defining the planning scene, request pick and plans with MoveIt! and execute them.
-
-/pick_client: node that prepares the robot for the object detection and the pick and place operations: raises the arm to a safe pose and lowers the head to look at the table. Then it waits until the object marker is detected and its pose is retrieved in order to send a goal to the /pick_and_place_server.
-
-/rviz: in order to visualize all the steps involved in the demo.
-
+`* /aruco_single
+`* /pick_and_place_server
+`* /pick_client
+`* /rviz
 - Dans un 2eme terminal dans la racine du projet:
 ```bash
 source ./devel/setup.bash
