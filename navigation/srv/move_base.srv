@@ -1,0 +1,12 @@
+uint32 seq
+time stamp
+string frame_id
+float64 x
+float64 y
+float64 z
+float64 xr
+float64 yr
+float64 zr
+float64 wr
+---
+uint64 A
