@@ -14,10 +14,10 @@ source ./devel/setup.bash
 roslaunch tiago_pick_demo pick_simulation.launch
 ```
 Lancement des noeuds :
-`* /aruco_single
-`* /pick_and_place_server
-`* /pick_client
-`* /rviz
+1. /aruco_single
+2. /pick_and_place_server
+3. /pick_client
+4. /rviz
 - Dans un 2eme terminal dans la racine du projet:
 ```bash
 source ./devel/setup.bash
