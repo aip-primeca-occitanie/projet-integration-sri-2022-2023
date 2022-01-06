@@ -73,3 +73,12 @@ source ./devel/setup.bash
 rosservice call /pick_gui
 ```
 
+### Navigation
+
+À la racine du projet, sourcer ```devel/setup.bash``` et lancer la commande
+
+``` code
+roslaunch navigation aip_tiago_mapping.launch
+```
+
+Ceci permet de créer une carte de la salle porquerolles en faisant naviguer le robot (simulation).
