@@ -2,7 +2,7 @@
 Package dedié au placement d'un objet sur une table & l'aide d'un QR code
 
 
-Alexandre Baures & Clément Petit
+__Alexandre Baures & Clément Petit__
 
 ## Simulations
 Pour lancer la simulation:
