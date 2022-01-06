@@ -44,8 +44,8 @@ L'évaluation du projet se fera suivant les critères suivants:
 # Réalisation
 
   - Simulation: Une partie en simulation qui fonctionne complétement ou partiellement. Dans le deuxième cas expliquez la difficulté de façon concise.
-  - Robot: Vidéo.
-  
+  - Robot: Les expériences réussies font l'objet d'une vidéo sur une plateforme de streaming. Le fichier CONTRIBUTION.md contient le lien vers la vidéo.
+ 
   Les parties réalisées sur le robot seront très appréciées.
   Les parties qui ne pouvaient réalistement pas être faites sur le robot ne considéreront pas la partie expérimentale.
   
