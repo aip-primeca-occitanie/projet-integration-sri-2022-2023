@@ -12,7 +12,7 @@
       <arg name="laser_model"  default="sick-571"/>
       <arg name="camera_model"  default="orbbec-astra"/>
       <arg name="multi" default=""/>
-      <arg name="gzpose" default="-x 8.2 -y 2.4 -z 0.0 -R 0.0 -P 0.0 -Y 0.0"/>
+      <arg name="gzpose" default="-x 8.2 -y 2.4 -z 0.0 -R 0.0 -P 0.0 -y -2.588141.0"/>
       <arg name="gui" default="true"/>
       <arg name="debug" default="false"/>
       <arg name="public_sim" default="true"/>
@@ -36,14 +36,127 @@
       <arg name="debug" value="$(arg debug)"/>
       <arg name="recording" value="$(arg recording)"/>
       </include>
+      <!-- 
+      <group ns="/aig1">
+
+      <param name="aigui" command="$(find xacro)/xacro  '$(find aip_gazebo)/models/aiguillage.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
+
+
+      <node name="aiguillage_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+            args="-urdf -param aigui -model aiguillage1 -x -2.995740 -y -2.589235 -z 0.703549" />
+
+      </group>
+
+      <group ns="/aig2">
+
+            <param name="aigui" command="$(find xacro)/xacro  '$(find aip_gazebo)/models/aiguillage.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
+      
+      
+            <node name="aiguillage_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+                  args="-urdf -param aigui -model aiguillage2 -x -1.530460 -y -2.495351 -z 0.703549 -Y -0.522816" />
+      </group>
+
+
+      <group ns="/aig3">
+
+            <param name="aigui" command="$(find xacro)/xacro  '$(find aip_gazebo)/models/aiguillage.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
+      
+      
+            <node name="aiguillage_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+                  args="-urdf -param aigui -model aiguillage3 -x -1.531780 -y -3.242463 -z 0.703549 -Y 0.522816" />
+      </group>
+
+      <group ns="/aig4">
+            <param name="aigui" command="$(find xacro)/xacro  '$(find aip_gazebo)/models/aiguillage.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
+
+                <node name="aiguillage_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+                  args="-urdf -param aigui -model aiguillage4 -x -2.996613 -y -3.148634 -z 0.703549" />
+      </group>
+
+
+      <group ns="/aig5">
+
+            <param name="aigui" command="$(find xacro)/xacro  '$(find aip_gazebo)/models/aiguillage.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
+      
+      
+            <node name="aiguillage_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+                  args="-urdf -param aigui -model aiguillage5 -x -0.969881 -y -2.682101 -z 0.703549 -Y -1.564166" />
+      </group>
+
+
+      <group ns="/aig6">
+
+            <param name="aigui" command="$(find xacro)/xacro  '$(find aip_gazebo)/models/aiguillage.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
+      
+      
+            <node name="aiguillage_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+                  args="-urdf -param aigui -model aiguillage6 -x -0.970147 -y -3.054364 -z 0.703549 -Y 1.557541" />
+      </group>
 
 
 
+      <group ns="/aig7">
+
+      <param name="aigui" command="$(find xacro)/xacro  '$(find aip_gazebo)/models/aiguillage.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
+
+
+      <node name="aiguillage_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+      args="-urdf -param aigui -model aiguillage7 -x 1.150706 -y -2.495223 -z 0.703549 -Y -0.522816" />
+
+      </group>
+
+      <group ns="/aig8">
+
+            <param name="aigui" command="$(find xacro)/xacro  '$(find aip_gazebo)/models/aiguillage.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
+      
+      
+            <node name="aiguillage_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+            args="-urdf -param aigui -model aiguillage8 -x 2.615560 -y -2.589317 -z 0.703549 -Y 1.051898" />
+      </group>
+
+
+      <group ns="/aig9">
+
+            <param name="aigui" command="$(find xacro)/xacro  '$(find aip_gazebo)/models/aiguillage.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
+      
+      
+            <node name="aiguillage_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+            args="-urdf -param aigui -model aiguillage9 -x 2.616508 -y -3.147677 -z 0.703549 -Y 3.126283" />
+      </group>
+
+      <group ns="/aig10">
+            <param name="aigui" command="$(find xacro)/xacro  '$(find aip_gazebo)/models/aiguillage.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
+                  <node name="aiguillage_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+                  args="-urdf -param aigui -model aiguillage10 -x 1.147324 -y -3.242931 -z 0.703549 -Y 0.522816" />
+      </group>
+
+
+      <group ns="/aig11">
+
+            <param name="aigui" command="$(find xacro)/xacro  '$(find aip_gazebo)/models/aiguillage.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
+      
+      
+            <node name="aiguillage_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+            args="-urdf -param aigui -model aiguillage11 -x 0.590738 -y -2.682604 -z 0.703549 -Y -1.564169" />
+      </group>
+
+
+      <group ns="/aig12">
+
+            <param name="aigui" command="$(find xacro)/xacro  '$(find aip_gazebo)/models/aiguillage.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
+      
+      
+            <node name="aiguillage_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+                  args="-urdf -param aigui -model aiguillage12 -x 0.591956 -y -3.055061 -z 0.703549 -Y 1.557539" />
+      </group>
+-->
+
+      
 
 
 
       <!-- Spawn the cell models -->
-      <param name="cellule" command="$(find xacro)/xacro --inorder '$(find aip_gazebo)/models/cellule.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
+      <param name="cellule" command="$(find xacro)/xacro  '$(find aip_gazebo)/models/cellule.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
       <arg name="x_" default="0"/>
       <arg name="y_" default="0"/>
       <arg name="z_" default="0"/>
@@ -57,7 +170,7 @@
       <group ns="/my_shuttle">
              <!-- Spawn the shuttle model -->
 
-            <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find aip_gazebo)/models/shuttle.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
+            <param name="robot_description" command="$(find xacro)/xacro  '$(find aip_gazebo)/models/shuttle.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
             <arg name="x" default="-0.65"/>
             <arg name="y" default="-2.59"/>  <!-- "-2.59"-->
             <arg name="z" default="0.748"/>
@@ -83,7 +196,7 @@
       <group ns="/my_shuttle2">
             <!-- Spawn the shuttle model -->
 
-           <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find aip_gazebo)/models/shuttle.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
+           <param name="robot_description" command="$(find xacro)/xacro  '$(find aip_gazebo)/models/shuttle.urdf.xacro' models_directory:=$(find aip_gazebo)/models" />
            <arg name="x" default="-0.65"/>
            <arg name="y" default="-3.15"/>  <!-- "-2.59"-->
            <arg name="z" default="0.748"/>

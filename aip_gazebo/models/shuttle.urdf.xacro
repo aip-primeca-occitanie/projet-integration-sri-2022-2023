@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="myfirst">
+<robot name="shuttle">
 
 
   <link name="base_link"/>
