@@ -34,7 +34,7 @@ Lancer une simulation de la cellule flexible de la salle groix_porquerolles avec
 source ./devel/setup.bash
 roslaunch aip_gazebo shuttle_only.launch
 ```
--Pour visualiser les topics crées par la simulation, lancer :
+- Pour visualiser les topics crées par la simulation, lancer :
 ```bash
 rostopic list
 ```
