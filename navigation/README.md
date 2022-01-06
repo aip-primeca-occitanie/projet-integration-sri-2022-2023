@@ -8,6 +8,8 @@ Commande pour lancer le mapping dans la salle groix
 roslaunch navigation aip_tiago_mapping.launch
 ```
 
+(Ce fichier a été construit à partir des fichiers launch déjà fournis exploitant la map de l'aip, en y ajoutant l'appel à rviz ainsi qu'à navigation et definitions de variables (mapping notamment))
+
 topic ROS pour ordre de navigation : move_base_simple/goal
 
 ``` bash
