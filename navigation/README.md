@@ -30,3 +30,20 @@ geometry_msgs/Pose pose
     float64 z
     float64 w
 ```
+
+Pour appeler le service et donc transmettre au topic demandant au robot de se déplacer à un point demandé :
+
+``` bash
+rosservice call /move_base "seq: 0
+stamp: {secs: 0, nsecs: 0}
+frame_id: ''
+x: 0.0
+y: 0.0
+z: 0.0
+xr: 0.0
+yr: 0.0
+zr: 0.0
+wr: 1.0"
+```
+
+Testé en simulation.
