@@ -9,7 +9,7 @@ Projet d'intégration ROS SRI 2021 2022
 
 [Simulation](aip_gazebo) 
 
-[Navigation](navigation/README.md):
+[Navigation](navigation/README.md): Hakim Cherfi & Jeremy Santene
 
 
 Plannification de mouvement
