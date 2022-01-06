@@ -7,7 +7,7 @@
   <link name="body">
     <visual>
       <geometry>
-        <mesh filename="file:////home/ugo/Desktop/Cours/3A/WORKSPACEROS/src/aip_gazebo/models/shuttle_parts/navette_body.stl" scale="0.04 0.04 0.04"/>
+        <mesh filename="file://$(arg models_directory)/shuttle_parts/navette_body.stl" scale="0.04 0.04 0.04"/>
       </geometry>
     </visual>
     <collision>

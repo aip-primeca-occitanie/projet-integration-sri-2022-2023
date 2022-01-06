@@ -6,12 +6,12 @@
   <link name="body">
     <visual>
       <geometry>
-        <mesh filename="file:////home/ugo/Desktop/Cours/3A/WORKSPACEROS/src/aip_gazebo/models/v2/Cellule_empty.stl" scale="1 1 1"/>
+        <mesh filename="file://$(arg models_directory)/Cellule_lite.dae" scale="1 1 1"/>
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="file:///home/ugo/Desktop/Cours/3A/WORKSPACEROS/src/aip_gazebo/models/v2/Cellule_empty.stl" scale="1 1 1"/>
+        <mesh filename="file://$(arg models_directory)/Cellule_lite.dae" scale="1 1 1"/>
       </geometry>
 
 
