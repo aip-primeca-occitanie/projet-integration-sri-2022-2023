@@ -42,7 +42,7 @@
   <node name="pick_client" pkg="motion_planning" type="pick_client.py" output="screen"/>  
 
   <group if="$(arg rviz)">
-      <node name="pick_demo_rviz" pkg="rviz" type="rviz" args="-d $(find tiago_pick_demo)/config/rviz/tiago_pick_demo.rviz" />
+      <node name="pick_demo_rviz" pkg="rviz" type="rviz" args="-d $(find motion_planning)/config/rviz/tiago_pick_demo.rviz" />
   </group>
 
 </launch>
