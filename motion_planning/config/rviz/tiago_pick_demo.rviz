@@ -597,7 +597,7 @@ Visualization Manager:
       Shaft Length: 1
       Shaft Radius: 0.05000000074505806
       Shape: Axes
-      Topic: /aruco_single/pose
+      Topic: /aruco_marker1/pose
       Unreliable: false
       Value: true
     - Class: rviz/Camera
@@ -623,7 +623,7 @@ Visualization Manager:
       Zoom Factor: 1
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /aruco_single/marker
+      Marker Topic: /aruco_marker1/marker
       Name: Aruco
       Namespaces:
         "": true

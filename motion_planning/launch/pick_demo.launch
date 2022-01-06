@@ -3,7 +3,7 @@
 
   <arg name="rviz"  default="true"/>
   <!-- marker detector -->
-  <node pkg="aruco_ros" type="single"  name="aruco_single">
+  <node pkg="aruco_ros" type="single"  name="aruco_marker1">
       <remap from="/camera_info"       to="/xtion/rgb/camera_info" />
       <remap from="/image"             to="/xtion/rgb/image_rect_color" />
       <param name="image_is_rectified" value="True"/>
