@@ -4,15 +4,16 @@
     <arg name="gui" default="true"/>
     <arg name="debug" default="false"/>
     <arg name="public_sim" default="true"/>
-    <arg name="map" default="$(find tiago_multi)/config/map_rr"/>
+    <!--<arg name="map" default="$(find tiago_multi)/config/map_rr"/>-->
+    <arg name="map" default="$(find multitiago)/config/map_rr"/>
 
     <env name="GAZEBO_MODEL_PATH" value="$(find tiago_gazebo)/models:$(optenv GAZEBO_MODEL_PATH)"/>
 
     <env name="LC_NUMERIC" value="C" />
 
     <!-- Gazebo start -->
-    <include file="$(find aip_multi_navsimu)/launch/aip_gazebo.launch">
-        <arg name="world_name" value="$(find aip_multi_navsimu)/worlds/$(arg world).world"/>
+    <include file="$(find multitiago)/launch/aip_gazebo_simpl.launch">
+        <arg name="world_name" value="$(find multitiago)/worlds/$(arg world).world"/>
         <arg name="gui" value="$(arg gui)"/>
         <arg name="debug" value="$(arg debug)"/>
     </include>
