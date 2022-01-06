@@ -9,7 +9,7 @@
   <env name="LC_NUMERIC" value="C" />
 
   <!-- Gazebo simulation -->
-  <include file="$(find tiago_gazebo)/launch/tiago_gazebo.launch">
+  <include file="$(find motion_planning)/launch/tiago_gazebo.launch">
     <arg name="robot"      value="$(arg robot)"/>
     <arg name="public_sim" value="$(arg public_sim)"/>
     <arg name="world"      value="tabletop_cube"/>
