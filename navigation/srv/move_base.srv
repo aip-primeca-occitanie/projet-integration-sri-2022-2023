@@ -9,4 +9,4 @@ float64 yr
 float64 zr
 float64 wr
 ---
-float64 A
+uint64 A

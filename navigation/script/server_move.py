@@ -28,9 +28,13 @@ def handle_move(req):
     pose.pose.position.x = req.x #  kinect Z value, [2], is X in TF of camera_link
     pose.pose.position.y = req.y # kinect X value, [0], is -Y in TF of camera_link
     pose.pose.position.z = req.z # kinect Y value, [1], is -Z in TF of camera_link
-    pose.pose.orientation.w = 1
+    pose.pose.orientation.x = req.xr
+    pose.pose.orientation.y = req.yr
+    pose.pose.orientation.z = req.zr 
+    pose.pose.orientation.w = req.wr
     pub.publish(pose)
     return 0
+
 
 def add_move_server():
     
