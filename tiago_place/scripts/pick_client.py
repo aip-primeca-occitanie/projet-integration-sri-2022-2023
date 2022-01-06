@@ -101,7 +101,7 @@ class PickAruco(object):
 		return s[1:] if s.startswith("/") else s
 		
 	def pick_aruco(self, string_operation):
-		self.prepare_robot()
+		#self.prepare_robot()
 
 		rospy.sleep(2.0)
 		rospy.loginfo("spherical_grasp_gui: Waiting for an aruco detection")
@@ -157,12 +157,12 @@ class PickAruco(object):
                         self.lift_torso()
 
                         # Raise arm
-			rospy.loginfo("Moving arm to a safe pose")
-			pmg = PlayMotionGoal()
-                        pmg.motion_name = 'pick_final_pose'
-			pmg.skip_planning = False
-			self.play_m_as.send_goal_and_wait(pmg)
-			rospy.loginfo("Raise object done.")
+			# rospy.loginfo("Moving arm to a safe pose")
+			# pmg = PlayMotionGoal()
+                        # pmg.motion_name = 'pick_final_pose'
+			# pmg.skip_planning = False
+			# self.play_m_as.send_goal_and_wait(pmg)
+			# rospy.loginfo("Raise object done.")
 
                         # Place the object back to its position
 			rospy.loginfo("Gonna place near where it was")
