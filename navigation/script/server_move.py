@@ -19,17 +19,15 @@ from navigation.srv import *
 pub = rospy.Publisher('/move_base_simple/goal', PoseStamped, queue_size=1)
 
 def handle_move(req):
-    # req = tableau d 1x7 avec les poses et orientations
-    stamp = rospy.Time.now()
-    
+    rospy.loginfo(req)
     pose = PoseStamped()
     pose.header = std_msgs.msg.Header()
     pose.header.stamp = rospy.Time.now()
     pose.header.frame_id = "map" 
     pose.pose = Pose()
-    pose.pose.position.x = 10 #  kinect Z value, [2], is X in TF of camera_link
-    pose.pose.position.y = 0 # kinect X value, [0], is -Y in TF of camera_link
-    pose.pose.position.z = 0 # kinect Y value, [1], is -Z in TF of camera_link
+    pose.pose.position.x = req.x #  kinect Z value, [2], is X in TF of camera_link
+    pose.pose.position.y = req.y # kinect X value, [0], is -Y in TF of camera_link
+    pose.pose.position.z = req.z # kinect Y value, [1], is -Z in TF of camera_link
     pose.pose.orientation.w = 1
     pub.publish(pose)
     return 0
