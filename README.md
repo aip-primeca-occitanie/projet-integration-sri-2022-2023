@@ -29,10 +29,31 @@ roslaunch aip_gazebo aip_gazebo.launch
 
 ### Simulation cellule + navette
 Lancer une simulation de la cellule flexible de la salle groix_porquerolles avec une navette montée sur les rails.
-- Dans un terminal dans la racine du projet, lancer :
+- Pour lancer la simulation, dans un terminal dans la racine du projet, lancer :
 ```bash
 source ./devel/setup.bash
 roslaunch aip_gazebo shuttle_only.launch
+```
+-Pour visualiser les topics crées par la simulation, lancer :
+```bash
+rostopic list
+```
+resultat attendu :
+```bash
+...
+/my_shuttle/joint1_vel_controller/command
+/my_shuttle/joint2_vel_controller/command
+/my_shuttle2/joint1_vel_controller/command
+/my_shuttle2/joint2_vel_controller/command
+...
+```
+
+- Pour controller les navettes de cette simulation entrez la commande suivante :
+```bash
+#Pour controller la navette 1 à une vitesse de 3.0 :
+rostopic pub /my_shuttle/joint1_vel_controller/command std_msgs/Float64 "data: -3.0"
+#Pour controller la navette 2 à une vitesse de 3.0 :
+rostopic pub /my_shuttle2/joint1_vel_controller/command std_msgs/Float64 "data: -3.0"
 ```
 
 
