@@ -1,30 +1,39 @@
 # Documentation de la partie *motion_planning*
 
-## Fichiers *.launch*
- `pick_simulation.launch` : permet de créer le robot et son environnement dans Gazebo, avec un appel au fichier *.launch* dédié fourni par Tiago (fichier `tiago_gazebo.launch` présent quelque part dans le dossier *tiago_public_ws*). Dans les paramètres utilisés on a notamment le type du robot (ici, *steel*, donc avec une pince) et son environnement (ici *tabletop_cube*, environnement prédéfini disponible dans *tiago_public_ws/src/tiago_simulation/tiago_gazebo/worlds/* et qui utilise des éléments qui se trouvent dans *tiago_public_ws/src/tiago_simulation/tiago_gazebo/models/*). **Fichier récupéré du tutoriel *pick* de Tiago-Gazebo**     
+## Fichiers *.launch* (dossier /launch)
+ `pick_simulation.launch` : permet de créer le robot et son environnement dans Gazebo, avec un appel au fichier *.launch* dédié fourni par Tiago (fichier `tiago_gazebo.launch` à l'origine présent quelque part dans le dossier *tiago_public_ws*, mais maintenant fourni en version modifiée, voir plus bas). Dans les paramètres utilisés on a notamment le type du robot (ici, *steel*, donc avec une pince) et son environnement (ici *tabletop_cube*, environnement prédéfini disponible dans *worlds/tabletop_cube.world*, version modifiée d'un fichier originellement présent dans *tiago_public_ws/src/tiago_simulation/tiago_gazebo/worlds/*).   
  
  `pick_demo.launch` : ce fichier a deux rôles : créer le visionnage RVIZ et lier les fichiers pour le Pick & Place à la simulation Gazebo.   
- Les fichiers importants appelés sont *config/pick_motions.yaml* et ceux permettant de créer le node *pick_and_place_serveur*, *pick_and_place_server.py* et *config/pick_and_place_params.yaml*.   
- Enfin, deux nodes sont créés pour les manipulations : *pick_client* et *place_client*, appelant *pick_client.py* et *place_client.py*; ainsi que leurs modélisations sur RVIZ gérées par *config/rviz/tiago_pick_demo.rviz*.   
- **Restent à faire : *pick_client.py*, *config/rviz/tiago_place_demo.rviz* et potentiellement *config/place_motions.yaml*** (en gros tout ce qui permet de créer et exécuter le node *place_client*).   
- **Fichier récupéré du tutoriel *pick* de Tiago-Gazebo**
+Il définit les marqueurs Aruco (QR code) qui devront être repérés et qui serviront pour identifier l'objet à attraper et l'endroit où le poser (nodes appelés *aruco_marker1* (id 582) et *aruco_marker2* (id 666)) (plus d'infos sur ces marqueurs dans la suite de ce document).
+Il récupère le fichier *pick_motions.yaml* qui référence des mouvements d'articulations du robot.
+Enfin il crée les nodes *pick_and_place_server* et *spherical_service* qui servent aux manipulations de pick & place et qui sont gérés par les fichiers .py du même nom décrits plus bas.
 
 `pick_sri.launch` : similaire à *pick_demo.launch* mais ne gère pas l'affichage RVIZ et lance deux nodes supplémentaires : *motion_planning_server* et *node_prise* basés sur les fichiers *motion_planning_server.py* et *node_prise.py*.   
-**Fichier créé par les étudiants SRI de 2020-2021**
+**Fichier créé par les étudiants SRI de 2020-2021, inutilisé dans la configuration actuelle.**
 
-## Fichiers de scripts
+## Fichiers de scripts *.py* (dossier /scripts)
 
-`pick_and_place_server.py` : gère la partie serveur du pick & place.   
-Permet de créer les services de pick et de place, avec la partie "place" à priori complète.
+`pick_and_place_server.py` et `spherical_grasps_server.py` : gèrent la partie serveur du pick & place.   
+Permettent de créer les services de pick et de place. Fichiers à l'origine créés pour le tutoriel de pick fourni pour Tiago sur Gazebo, réutilisés tels quels et sans modifications.
 
-`pick_client` : permet de gérer la tâche d'attrapage de l'objet.   
-- Crée les services */place_gui* et */pick_gui* avec la classe *SphericalService*. **--> Pourquoi */place_gui*  est-il créé ici ?**
-- La classe *PickAruco* gérant l'attrapage existe, **il manque l'équivalent *PlaceAruco***
-- *PickAruco* permet de repérer le QR code de l'objet avec PoseStamped, puis de lancer la tâche de *pick* avec les mouvements suivants : placement du bras au dessus de la table, récupération de la position de l'objet, attrapage de l'objet, lever du bras, retour à la position au dessus de la table, retour à la position *home*.
+`spherical_service.py` : gère la création des nodes */pick_gui* et */place_gui* qui servent à faire les manipulations, et qui sont gérés pas les fichiers *pick_client.py* et *place_client.py*.
 
-## Bilan sur les fichiers manquant
-Il semblerait qu'il manque principalement la classe PlaceAruco dans le fichier *pick_client.py* afin de gérer le placement de l'objet. Peut-être aussi des fichiers de configuration. Renommer *pick_client.py* ou changer une partie du code pour créer *place_client.py*.
-Ces fichiers ont été pris du tutoriel de *tiago_pick_demo* fourni pour Tiago sur Gazebo (*pick_and_place_server.py* n'a pas été changé). *pick_client.py* a été changé : ont été ajouté un passage par une position d'approche avant d'attraper la balle et un retour à la position *home* une fois la balle attrapée (au lieu d'un retour à la position d'attrape).   
-Les fichiers *motion_planning_server.py* et *node_prise.py* ont été créés par les étudiants de l'an dernier mais il est difficile de savoir à quoi ils servent.  
+`pick_client.py` et `place_client.py` : fichiers gérant les manipulations, tous deux très similaires puisque basés sur le fichier *pick_client.py* récupéré dans le tuto Gazebo. Le code important gérant les mouvements se trouve dans la fonction *pick_aruco* (resp. *place_aruco*). Dans l'ordre des opérations, ce code permet de : mettre le robot en position de sécurité de départ (sauf dans le place où la ligne a été commentée, ce mouvement prenant beaucoup de temps); repérer la position du QR code recherché grâce à Aruco (définis dans *pick_demo.launch* par *aruco_marker1* pour le pick et *aruco_marker2* pour le place); puis à partir du *if*, mouvement du bras pour l'éloigner de la table (uniquement pour *place* pour remplacer la ligne commentée), placement du bras au dessus de la table, mouvement vers la position du QR code (un peu plus bas pour la prise de l'objet, un peu plus haut pour sa dépose), attrapage ou dépose, retour du bras dans une position en hauteur, retour du bras dans sa position "home" de départ.
+**Restent (éventuellement) à faire :** tests plus approfondis pour mettre en place des mouvements plus fluides ou avec moins de pirouettes, revérifier les collisions entre les premiers mouvements du robot lors du *place* et la table (dépend de la taille de la table). Les positions pour les mouvements sont à priori définis dans les fichiers du dossier *config*.
 
+`motion_planning_server.py` et `node_prise.py` : fichiers créés par les étudiants de 2020-2021, à priori inutiles.
+
+## Données d'environnement (dossiers *config/*, *data/* et *worlds/*)
+Ces dossiers contiennent un ensemble de fichiers permettant de créer l'environnement Gazebo dans lequel évolue le robot. Les fichiers d'origine sont ceux utilisés par le tuto Gazebo et disponibles dans les dossiers de *tiago_public_ws/src/tiago_simulation/tiago_gazebo/*. Ils ont été modifiés pour diminuer la taille de la table sur laquelle est posée l'objet et rajouter un deuxième QR code à l'emplacement de dépose de l'objet voulu. En gros, le fichier *.world* est le fichier "main" et utilise les modèles 3D définis dans le dossier *models/* ainsi que les images représentants le QR code 666 qu'on a ajouté dans le dossier *data/* (celui qui repère l'emplacement de dépose).
+
+## Fichiers de configuration (dossier */config*)
+Nous n'avons presque pas touché à ces fichiers, mais à priori ils servent à définir les mouvements que le robot peut faire, avec un nom pour chaque mouvement servant à l'appeler depuis les scripts .py et un ensemble de positions des articulations à atteindre.
+**A faire ?** Eventuellement, rajouter des positions pour des mouvements plus fluides ?
+
+## Problèmes à l'exécution
+Si vous testez le pick & place avec la méthode dans le README (simulation sous Gazebo et RVIZ), vous aurez certainement régulièrement des problèmes divers et assez aléatoires avec les mouvements du robot, parmi lesquels : collisions avec la table, collisions avec l'objet le faisant tomber (mais le robot croira quand même qu'il l'a attrapé donc ça ne coince pas la manipulation), chute de l'objet depuis la pince (dans les rares cas où il arrive à l'attraper), et quelque fois erreur dans la détection Aruco du deuxième QR code (des fois juste en attendant il finit par le voir, des fois non). Attention, un échec dans la simulation Gazebo ne signifie pas nécessairement que le code est disfonctionnel. Globalement, les simulations Gazebo demandent beaucoup de patience et beaucoup d'essais pour avoir un résultat satisfaisant, c'est comme ça que ça fonctionne apparemment.
+
+Quelques fichiers ne sont pas décrits ici, c'est parce qu'on s'y est pas intéressé.
+
+Notez que des tests en situation réelle ont été faits sur les robots Tiago de l'AIP, et ont parfaitement réussi (des vidéos sont disponibles ici : https://drive.google.com/drive/folders/1LlgIVRgbqHhLe2cCItMGBaBCeMK7cbCX?usp=sharing)
 
