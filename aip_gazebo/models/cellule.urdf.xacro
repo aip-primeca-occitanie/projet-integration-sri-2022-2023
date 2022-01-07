@@ -323,7 +323,7 @@
 <joint name="aig7_joint" type="fixed">
   <parent link="base_link"/>
   <child link="aig7"/>
-  <origin xyz="1.150706 -2.495223 0.703549" rpy="0 0 -0.522816"/>
+  <origin xyz="1.150706 -2.495223 0.703549" rpy="0 0 1.58"/>
 </joint>
 <joint name="aig8_joint" type="fixed">
   <parent link="base_link"/>
@@ -333,12 +333,12 @@
 <joint name="aig9_joint" type="fixed">
   <parent link="base_link"/>
   <child link="aig9"/>
-  <origin xyz="2.616508 -3.147677 0.703549" rpy="0 0 3.126283"/>
+  <origin xyz="2.616508 -3.147677 0.703549" rpy="0 0 5.25"/>
 </joint>
 <joint name="aig10_joint" type="fixed">
   <parent link="base_link"/>
   <child link="aig10"/>
-  <origin xyz="1.147324 -3.242931 0.703549" rpy="0 0 0.522816"/>
+  <origin xyz="1.147324 -3.242931 0.703549" rpy="0 0 -1.564169"/>
 </joint>
 <joint name="aig11_joint" type="fixed">
   <parent link="base_link"/>
