@@ -1,5 +1,10 @@
-# Package tiago_pick
+## Package tiago_pick
 Package dedié au placement d'un objet sur une table & l'aide d'un QR code
+Ce package n'est pas encore fonctionnelle, il subsiste des erreurs
+
+Les deux scripts principaux sont:
+- pick_and_place_server.py
+- pick_client.py
 
 
 __Alexandre Baures & Clément Petit__
