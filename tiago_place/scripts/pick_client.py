@@ -144,25 +144,7 @@ class PickAruco(object):
 			pick_g.object_pose.header.frame_id = 'base_footprint'
 			pick_g.object_pose.pose.orientation.w = 1.0
 			self.detected_pose_pub.publish(pick_g.object_pose)
-			rospy.loginfo("Gonna pick:" + str(pick_g))
-			#self.pick_as.send_goal_and_wait(pick_g)
-			rospy.loginfo("Done!")
 
-			result = self.pick_as.get_result()
-			if str(moveit_error_dict[result.error_code]) != "SUCCESS":
-				rospy.logerr("Failed to pick, not trying further")
-				return
-
-			# Move torso to its maximum height
-                        self.lift_torso()
-
-                        # Raise arm
-			rospy.loginfo("Moving arm to a safe pose")
-			pmg = PlayMotionGoal()
-                        pmg.motion_name = 'pick_final_pose'
-			pmg.skip_planning = False
-			self.play_m_as.send_goal_and_wait(pmg)
-			rospy.loginfo("Raise object done.")
 
                         # Place the object back to its position
 			rospy.loginfo("Gonna place near where it was")
