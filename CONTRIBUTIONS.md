@@ -6,5 +6,5 @@ Remplacement du dossier tiago_pick_simulation en un nouveau package sri_tiago_pi
 
 
 Delauzun Rémi et Bizet Raphaël :
---> commit aux noms de strengthless-razzia & remidelz & marcgirard
+--> commit aux noms de strengthless-razzia & remidelz & marcgirard & lilia00
 Implémentation de multi-tiago en simulation. Adaptation des fichiers .launch existants pour prendre en compte une nouvelle map : la salle groix et porquerolle. Deux tiago sont placés dans la salle avec une position initiale codé en dur. (voir README.md dans la branche principale pour lancer cette démo et le README.md du package mulitiago pour lire sa description)
