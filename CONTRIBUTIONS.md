@@ -29,7 +29,7 @@ On s'est rendu compte que pour que le place fonctionne, il est necessaire d'avoi
 - Test en simulation des actions de pick and place.
 - Test en réel des actions de pick and place.
 
-**Combelles Etienne** (commits = Gerfindel (vrai compte)/ François Mahe) :   
+**Combelles Etienne** (commits = Gerfindel (vrai compte)/ François Mahe / FrancoisTMM) :   
 - Compréhension du code
 - Fichier README avec une explication pour lancer la démonstration
 - Fichier DOCUMENTATION expliquant le code et les fichiers présents dans motion_planning
