@@ -39,7 +39,7 @@
   </node>
 
   <!-- Node exposing service to start looking for the object and trigger the picking -->
-  <node name="pick_client" pkg="motion_planning" type="pick_client.py" output="screen"/>  
+  <node name="spherical_service" pkg="motion_planning" type="spherical_service.py" output="screen"/>  
 
   <group if="$(arg rviz)">
       <node name="pick_demo_rviz" pkg="rviz" type="rviz" args="-d $(find motion_planning)/config/rviz/tiago_pick_demo.rviz" />

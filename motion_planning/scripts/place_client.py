@@ -21,7 +21,7 @@
 #   * Jordi Pages
 #
 # This document is a modified version of the original pick_client.py 
-# containing only the PickAruco class.
+# containing only the PlaceAruco class.
 
 import rospy
 import time
@@ -48,19 +48,14 @@ for name in MoveItErrorCodes.__dict__.keys():
         moveit_error_dict[code] = name
 
 
-class PickAruco(object):
+class PlaceAruco():
+    
     def __init__(self):
         rospy.loginfo("Initalizing...")
         self.bridge = CvBridge()
         self.tfBuffer = tf2_ros.Buffer()
         self.tf_l = tf2_ros.TransformListener(self.tfBuffer)
-                
-        rospy.loginfo("Waiting for /pickup_pose AS...")
-        self.pick_as = SimpleActionClient('/pickup_pose', PickUpPoseAction)
-        time.sleep(1.0)
-        if not self.pick_as.wait_for_server(rospy.Duration(20)):
-            rospy.logerr("Could not connect to /pickup_pose AS")
-            exit()
+               
         rospy.loginfo("Waiting for /place_pose AS...")
         self.place_as = SimpleActionClient('/place_pose', PickUpPoseAction)
 
@@ -83,19 +78,18 @@ class PickAruco(object):
             exit()
         rospy.loginfo("Connected!")
         rospy.sleep(1.0)
-        rospy.loginfo("Done initializing PickAruco.")
-    
+        rospy.loginfo("Done initializing PlaceAruco.")
 
     def strip_leading_slash(self, s):
         return s[1:] if s.startswith("/") else s
-        
-    def pick_aruco(self, string_operation):
-        self.prepare_robot()
 
+    def place_aruco(self, string_operation):
+        #self.prepare_robot()
+
+        # Getting the pose of the QR code
         rospy.sleep(2.0)
         rospy.loginfo("spherical_grasp_gui: Waiting for an aruco detection")
-
-        aruco_pose = rospy.wait_for_message('/aruco_marker1/pose', PoseStamped)
+        aruco_pose = rospy.wait_for_message('/aruco_marker2/pose', PoseStamped)
         aruco_pose.header.frame_id = self.strip_leading_slash(aruco_pose.header.frame_id)
         rospy.loginfo("Got: " + str(aruco_pose))
 
@@ -121,34 +115,38 @@ class PickAruco(object):
                     str(e) + ")")
                 rospy.sleep(0.01)
                 ps.header.stamp = self.tfBuffer.get_latest_common_time("base_footprint", aruco_pose.header.frame_id)
-            pick_g = PickUpPoseGoal()
             place_g = PickUpPoseGoal()
 
-        if string_operation == "pick":
-            
-            # Place the arm safe above table
+        
+        if string_operation == "place":
+            # Raising the arm
+            self.lift_torso()
             pmg = PlayMotionGoal()
-            pmg.motion_name = 'pick_approach_pose'
+            pmg.motion_name = 'preplace'
             self.play_m_as.send_goal_and_wait(pmg)
             pmg.skip_planning = False
 
-            rospy.loginfo("Setting ball pose based on Perception")
-            pick_g.object_pose.pose.position = aruco_ps.pose.position
-            pick_g.object_pose.pose.position.z -= 0.1*(1.0/2.0)
+            # Place the arm safe above table
+            self.lift_torso()
+            pmg = PlayMotionGoal()
+            pmg.motion_name = 'pick_apporach_pose'
+            self.play_m_as.send_goal_and_wait(pmg)
+            pmg.skip_planning = False
+			
+            # Finding place position
+            rospy.loginfo("Setting place position based on Perception")
+            place_g.object_pose.pose.position = aruco_ps.pose.position
+            place_g.object_pose.pose.position.z += 0.1*(1.0/2.0)
 
-            rospy.loginfo("aruco pose in base_footprint:" + str(pick_g))
+            rospy.loginfo("aruco pose in base_footprint:" + str(place_g))
 
-            pick_g.object_pose.header.frame_id = 'base_footprint'
-            pick_g.object_pose.pose.orientation.w = 1.0
-            self.detected_pose_pub.publish(pick_g.object_pose)
-            rospy.loginfo("Gonna pick:" + str(pick_g))
-            self.pick_as.send_goal_and_wait(pick_g)
+            place_g.object_pose.header.frame_id = 'base_footprint'
+            place_g.object_pose.pose.orientation.w = 1.0
+            self.detected_pose_pub.publish(place_g.object_pose)
+			
+            rospy.loginfo("Gonna place:" + str(place_g))
+            self.place_as.send_goal_and_wait(place_g)
             rospy.loginfo("Done!")
-
-            result = self.pick_as.get_result()
-            if str(moveit_error_dict[result.error_code]) != "SUCCESS":
-                rospy.logerr("Failed to pick, not trying further")
-                return
 
             # Move torso to its maximum height
             self.lift_torso()
@@ -156,10 +154,10 @@ class PickAruco(object):
             # Raise arm
             rospy.loginfo("Moving arm to a safe pose")
             pmg = PlayMotionGoal()
-            pmg.motion_name = 'pick_final_pose'
+            pmg.motion_name = 'place_final_pose'
             pmg.skip_planning = False
             self.play_m_as.send_goal_and_wait(pmg)
-            rospy.loginfo("Raise object done.")
+            rospy.loginfo("Raising arm done.")
             
             # Place the arm safe above table
             pmg = PlayMotionGoal()
@@ -168,14 +166,11 @@ class PickAruco(object):
             pmg.skip_planning = False
 
             # Place the object to safe navigation position
-            rospy.loginfo("Gonna place the ball near my heart..")
+            rospy.loginfo("Going back to home position.")
             pmg = PlayMotionGoal()
             pmg.motion_name = 'home_pose'
             self.play_m_as.send_goal_and_wait(pmg)
             pmg.skip_planning = False
-            
-            rospy.loginfo("Ready to move !")
-
 
     def lift_torso(self):
         rospy.loginfo("Moving torso up")
@@ -209,6 +204,10 @@ class PickAruco(object):
         self.lower_head()
 
         rospy.loginfo("Robot prepared.")
+
+
+
+
 
 
 
