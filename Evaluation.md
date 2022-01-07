@@ -19,8 +19,8 @@ L'évaluation du projet se fera suivant les critères suivants:
   ```
   Pour les changer:
   ```bash
-  git config --global user.name="Prénom NomDeFamille"
-  git config --global user.email="votreemail@votreprovider.fr"
+  git config --global user.name "Prénom NomDeFamille"
+  git config --global user.email "votreemail@votreprovider.fr"
   ```
  
   N'hésitez pas à expliquer votre démarche si elle n'est pas visible à travers un commit 
