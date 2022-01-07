@@ -43,6 +43,6 @@ geometry_msgs/Pose pose
     float64 w
 ```
 
-```theta``` n'a pas d'influence sur l'orientation demandée, le quaternion transmis vaut (0,0,0,1), z vaut 0.
+```theta``` n'a pas d'influence sur l'orientation demandée, le quaternion transmis vaut (0,0,0,1), ```z``` vaut ```0```. ```seq```, ```stamp``` sont gérés automatiquement, ```frame_id``` vaut ```"map"```.
 
 Lien démo : 
