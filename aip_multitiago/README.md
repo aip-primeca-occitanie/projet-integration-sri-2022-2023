@@ -70,4 +70,8 @@ dont voici le résultat attendu lorsque tout fonctionne :
 
 C'est un souci de tf, et comme piste pour le résoudre, on pourrait créer un script pyhton temporisant le temps entre le lancement du monde sur gazebo et le lancement des 2 robots. 
 
+De plus on observe un souci sur la map rviz, qui n'est pas orientée selon la simulation, mais nous avons pu tester le déplacement des robots, qui fonctionne correctement. 
+
+- Pour choisir de déplacer un robot sur rviz, il suffit de le sélectionner sur la fenêtre de gauche, de cliquer sur 2dNav Goal et d'indiquer là où l'on veut qu'il se déplace. 
+
 
