@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-    <arg name="world"  default="groix_porquerolles"/>  <!-- pal office, ... (see ../worlds) -->
+    <arg name="world"  default="groix_porquerolles"/>  <!-- ssimu3d des deux salles ... (voir aip_gazebo/worlds) -->
     <arg name="gui" default="true"/>
     <arg name="debug" default="false"/>
     <arg name="public_sim" default="true"/>
-    <!--<arg name="map" default="$(find tiago_multi)/config/map_rr"/>-->
+    <!-- Mettre le chemin vers le fichier de maps-->
     <arg name="map" default="$(find multitiago)/config/map_rr"/>
 
+    <!-- les autres modèles Gazebo sont dans les packages de tiago_ws, plus précisemment tiago_gazebo -->
     <env name="GAZEBO_MODEL_PATH" value="$(find tiago_gazebo)/models:$(optenv GAZEBO_MODEL_PATH)"/>
 
     <env name="LC_NUMERIC" value="C" />
 
     <!-- Gazebo start -->
+
+    <!-- Appel d'un autre .launch, similaire à celui trouvable dans aip_gazebo mais simplifié pour n'appeler que le monde, puisque les robots sont définis ici -->
     <include file="$(find multitiago)/launch/aip_gazebo_simpl.launch">
         <arg name="world_name" value="$(find multitiago)/worlds/$(arg world).world"/>
         <arg name="gui" value="$(arg gui)"/>
@@ -19,9 +22,11 @@
     </include>
 
     <!-- Add first tiago -->
+   
+    <!-- Caractéristiques du premier robot, nécessite le package tiago_multi -->
     <include file="$(find tiago_multi)/launch/launch_tiago_navigation.launch">
         <arg name="robot_name" value="tiago1"/>
-        <arg name="x_pose" value="1.4"/>  <!-- 1.4   -0.7-->
+        <arg name="x_pose" value="1.4"/>  <!-- les coordonnées initiales du robot sont écrites ici-->
         <arg name="y_pose" value="8.0"/>
         <arg name="public_sim" value="$(arg public_sim)"/>
   <arg name="map" value="$(arg map)"/>
@@ -36,6 +41,7 @@
   <arg name="map" value="$(arg map)"/>
     </include>
 
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tiago_multi)/config/rviz/multi_tiago.rviz"/>
+    <!-- récupérer les données rviz utilisées par la navigation simple, et y ajouter les éléments d'un deuxième tiago -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find multitiago)/config/rviz/multi_tiago.rviz"/>
 
 </launch>
