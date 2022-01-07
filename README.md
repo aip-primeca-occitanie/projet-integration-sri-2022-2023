@@ -30,6 +30,16 @@ roslaunch aip_gazebo aip_gazebo.launch
 
 ### Simulation cellule + navette
 Lancer une simulation de la cellule flexible de la salle groix_porquerolles avec une navette montée sur les rails.
+
+- Avant de lancer, assurez vous d'avoir le package ros effort_controllers :
+```bash
+rospack find effort_controllers
+```
+Pour installer le package sous ros melodic :
+```bash
+sudo apt get ros-melodic-ros-control ros-melodic-ros-controllers
+```
+
 - Pour lancer la simulation, dans un terminal dans la racine du projet, lancer :
 ```bash
 source ./devel/setup.bash
@@ -49,14 +59,16 @@ resultat attendu :
 ...
 ```
 
-- Pour controller les navettes de cette simulation entrez la commande suivante :
+- Pour controller la navette1 de cette simulation entrez la commande suivante :
 ```bash
-#Pour controller la navette 1 à une vitesse de 3.0 :
-rostopic pub /my_shuttle/joint1_vel_controller/command std_msgs/Float64 "data: -3.0"
-#Pour controller la navette 2 à une vitesse de 3.0 :
-rostopic pub /my_shuttle2/joint1_vel_controller/command std_msgs/Float64 "data: -3.0"
+#Pour controller la navette 1 à une vitesse de 1.5 :
+rostopic pub /my_shuttle/joint1_vel_controller/command std_msgs/Float64 "data: -1.7"
+rostopic pub /my_shuttle/joint2_vel_controller/command std_msgs/Float64 "data:  1.7"
 ```
 
+- Resultat attendu : 
+
+![](media/shuttle_demo.gif)
 
 
 	
