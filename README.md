@@ -7,6 +7,8 @@ Projet d'intégration ROS SRI 2021 2022
 
 [Perception]()
 
+[Saisie](sri_tiago_pick): Cédérick Mouliets
+
 [Simulation](aip_gazebo) 
 
 [Navigation](navigation/README.md): Hakim Cherfi & Jeremy Santene
@@ -86,7 +88,7 @@ source ./devel/setup.bash
 roslaunch sri_tiago_pick pick_demo.launch
 ```
 
-- Dans un 3eme terminal dans la racine du projet, lancer le service pick and place:
+- Dans un 3eme terminal dans la racine du projet, lancer le service pick :
 ```bash
 source ./devel/setup.bash
 rosservice call /pick_gui
