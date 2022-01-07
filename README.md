@@ -105,6 +105,8 @@ roslaunch navigation aip_tiago_mapping.launch
 
 Ceci permet de créer une carte de la salle porquerolles en faisant naviguer le robot (simulation).
 
+Demo de la navigation dans le ```navigation/README.md```.
+
 
 ### Multitiago
 
