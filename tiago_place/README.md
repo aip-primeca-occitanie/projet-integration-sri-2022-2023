@@ -1,15 +1,16 @@
 ## Package tiago_pick
-Package dedié au placement d'un objet sur une table & l'aide d'un QR code
-Ce package n'est pas encore fonctionnelle, il subsiste des erreurs
+__Alexandre Baures & Clément Petit__
+
+Package dedié au placement d'un objet sur une table & l'aide d'un QR code.
+Ce package n'est pas encore fonctionnelle, il subsiste des erreurs.
+
+Voir la partie qui fonctionne
+[motion_planning]()
 
 Les deux scripts principaux sont:
-- pick_and_place_server.py :
-  - fait des appels aux pick_client afin de récupérer les positions des QR code. Lance les mouvements du robot pour pick et place aux positions désirées. 
-- pick_client.py :
-  - initialise le robot à des positions données. Et appelle Aruco pour détecter les QR code et calculer leur position. 
+- pick_and_place_server.py
+- pick_client.py
 
-
-__Alexandre Baures & Clément Petit__
 
 ## Simulations
 Pour lancer la simulation:
