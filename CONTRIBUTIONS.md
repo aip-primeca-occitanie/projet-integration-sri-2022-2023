@@ -1,14 +1,19 @@
 # Liste des contributions par auteurs:
 
-Mouliets Cédérick : 
+## Mouliets Cédérick : 
 
 Remplacement du dossier tiago_pick_simulation en un nouveau package sri_tiago_pick et renommage des imports dans les fichiers du package remplacé. Ajout du cube dans la simulation groix_porquerolles.world. Adaptation de la position du robot pour qu'il soit devant une des tables sur lequel le cube est posé afin qu'il puisse le détecter. Adaptation de la démo du pick de tiago dans la simulation (voir README.md dans la branche principale pour lancer cette démo et le README.md du package sri_tiago_pick pour lire sa description).
 
 
-Delauzun Rémi et Bizet Raphaël :
---> commit aux noms de strengthless-razzia & remidelz & marcgirard & lilia00
+## Delauzun Rémi et Bizet Raphaël :
+--> commit aux noms de **strengthless-razzia**, **remidelz**, **marcgirard** et **lilia00**
 
-Implémentation de multi-tiago en simulation. Adaptation des fichiers .launch existants pour prendre en compte une nouvelle map : la salle groix et porquerolle. Deux tiago sont placés dans la salle avec une position initiale codé en dur. (voir README.md dans la branche principale pour lancer cette démo et le README.md du package mulitiago pour lire sa description)
+- Nous avons commencé par réaliser le tutoriel de pick-and-place de Tiago, puis nous avons apréhendé le code réalisé par les anciens 3A.
+- Etant trop nombreux sur ces fonctions, nous nous sommes tourné vers le multi tiago afin de l'implémenter dans les salles de l'aip.
+- Nous avons dû fouiller dans les launchs imbriqués afin de récupérer les informations nécessaires aux changements. 
+- Implémentation de multi tiago en simulation. Adaptation et commentaire des fichiers .launch existants pour prendre en compte une nouvelle map : la salle groix et porquerolle. Deux tiago sont placés dans la salle avec une position initiale codé en dur (voir README.md dans la branche principale pour lancer cette démo et le README.md du package mulitiago pour plus d'options). 
+- Test en simulation.
+
 
 ## Clément Petit et Alexandre Baures
 --> commit aux noms de **ClementPagran** et **abaures**
@@ -29,7 +34,7 @@ On s'est rendu compte que pour que le place fonctionne, il est necessaire d'avoi
 - Test en simulation des actions de pick and place.
 - Test en réel des actions de pick and place.
 
-**Combelles Etienne** (commits = Gerfindel (vrai compte)/ François Mahe / FrancoisTMM) :   
+**Combelles Etienne** (commits = Gerfindel (vrai compte)/ François Mahe) :   
 - Compréhension du code
 - Fichier README avec une explication pour lancer la démonstration
 - Fichier DOCUMENTATION expliquant le code et les fichiers présents dans motion_planning
