@@ -19,8 +19,8 @@ Focalisation du travail sur la partie place du pick_and_place. Réalisation du p
 - Nous avons donc décidé d'aller directemnt installer et compiler le package moveit utilisé pour cette démo pour modifier et comprendre le message d'erreur et ainsi pouvoir resoudre le problème.
 On s'est rendu compte que pour que le place fonctionne, il est necessaire d'avoir réalisé l'operation pick qui associe l'objet à prendre au robot. Si cette étape n'est pas realisé, l'operation place plante.
 
-## Malgouyres Combelles :
-**Malgouyres** (commits = alexito95 / Maleex99) :   
+## Alexandre Malgouyres et Etienne Combelles :
+**Malgouyres** (commits = Maleex99 / alexito95) :   
 - Modification de la simulation gazebo pour y ajouter un marker pour situer le lieu de dépose, modifier la table et adapter le placement des objets.
 - Ajout d'un deuxième module de détection ArUco pour la détection du marker de pose.
 - Modification de la config Rviz pour l'affichage de la detection du deuxième marker.
@@ -29,7 +29,12 @@ On s'est rendu compte que pour que le place fonctionne, il est necessaire d'avoi
 - Test en simulation des actions de pick and place.
 - Test en réel des actions de pick and place.
 
-**Combelles** (commits = François Mahe / Gerfindel) :   
-- TODO   
+**Combelles Etienne** (commits = Gerfindel (vrai compte)/ François Mahe) :   
+- Compréhension du code
+- Fichier README avec une explication pour lancer la démonstration
+- Fichier DOCUMENTATION expliquant le code et les fichiers présents dans motion_planning
+- Implémentation de la tâche de *place*, en se basant sur la tâche de *pick* existante
+- Tests de simulation avec Gazebo, beaucoup
+  
 
 Vidéos démonstrations : https://drive.google.com/drive/folders/1LlgIVRgbqHhLe2cCItMGBaBCeMK7cbCX?usp=sharing
