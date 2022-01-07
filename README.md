@@ -82,3 +82,15 @@ roslaunch navigation aip_tiago_mapping.launch
 ```
 
 Ceci permet de créer une carte de la salle porquerolles en faisant naviguer le robot (simulation).
+
+
+### Multitiago
+
+Lancer une simulation de deux robots tiago dans la salle groix-porquerolle :
+- Dans un terminal dans la racine du projet, lancer :
+
+```bash
+source ./devel/setup.bash
+roslaunch multitiago multi_aip_gazebo.launch
+```
+
