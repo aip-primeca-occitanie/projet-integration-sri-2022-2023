@@ -47,3 +47,13 @@ wr: 1.0"
 ```
 
 Testé en simulation.
+
+Expé :
+
+Doc : recuperation de la carte (chemin)
+
+ssh au robot
+
+.pal/maps/configs (chemin carte)
+
+rosservice call /pal_map_manager/cahnge_map "input salle groix"
