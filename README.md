@@ -80,11 +80,12 @@ source ./devel/setup.bash
 roslaunch sri_tiago_pick pick_demo.launch
 ```
 
-- Dans un 3eme terminal dans la racine du projet, lancer le servilc pick and place:
+- Dans un 3eme terminal dans la racine du projet, lancer le service pick and place:
 ```bash
 source ./devel/setup.bash
 rosservice call /pick_gui
 ```
+[Illustrations du pick](sri_tiago_pick/screenshots) 
 
 ### Navigation
 
