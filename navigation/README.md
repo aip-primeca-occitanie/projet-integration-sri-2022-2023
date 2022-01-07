@@ -12,7 +12,19 @@ roslaunch navigation aip_tiago_mapping.launch
 
 ## Deuxième étape : création d'un service pour publier sur le topic /move_base_simple/goal
 
-topic ROS pour ordre de navigation : move_base_simple/goal
+Compiler le paquet, sans oublier de sourcer dans chaque terminal depuis le répertoire de travail ```./devel/setup.bash``` 
+
+Se SSH au robot, récuperation de la carte : ```rosservice call /pal_map_manager/change_map "input: 'salle_groix'"```
+
+(Les cartes se trouvent dans ```$HOME/.pal/maps/configurations```.)
+
+Lancement du service : ```rosrun navigation server_move.py```
+
+Appel au service : ```rosservice call /sri22/move_base  "x: 0.0
+y: 0.0
+theta: 0.0"```
+
+Ce service publie sur le topic ROS pour ordre de navigation : ```move_base_simple/goal```
 
 ``` bash
 std_msgs/Header header
@@ -31,29 +43,6 @@ geometry_msgs/Pose pose
     float64 w
 ```
 
-Pour appeler le service et donc transmettre au topic demandant au robot de se déplacer à un point demandé :
+```theta``` n'a pas d'influence sur l'orientation demandée, le quaternion transmis vaut (0,0,0,1), z vaut 0.
 
-``` bash
-rosservice call /move_base "seq: 0
-stamp: {secs: 0, nsecs: 0}
-frame_id: ''
-x: 0.0
-y: 0.0
-z: 0.0
-xr: 0.0
-yr: 0.0
-zr: 0.0
-wr: 1.0"
-```
-
-Testé en simulation.
-
-Expé :
-
-Doc : recuperation de la carte (chemin)
-
-ssh au robot
-
-.pal/maps/configs (chemin carte)
-
-rosservice call /pal_map_manager/cahnge_map "input salle groix"
+Lien démo : 
