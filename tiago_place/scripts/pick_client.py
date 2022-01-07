@@ -22,7 +22,7 @@
 
 import rospy
 import time
-from tiago_place.msg import PickUpPoseAction, PickUpPoseGoal
+from tiago_pick_demo.msg import PickUpPoseAction, PickUpPoseGoal
 from geometry_msgs.msg import PoseStamped, Pose
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 from play_motion_msgs.msg import PlayMotionAction, PlayMotionGoal
@@ -101,7 +101,7 @@ class PickAruco(object):
 		return s[1:] if s.startswith("/") else s
 		
 	def pick_aruco(self, string_operation):
-		#self.prepare_robot()
+		self.prepare_robot()
 
 		rospy.sleep(2.0)
 		rospy.loginfo("spherical_grasp_gui: Waiting for an aruco detection")
@@ -135,11 +135,11 @@ class PickAruco(object):
 
 		if string_operation == "pick":
 
-            rospy.loginfo("Setting cube pose based on ArUco detection")
+                        rospy.loginfo("Setting cube pose based on ArUco detection")
 			pick_g.object_pose.pose.position = aruco_ps.pose.position
-				pick_g.object_pose.pose.position.z -= 0.1*(1.0/2.0)
+                        pick_g.object_pose.pose.position.z -= 0.1*(1.0/2.0)
 
-				rospy.loginfo("aruco pose in base_footprint:" + str(pick_g))
+                        rospy.loginfo("aruco pose in base_footprint:" + str(pick_g))
 
 			pick_g.object_pose.header.frame_id = 'base_footprint'
 			pick_g.object_pose.pose.orientation.w = 1.0
@@ -157,12 +157,12 @@ class PickAruco(object):
                         self.lift_torso()
 
                         # Raise arm
-			# rospy.loginfo("Moving arm to a safe pose")
-			# pmg = PlayMotionGoal()
-                        # pmg.motion_name = 'pick_final_pose'
-			# pmg.skip_planning = False
-			# self.play_m_as.send_goal_and_wait(pmg)
-			# rospy.loginfo("Raise object done.")
+			rospy.loginfo("Moving arm to a safe pose")
+			pmg = PlayMotionGoal()
+                        pmg.motion_name = 'pick_final_pose'
+			pmg.skip_planning = False
+			self.play_m_as.send_goal_and_wait(pmg)
+			rospy.loginfo("Raise object done.")
 
                         # Place the object back to its position
 			rospy.loginfo("Gonna place near where it was")
