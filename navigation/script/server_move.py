@@ -27,11 +27,11 @@ def handle_move(req):
     pose.pose = Pose()
     pose.pose.position.x = req.x #  kinect Z value, [2], is X in TF of camera_link
     pose.pose.position.y = req.y # kinect X value, [0], is -Y in TF of camera_link
-    pose.pose.position.z = req.z # kinect Y value, [1], is -Z in TF of camera_link
-    pose.pose.orientation.x = req.xr
-    pose.pose.orientation.y = req.yr
-    pose.pose.orientation.z = req.zr 
-    pose.pose.orientation.w = req.wr
+    pose.pose.position.z = 0.0 # kinect Y value, [1], is -Z in TF of camera_link
+    pose.pose.orientation.x = 0.0
+    pose.pose.orientation.y = 0.0
+    pose.pose.orientation.z = 0.0
+    pose.pose.orientation.w = 1.0
     pub.publish(pose)
     return 0
 
@@ -39,7 +39,7 @@ def handle_move(req):
 def add_move_server():
     
     rospy.init_node('move_base_server')
-    s = rospy.Service('move_base',move_base,handle_move)
+    s = rospy.Service('/sri22/move_base',move_base,handle_move)
     rospy.spin()
 
 if __name__=="__main__":

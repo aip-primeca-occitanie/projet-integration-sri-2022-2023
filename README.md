@@ -11,6 +11,7 @@ Projet d'intégration ROS SRI 2021 2022
 
 [Navigation](navigation/README.md): Hakim Cherfi & Jeremy Santene
 
+[Multitiago](multitiago/README.md): Rémi Delauzun & Raphaël Bizet
 
 Plannification de mouvement
 
@@ -82,3 +83,16 @@ roslaunch navigation aip_tiago_mapping.launch
 ```
 
 Ceci permet de créer une carte de la salle porquerolles en faisant naviguer le robot (simulation).
+
+
+### Multitiago
+
+Dans un terminal dans la racine du projet, lancer :
+
+```bash
+source ./devel/setup.bash
+roslaunch multitiago multi_aip_gazebo.launch
+```
+Lancement d'une simulation de deux robots tiago dans la salle groix-porquerolle.
+![image d'illustration](https://github.com/aip-primeca-occitanie/projet-integration-sri-2021-2022/blob/main/multitiago/screenshots/multitiago_simulation.png?raw=true)
+

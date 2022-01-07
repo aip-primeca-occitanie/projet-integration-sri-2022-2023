@@ -23,7 +23,7 @@ class NavigationAction(object):
     def movebase_client(self, point, quaternion, frame):
 
    	# Create an action client called "move_base" with action definition file "MoveBaseAction"
-    	client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
+    	client = actionlib.SimpleActionClient('/sri22/move_base',MoveBaseAction)
  
    	# Waits until the action server has started up and started listening for goals.
     	client.wait_for_server()
