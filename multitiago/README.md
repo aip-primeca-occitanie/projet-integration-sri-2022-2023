@@ -1,0 +1,58 @@
+#### Dépendances : 
+
+ tiago_gazebo
+ tiago_multi
+ aip_gazebo
+ gazebo_ros 
+ pal_gazebo_worlds
+
+
+
+### INITIALISATION
+- On va dans le ws et on le source 
+```bash
+cd _VOTRE_WORKSPACE  
+source ./devel/setup.bash  
+```
+- Lancement de la simulation simple pour vérifier la présence des packages
+```bash
+roslaunch tiago_multi multitiago_gazebo.launch  
+```
+
+### BOUGER LES ROBOTS SEPAREMMENT
+```bash
+rosrun play_motion run_motion offer_gripper /play_motion:=/tiago1/play_motion  
+rosrun play_motion run_motion wave /play_motion:=/tiago2/play_motion  
+```
+- Liste des options dans mvmts_predefs.txt ci-joint  
+
+
+### CHANGER LA PINCE EN SIMULATION 
+- Aller dans le launch_tiago.launch   
+```bash
+roscd tiago_multi  
+cd launch/  
+nano launch_tiago.launch  
+```
+- et changer le default "hey5" pour la main "gripper" pour la pince   
+
+
+### NAVIGATION
+- Lancement de la simulation dans la carte de l'aip pour navigation rviz  
+```bash
+roslaunch multitiago multi_aip_gazebo.launch  
+```
+
+### CHANGER LA MAP  
+- Tout est implémenté dans le dossier map_rr 
+```bash
+cd multitiago/config/map_rr
+```
+- et changer les .yaml avec les votres. 
+
+Pour référencer un nouveau dossier différent, le créer dans le config précédent, puis changer la ligne suivant dans le launch appelé précedemment
+```bash
+nano ./launch/multi_aip_gazebo.launch  
+#<arg name="map" default="$(find multitiago)/config/VOTRE_DOSSIER "
+```
+
