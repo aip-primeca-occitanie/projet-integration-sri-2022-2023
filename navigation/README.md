@@ -45,4 +45,4 @@ geometry_msgs/Pose pose
 
 ```theta``` n'a pas d'influence sur l'orientation demandée, le quaternion transmis vaut (0,0,0,1), ```z``` vaut ```0```. ```seq```, ```stamp``` sont gérés automatiquement, ```frame_id``` vaut ```"map"```.
 
-Lien démo : 
+[Lien démo](https://www.youtube.com/watch?v=SU8ofjLCdqI)
