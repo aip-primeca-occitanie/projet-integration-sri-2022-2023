@@ -68,4 +68,6 @@ rosrun rqt_tf_tree rqt_tf_tree
 dont voici le résultat attendu lorsque tout fonctionne : 
 ![image d'illustration](https://github.com/aip-primeca-occitanie/projet-integration-sri-2021-2022/blob/main/multitiago/screenshots/tree.png?raw=true)
 
+C'est un souci de tf, et comme piste pour le résoudre, on pourrait créer un script pyhton temporisant le temps entre le lancement du monde sur gazebo et le lancement des 2 robots. 
+
 
