@@ -6,7 +6,11 @@
  gazebo_ros 
  pal_gazebo_worlds
 
+- Pour être sur, installer tiago_public_ws avec les tutoriels tiago ros pour melodic. 
+http://wiki.ros.org/Robots/TIAGo/Tutorials/Installation/InstallUbuntuAndROS
+- Exécuter à partir du 2. si déjà sur Ubuntu 18 
 
+- Si sur Ubuntu 20, remplacer tous les melodic par noetic lors du tutoriel
 
 ### INITIALISATION
 - On va dans le ws et on le source 
@@ -14,7 +18,7 @@
 cd _VOTRE_WORKSPACE  
 source ./devel/setup.bash  
 ```
-- Lancement de la simulation simple pour vérifier la présence des packages
+- Lancement de la simulation simple pour vérifier la présence des packages annexes
 ```bash
 roslaunch tiago_multi multitiago_gazebo.launch  
 ```
@@ -40,19 +44,19 @@ nano launch_tiago.launch
 ### NAVIGATION
 - Lancement de la simulation dans la carte de l'aip pour navigation rviz  
 ```bash
-roslaunch multitiago multi_aip_gazebo.launch  
+roslaunch aip_multitiago multi_aip_gazebo.launch  
 ```
 
 ### CHANGER LA MAP  
 - Tout est implémenté dans le dossier map_rr 
 ```bash
-cd multitiago/config/map_rr
+cd aip_multitiago/config/map_rr
 ```
 - et changer les .yaml avec les votres. 
 
 Pour référencer un nouveau dossier différent, le créer dans le config précédent, puis changer la ligne suivant dans le launch appelé précedemment
 ```bash
 nano ./launch/multi_aip_gazebo.launch  
-#<arg name="map" default="$(find multitiago)/config/VOTRE_DOSSIER "
+#<arg name="map" default="$(find aip_multitiago)/config/VOTRE_DOSSIER "
 ```
 

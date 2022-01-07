@@ -5,7 +5,7 @@
     <arg name="debug" default="false"/>
     <arg name="public_sim" default="true"/>
     <!-- Mettre le chemin vers le fichier de maps-->
-    <arg name="map" default="$(find multitiago)/config/map_rr"/>
+    <arg name="map" default="$(find aip_multitiago)/config/map_rr"/>
 
     <!-- les autres modèles Gazebo sont dans les packages de tiago_ws, plus précisemment tiago_gazebo -->
     <env name="GAZEBO_MODEL_PATH" value="$(find tiago_gazebo)/models:$(optenv GAZEBO_MODEL_PATH)"/>
@@ -15,8 +15,8 @@
     <!-- Gazebo start -->
 
     <!-- Appel d'un autre .launch, similaire à celui trouvable dans aip_gazebo mais simplifié pour n'appeler que le monde, puisque les robots sont définis ici -->
-    <include file="$(find multitiago)/launch/aip_gazebo_simpl.launch">
-        <arg name="world_name" value="$(find multitiago)/worlds/$(arg world).world"/>
+    <include file="$(find aip_multitiago)/launch/aip_gazebo_simpl.launch">
+        <arg name="world_name" value="$(find aip_multitiago)/worlds/$(arg world).world"/>
         <arg name="gui" value="$(arg gui)"/>
         <arg name="debug" value="$(arg debug)"/>
     </include>
@@ -42,6 +42,6 @@
     </include>
 
     <!-- récupérer les données rviz utilisées par la navigation simple, et y ajouter les éléments d'un deuxième tiago -->
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find multitiago)/config/rviz/multi_tiago.rviz"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find aip_multitiago)/config/rviz/multi_tiago.rviz"/>
 
 </launch>
