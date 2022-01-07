@@ -4,11 +4,12 @@ __Alexandre Baures & Clément Petit__
 Package dedié au placement d'un objet sur une table & l'aide d'un QR code.
 Ce package n'est pas encore fonctionnelle, il subsiste des erreurs.
 
-Voir la partie qui fonctionne [ici](motion_planning)
+Voir la partie qui fonctionne [ici](https://github.com/aip-primeca-occitanie/projet-integration-sri-2021-2022/tree/main/motion_planning)
 
-Les deux scripts principaux sont:
-- pick_and_place_server.py
-- pick_client.py
+- pick_and_place_server.py :
+  - fait des appels aux pick_client afin de récupérer les positions des QR code. Lance les mouvements du robot pour pick et place aux positions désirées. 
+- pick_client.py :
+  - initialise le robot à des positions données. Et appelle Aruco pour détecter les QR code et calculer leur position.
 
 
 ## Simulations
