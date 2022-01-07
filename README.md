@@ -11,7 +11,7 @@ Projet d'intégration ROS SRI 2021 2022
 
 [Navigation](navigation/README.md): Hakim Cherfi & Jeremy Santene
 
-[Multitiago](multitiago/README.md): Rémi Delauzun & Raphaël Bizet
+[Multitiago](aip_multitiago/README.md): Rémi Delauzun & Raphaël Bizet
 
 Plannification de mouvement
 
