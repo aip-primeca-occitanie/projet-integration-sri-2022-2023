@@ -40,13 +40,6 @@ nano launch_tiago.launch
 ```
 - et changer le default "hey5" pour la main "gripper" pour la pince   
 
-
-### NAVIGATION
-- Lancement de la simulation dans la carte de l'aip pour navigation rviz  
-```bash
-roslaunch aip_multitiago multi_aip_gazebo.launch  
-```
-
 ### CHANGER LA MAP  
 - Tout est implémenté dans le dossier map_rr 
 ```bash
@@ -59,4 +52,20 @@ Pour référencer un nouveau dossier différent, le créer dans le config préc�
 nano ./launch/multi_aip_gazebo.launch  
 #<arg name="map" default="$(find aip_multitiago)/config/VOTRE_DOSSIER "
 ```
+
+
+
+### NAVIGATION
+- Lancement de la simulation dans la carte de l'aip pour navigation rviz  
+```bash
+roslaunch aip_multitiago multi_aip_gazebo.launch  
+```
+
+- Parfois on obtient un lien manquant entre l'odom et la map, ce qui est accompagné de messages d'erreurs "couldn't match fooprint & map", et qu'on peut visualiser avec la commande 
+```bash 
+rosrun rqt_tf_tree rqt_tf_tree 
+```
+dont voici le résultat attendu lorsque tout fonctionne : 
+![image d'illustration](https://github.com/aip-primeca-occitanie/projet-integration-sri-2021-2022/blob/main/multitiago/screenshots/tree.png?raw=true)
+
 
