@@ -37,7 +37,7 @@ rospack find effort_controllers
 ```
 Pour installer le package sous ros melodic :
 ```bash
-sudo apt get ros-melodic-ros-control ros-melodic-ros-controllers
+sudo apt-get ros-melodic-ros-control ros-melodic-ros-controllers
 ```
 
 - Pour lancer la simulation, dans un terminal dans la racine du projet, lancer :
@@ -45,6 +45,12 @@ sudo apt get ros-melodic-ros-control ros-melodic-ros-controllers
 source ./devel/setup.bash
 roslaunch aip_gazebo shuttle_only.launch
 ```
+
+- Pour lancer les les controllers et ainsi creer les topics, lancer :
+```bash
+roslaunch aip_gazebo shuttle_controllers.launch
+```
+
 - Pour visualiser les topics crées par la simulation, lancer :
 ```bash
 rostopic list

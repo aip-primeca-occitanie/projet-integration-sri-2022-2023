@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+
+
+
+      <group ns="/my_shuttle">
+
+            <!-- Load controllers -->
+            <rosparam command="load" file="$(find aip_gazebo)/config/joints.yaml" />
+
+
+            <node name="controller_spawner" pkg="controller_manager" type="spawner"
+            respawn="false" output="screen" ns="/my_shuttle"
+            args="--namespace=/my_shuttle
+            joint1_vel_controller
+            joint2_vel_controller
+            --timeout 60">
+            </node>
+      </group>
+
+
+
+      <group ns="/my_shuttle2">
+
+           <!-- Load controllers -->
+           <rosparam command="load" file="$(find aip_gazebo)/config/joints.yaml" />
+
+
+           <node name="controller_spawner2" pkg="controller_manager" type="spawner"
+           respawn="false" output="screen" ns="/my_shuttle2"
+           args="--namespace=/my_shuttle2
+           joint1_vel_controller
+           joint2_vel_controller
+           --timeout 60">
+           </node>
+     </group>
+
+
+</launch>
