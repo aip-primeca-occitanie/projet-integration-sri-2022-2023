@@ -69,7 +69,7 @@ resultat attendu :
 
 - Pour controller la navette1 de cette simulation entrez la commande suivante :
 ```bash
-#Pour controller la navette 1 à une vitesse de 1.5 :
+#Pour controller la navette 1 à une vitesse de 1.7 :
 rostopic pub /my_shuttle/joint1_vel_controller/command std_msgs/Float64 "data: -1.7"
 rostopic pub /my_shuttle/joint2_vel_controller/command std_msgs/Float64 "data:  1.7"
 ```
