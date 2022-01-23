@@ -40,3 +40,23 @@ Ces expérimentations n'ont pas été push.
   
 
 Vidéos démonstrations : https://drive.google.com/drive/folders/1LlgIVRgbqHhLe2cCItMGBaBCeMK7cbCX?usp=sharing
+
+
+## Hakim Cherfi et Jeremy Santene :
+
+ Commits aux noms de hakimcherfi, jsantene & julie-PB
+
+ Travail sur la partie navigation du robot :
+
+ Une première étape permettant de lancer le mapping du robot afin de générer une carte de l'environnement.
+ Une deuxième étape de création de service permettant de publier sur le bon topic permettant au robot de lancer une tache de plannification de trajectoire et de l'executer jusqu'au point passé en paramètre.
+
+ Plus d'informations + demo dans le package ```navigation```.
+
+
+## Ugo ROUX et Oualid EL ABDAOUI :
+--> commits au nom de Yyougo-robotics
+
+ Nettoyage du fichier de la navette (shuttle.stl). Ajouts du fichier urdf de la navette (shuttle.urdf.xacro). Création du fihchier de la cellule flexible (cellule_only.world) à partie du fichier représentant toute la salle (groix_porquerolles.world). Ajout du modèle de collision de la navette (shuttle.urdf.xacro). Montage de la navette et redefinition du modèle de collision ( ajout des joints continus et des roues). Mise à jour du README.md (2 fois). CHangement des chemin du absolu au relatif. Ajout et fixation des aiguillages dans le fichier de la cellule (pour pouvoir les controler plus tard). Suppresion du fichier cmakelist (ajouté accidentellement). Adaptation des valeurs de friction ainsi que que la modélisation du joint de l'arrière du robot et l'adaptation de la cellule. Mise à jour du README. Ajout du fichier shuttle_controllers.launch pour séparer les fichiers launch. 
+-
+-
