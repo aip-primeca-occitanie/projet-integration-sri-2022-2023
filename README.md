@@ -7,7 +7,7 @@ Projet d'intégration ROS SRI 2022 2023
 
 [Perception]()
 
-[Saisie](sri_tiago_pick): Cédérick Mouliets
+[Saisie](sri_tiago_pick): Cédérick Mouliets, Moumouni BELEM
 
 [Simulation](aip_gazebo) 
 
