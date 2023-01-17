@@ -10,7 +10,7 @@
   <arg name="laser_model"  default="sick-571"/>
   <arg name="camera_model"  default="orbbec-astra"/>
 
-  <arg name="world"  default="salle_groix"/>
+  <arg name="world"  default="mfja"/>
   <arg name="tuck_arm"  default="true"/>
 
   <arg name="lost" default="false"/>
