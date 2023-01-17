@@ -1,11 +1,11 @@
-# README Navigation
+# README SRI_TIAGO_NAVIGATION
 
 ## Première étape : launch mapping simulation
 
 Commande pour lancer le mapping dans la salle groix de l'aip
 
 ```code
-roslaunch navigation aip_tiago_mapping.launch
+roslaunch sri_tiago_navigation aip_tiago_mapping.launch
 ```
 
 (Ce fichier a été construit à partir des fichiers launch déjà fournis exploitant la map de l'aip, en y ajoutant l'appel à rviz ainsi qu'à navigation et definitions de variables (mapping notamment))
