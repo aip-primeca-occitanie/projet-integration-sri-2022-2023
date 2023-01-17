@@ -21,7 +21,7 @@
   <arg name="global_planner" default="global_planner"/>
   <arg name="local_planner"  default="$(eval 'teb' if arg('public_sim') else 'pal')"/>
   <arg name="localization"   default="amcl"/>
-  <arg name="map"            default="$(find sri_tiago_navigation)/data/$(arg world)"/>
+  <arg name="map"            default="$(find navigation)/data/$(arg world)"/>
 
   <arg name="rviz"     default="true"/>
   <arg name="gzclient" default="true"/>
@@ -38,22 +38,32 @@
   <node name="update_maps_link" pkg="pal_navigation_sm" type="base_maps_symlink.sh" args="tiago_maps"/>
 
   <group ns="$(arg namespace)">
+    
+   <group if="$(arg advanced_navigation)">
+      <node name="rviz" pkg="rviz" type="rviz" if="$(arg rviz)"
+            args="-d $(find tiago_2dnav)/config/rviz/advanced_navigation.rviz"/>
+   </group>
+   <group unless="$(arg advanced_navigation)">
+    <node name="rviz" pkg="rviz" type="rviz" if="$(arg rviz)"
+          args="-d $(find tiago_2dnav)/config/rviz/navigation$(arg sim_sufix).rviz"/>
+   </group>
+  </group>
 
-    <include file="$(find tiago_gazebo)/launch/tiago_gazebo.launch">
-      <arg name="world"      value="$(arg world)"/>
-      <arg name="arm" value="$(arg arm)"/>
-      <arg name="end_effector" value="$(arg end_effector)"/>
-      <arg name="ft_sensor" value="$(arg ft_sensor)"/>
-      <arg name="laser_model" value="$(arg laser_model)"/>
-      <arg name="camera_model" value="$(arg camera_model)"/>
-      <arg name="gzpose"     value="$(arg gzpose)"/>
-      <arg name="tuck_arm"   value="$(arg tuck_arm)"/>
-      <arg name="gui"        value="$(arg gzclient)"/>
-      <arg name="public_sim" value="$(arg public_sim)"/>
-      <arg name="recording"  value="$(arg recording)"/>
-      <arg name="extra_gazebo_args" value="$(arg extra_gazebo_args)"/>
-      <arg if="$(eval local_planner == 'teb')" name="use_dynamic_footprint" value="true"/>
+  <group unless="$(arg public_sim)">
+    <include file="$(find pal_loc_measure)/launch/pal_loc_measure.launch">
+      <arg name="training" value="False"/>
     </include>
+  </group>
+
+  <group unless="$(arg public_sim)">
+    <node pkg="navigation" name="update_rviz_map" type="update_rviz_map.py" args="$(arg map)"> 
+     </node>
+  </group>
+
+  <!-- gazebo + navigation + pointcloud to laserscan-->
+  <group if="$(arg public_sim)">
+    <include file="$(find aip_gazebo)/launch/aip_gazebo.launch">
+     </include>
 
     <include file="$(find tiago_2dnav_gazebo)/launch/navigation.launch">
       <arg name="state"          value="localization"/>
@@ -67,24 +77,6 @@
       <arg name="laser_model"    value="$(arg laser_model)"/>
     </include>
 
-   <group if="$(arg advanced_navigation)">
-      <node name="rviz" pkg="rviz" type="rviz" if="$(arg rviz)"
-            args="-d $(find tiago_2dnav)/config/rviz/advanced_navigation.rviz"/>
-  </group>
-     <group unless="$(arg advanced_navigation)">
-      <node name="rviz" pkg="rviz" type="rviz" if="$(arg rviz)"
-            args="-d $(find tiago_2dnav)/config/rviz/navigation$(arg sim_sufix).rviz"/>
-    </group>
-  </group>
-
-  <group unless="$(arg public_sim)">
-    <include file="$(find pal_loc_measure)/launch/pal_loc_measure.launch">
-      <arg name="training" value="False"/>
-    </include>
-  </group>
-
-  <!-- pointcloud to laserscan-->
-  <group if="$(arg public_sim)">
     <include file="$(find tiago_laser_sensors)/launch/rgbd_cloud_laser.launch">
       <arg name="cloud" value="/xtion/depth_registered/points"/>
     </include>
