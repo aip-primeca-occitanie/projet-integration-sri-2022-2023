@@ -19,7 +19,7 @@ Lancement de la simulation dans Gazebo :
 - Dans un 1eme terminal dans la racine du projet :
 ```bash
 source ./devel/setup.bash
-roslaunch tiago_pick_demo pick_simulation.launch
+roslaunch sri_tiago_pick_demo pick_simulation.launch
 ```
 Lancement des noeuds :
  */aruco_single*
@@ -29,7 +29,7 @@ Lancement des noeuds :
 - Dans un 2eme terminal dans la racine du projet:
 ```bash
 source ./devel/setup.bash
-roslaunch tiago_pick_demo pick_demo.launch
+roslaunch sri_tiago_pick_demo pick_demo.launch
 ```
 
 Lancement de la démo:
