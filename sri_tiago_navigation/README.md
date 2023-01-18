@@ -6,7 +6,7 @@ Ne pas oublier de sourcer le fichier de setup du package sri_tiago_navigation
 Commande pour lancer RVIZ avec la map d'une salle (example avec les salles 312 et 314 de la MFJA)
 
 ```code
-roslaunch sri_tiago_navigation tiago_navigation_gazebo.launch
+roslaunch sri_tiago_navigation tiago_navigation_gazebo.launch world:=mfja_312_314
 ```
 
 (Ce fichier a été construit à partir des fichiers launch déjà fournis exploitant la map de l'aip, en y ajoutant l'appel à rviz ainsi qu'à navigation et definitions de variables (mapping notamment))
