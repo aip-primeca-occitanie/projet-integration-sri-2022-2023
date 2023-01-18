@@ -5,25 +5,25 @@ import rospy
 import actionlib
 
 import actionlib_tutorials.msg
-import navigation.msg
+import sri_tiago_navigation.msg
 
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from geometry_msgs.msg import Pose, Point, Quaternion
 
 class NavigationAction(object):
     # create messages that are used to publish feedback/result
-    _feedback = navigation.msg.NavigationActionFeedback()
-    _result = navigation.msg.NavigationResult()
+    _feedback = sri_tiago_navigation.msg.NavigationActionFeedback()
+    _result = sri_tiago_navigation.msg.NavigationResult()
 
     def __init__(self, name):
         self._action_name = name
-        self._as = actionlib.SimpleActionServer(self._action_name, navigation.msg.NavigationAction, execute_cb=self.execute_cb, auto_start = False)
+        self._as = actionlib.SimpleActionServer(self._action_name, sri_tiago_navigation.msg.NavigationAction, execute_cb=self.execute_cb, auto_start = False)
         self._as.start()
       
     def movebase_client(self, point, quaternion, frame):
 
    	# Create an action client called "move_base" with action definition file "MoveBaseAction"
-    	client = actionlib.SimpleActionClient('/sri22/move_base',MoveBaseAction)
+    	client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
  
    	# Waits until the action server has started up and started listening for goals.
     	client.wait_for_server()
@@ -65,7 +65,7 @@ class NavigationAction(object):
 	   self._result.result_code = 1;
            self._as.set_preempted(self._result)
       	   success = False
-	
+	rospy.loginfo('movebase')
 	result = self.movebase_client(point, orientation, frameid )
         if result:
             rospy.loginfo("Goal execution done!")
@@ -75,6 +75,6 @@ class NavigationAction(object):
 
         
 if __name__ == '__main__':
-    rospy.init_node('navigation')
+    rospy.init_node('sri_tiago_navigation')
     server = NavigationAction(rospy.get_name())
     rospy.spin()
