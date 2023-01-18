@@ -3,8 +3,8 @@
 #include <actionlib/client/simple_action_client.h>
 #include <actionlib/client/terminal_state.h>
 #include <tiago_demo_sri_g2_2021/PickUpPoseAction.h>
-#include <navigation/NavigationAction.h>
-#include <navigation/LocalisationAction.h>
+#include <sri_tiago_navigation/NavigationAction.h>
+#include <sri_tiago_navigation/LocalisationAction.h>
 #include <string>
 #include <std_msgs/Int32.h>
 
@@ -16,7 +16,7 @@ bool pupServerBusy = false;
 bool perceptionServerBusy = false;
 bool locServerBusy = false;
 
-void navigationCallback(const navigation::NavigationActionResultConstPtr& resultat) 
+void navigationCallback(const sri_tiago_navigation::NavigationActionResultConstPtr& resultat) 
 {
 	int resultVal = resultat->result.result_code;
   switch (resultVal)
@@ -41,7 +41,7 @@ void navigationCallback(const navigation::NavigationActionResultConstPtr& result
 	navServerBusy = false;			
 }
 
-void localisationCallback(const navigation::LocalisationActionResultConstPtr& resultat) 
+void localisationCallback(const sri_tiago_navigation::LocalisationActionResultConstPtr& resultat) 
 {
 	int resultVal = resultat->result.result_code;
   switch (resultVal)
@@ -115,7 +115,7 @@ int main(int argc, char **argv)
   pickPlaceGoal.item_target.point.y = 0.0;
   pickPlaceGoal.item_target.point.z = -25.0;
 
-	navigation::NavigationGoal navGoalPick;
+	sri_tiago_navigation::NavigationGoal navGoalPick;
   navGoalPick.target.header.frame_id = "map";
   navGoalPick.target.pose.position.x = -3.75;
   navGoalPick.target.pose.position.y = 3.6;
@@ -125,7 +125,7 @@ int main(int argc, char **argv)
   navGoalPick.target.pose.orientation.z = 0.0;
   navGoalPick.target.pose.orientation.w = 1.0;
 
-	navigation::NavigationGoal navGoalPlace;
+	sri_tiago_navigation::NavigationGoal navGoalPlace;
 	navGoalPlace.target.header.frame_id = "map";
   navGoalPlace.target.pose.position.x = -2.3;
   navGoalPlace.target.pose.position.y = 6.39;
@@ -135,7 +135,7 @@ int main(int argc, char **argv)
   navGoalPlace.target.pose.orientation.z = 0.0;
   navGoalPlace.target.pose.orientation.w = 1.0;
 
-	navigation::LocalisationGoal locGoal;
+	sri_tiago_navigation::LocalisationGoal locGoal;
   locGoal.target = 0;
 
 	// create the pickUpPose action client
@@ -143,11 +143,11 @@ int main(int argc, char **argv)
   actionlib::SimpleActionClient<tiago_demo_sri_g2_2021::PickUpPoseAction> pupac("pickuppose", true);
 
 	// true causes the client to spin its own thread
-  actionlib::SimpleActionClient<navigation::LocalisationAction> locac("localisation", true);
+  actionlib::SimpleActionClient<sri_tiago_navigation::LocalisationAction> locac("localisation", true);
 
   // create the navigation action client
   // true causes the client to spin its own thread
-  actionlib::SimpleActionClient<navigation::NavigationAction> navac("navigation", true);
+  actionlib::SimpleActionClient<sri_tiago_navigation::NavigationAction> navac("navigation", true);
 
 	ROS_INFO("Waiting for pickUpPose action server to start.");
   // wait for the pickUpPose action server to start
