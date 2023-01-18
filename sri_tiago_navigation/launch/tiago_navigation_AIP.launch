@@ -10,7 +10,7 @@
   <arg name="laser_model"  default="sick-571"/>
   <arg name="camera_model"  default="orbbec-astra"/>
 
-  <arg name="world"  default="salle_groix"/>
+  <arg name="world"  default="salle_314_mfja"/>
   <arg name="tuck_arm"  default="true"/>
 
   <arg name="lost" default="false"/>
@@ -21,7 +21,7 @@
   <arg name="global_planner" default="global_planner"/>
   <arg name="local_planner"  default="$(eval 'teb' if arg('public_sim') else 'pal')"/>
   <arg name="localization"   default="amcl"/>
-  <arg name="map"            default="$(find navigation)/data/$(arg world)"/>
+  <arg name="map"            default="$(find sri_tiago_navigation)/data/$(arg world)"/>
 
   <arg name="rviz"     default="true"/>
   <arg name="gzclient" default="true"/>
