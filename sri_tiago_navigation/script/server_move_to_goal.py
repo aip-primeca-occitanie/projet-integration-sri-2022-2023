@@ -75,6 +75,6 @@ class NavigationAction(object):
 
         
 if __name__ == '__main__':
-    rospy.init_node('sri_tiago_navigation')
+    rospy.init_node('sri_tiago_navigation_server')
     server = NavigationAction(rospy.get_name())
     rospy.spin()
