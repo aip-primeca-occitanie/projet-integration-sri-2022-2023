@@ -15,7 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   geometry_msgs
-  navigation
+  sri_tiago_navigation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -78,7 +78,7 @@ add_action_files(
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
 	DEPENDENCIES
-	actionlib_msgs std_msgs geometry_msgs navigation
+	actionlib_msgs std_msgs geometry_msgs sri_tiago_navigation
 )
 
 ################################################
@@ -113,7 +113,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES tiago_demo_sri_g2_2021
-	CATKIN_DEPENDS navigation actionlib actionlib_msgs message_generation roscpp rospy std_msgs
+	CATKIN_DEPENDS sri_tiago_navigation actionlib actionlib_msgs message_generation roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
 
