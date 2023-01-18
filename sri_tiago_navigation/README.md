@@ -10,6 +10,18 @@ roslaunch sri_tiago_navigation aip_tiago_mapping.launch
 
 (Ce fichier a été construit à partir des fichiers launch déjà fournis exploitant la map de l'aip, en y ajoutant l'appel à rviz ainsi qu'à navigation et definitions de variables (mapping notamment))
 
+Commande pour lancer le mapping dans les salles 314 - 315 de la MFJA en simulation.
+
+```code
+roslaunch sri_tiago_navigation tiago_navigation_MFJA_gazebo.launch
+```
+
+Commande pour faire bouger le robot sur RViz.
+
+```code
+rosrun key_teleop key_teleop.py
+```
+
 ## Deuxième étape : création d'un service pour publier sur le topic /move_base_simple/goal
 
 Compiler le paquet, sans oublier de sourcer dans chaque terminal depuis le répertoire de travail ```./devel/setup.bash``` 
