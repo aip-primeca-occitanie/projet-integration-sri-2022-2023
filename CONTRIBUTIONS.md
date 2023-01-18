@@ -7,7 +7,7 @@
 - Control du tapis roulant sur le PMB2 46C:
 
 Topic: ``/run_conveyor/goal``
-Message: ``conveyor_controller_msgs/RunConveyorActionGoal`` [Documentation]()
+Message: ``conveyor_controller_msgs/RunConveyorActionGoal``
 ```
 [conveyor_controller_msgs/RunConveyorActionGoal]:
 std_msgs/Header header
