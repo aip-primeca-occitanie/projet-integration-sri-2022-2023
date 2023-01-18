@@ -1,7 +1,8 @@
 # README Navigation
 
 ## Première étape : launch mapping simulation
-Ne pas oublier de sourcer le fichier de setup du package sri_tiago_navigation
+Ne pas oublier de sourcer le fichier de setup du package sri_tiago_navigation  
+
 Commande pour lancer RVIZ avec la map d'une salle (example avec les salles 312 et 314 de la MFJA)
 
 ```code
