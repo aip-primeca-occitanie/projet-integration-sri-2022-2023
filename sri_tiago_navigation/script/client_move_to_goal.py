@@ -15,7 +15,7 @@ from geometry_msgs.msg import Pose, Point, Quaternion
 def navigation_client(point, quaternion, frame):
     # Creates the SimpleActionClient, passing the type of the action
     # (FibonacciAction) to the constructor.
-    client = actionlib.SimpleActionClient('sri_tiago_navigation', sri_tiago_navigation.msg.NavigationAction)
+    client = actionlib.SimpleActionClient('sri_tiago_navigation_server', sri_tiago_navigation.msg.NavigationAction)
 
     # Waits until the action server has started up and started
     # listening for goals.
