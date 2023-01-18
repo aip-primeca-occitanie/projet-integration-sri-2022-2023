@@ -41,6 +41,24 @@
   <arg name="map" value="$(arg map)"/>
     </include>
 
+ <!-- Add new tiago -->
+    <include file="$(find tiago_multi)/launch/launch_tiago_navigation.launch">
+        <arg name="robot_name" value="tiago3"/>
+        <arg name="x_pose" value="1.4"/> <!-- 1.4   10.7-->
+        <arg name="y_pose" value="12"/>
+        <arg name="public_sim" value="$(arg public_sim)"/>
+  <arg name="map" value="$(arg map)"/>
+    </include>
+
+     <!-- Add new tiago -->
+    <include file="$(find tiago_multi)/launch/launch_tiago_navigation.launch">
+        <arg name="robot_name" value="tiago4"/>
+        <arg name="x_pose" value="1.4"/> <!-- 1.4   10.7-->
+        <arg name="y_pose" value="14"/>
+        <arg name="public_sim" value="$(arg public_sim)"/>
+  <arg name="map" value="$(arg map)"/>
+    </include>
+
     <!-- récupérer les données rviz utilisées par la navigation simple, et y ajouter les éléments d'un deuxième tiago -->
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find aip_multitiago)/config/rviz/multi_tiago.rviz"/>
 
