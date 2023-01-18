@@ -8,12 +8,12 @@ import os
 
 import actionlib
 import actionlib_tutorials.msg
-import navigation.msg
+import sri_tiago_navigation.msg
 import std_msgs
 
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from geometry_msgs.msg import Pose, Point, Quaternion, PoseStamped
-from navigation.srv import *
+from sri_tiago_navigation.srv import *
 
 
 pub = rospy.Publisher('/move_base_simple/goal', PoseStamped, queue_size=1)
@@ -39,7 +39,7 @@ def handle_move(req):
 def add_move_server():
     
     rospy.init_node('move_base_server')
-    s = rospy.Service('/sri22/move_base',move_base,handle_move)
+    s = rospy.Service('/sri23/move_base',move_base,handle_move)
     rospy.spin()
 
 if __name__=="__main__":
