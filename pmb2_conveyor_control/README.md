@@ -1,5 +1,23 @@
 # PMB2 Conveyor Control
 
+## Installation
+
+Pour pouvoir controller le tapis roulant, vous devrez installer le paquet suivant:
+
+```bash
+sudo apt install pal-ferrum-conveyor-controller pal-ferrum-conveyor-controller-msgs
+```
+
+et n'oubliez pas de ``catkin_make`` le package associé, et de source:
+
+```bash
+catkin_make_isolated --pkg pmb2_convoyer_control
+```
+```bash
+source devel_isolated/pmb2_convoyer_control/setup.bash
+```
+
+
 ## Via un script pré-défini
 
 Vous pouvez utiliser le script ``conveyor_control.py``:
