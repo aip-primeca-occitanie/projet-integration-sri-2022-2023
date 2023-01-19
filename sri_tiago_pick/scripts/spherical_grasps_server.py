@@ -78,6 +78,7 @@ def quaternion_from_vectors(v0, v1):
     return q
 
 def filter_poses(sphere_poses, object_pose,
+                 filter_left= False,
                  filter_behind=False,
                  filter_under=True):
     """Given the generated poses and the object pose
@@ -89,12 +90,15 @@ def filter_poses(sphere_poses, object_pose,
     new_list = []
     for pose in sphere_poses:
         # if pose is further away than object, ditch it
+        if filter_left:
+            if (pose.position.y - object_pose.pose.position.y) > 0.07:
+                continue
         if filter_behind:
-            if pose.position.x > object_pose.pose.position.x:
+            if (pose.position.x - object_pose.pose.position.x) < -0.05 or (pose.position.x - object_pose.pose.position.x) > 0.05:
                 continue
         # if pose if under the object, ditch it
         if filter_under:
-            if pose.position.z < object_pose.pose.position.z:
+            if (pose.position.z - object_pose.pose.position.z) < 0  or (pose.position.z - object_pose.pose.position.z) > 0.07:
                 continue
 
         new_list.append(pose)
@@ -352,15 +356,16 @@ class SphericalGrasps(object):
         """
         tini = rospy.Time.now()
         sphere_poses = self.generate_grasp_poses(object_pose)
-        filtered_poses = filter_poses(sphere_poses, object_pose,
-                                      filter_behind=False, filter_under=True)
+        filtered_poses = filter_poses(sphere_poses, object_pose, filter_left=True,
+                                      filter_behind=True, filter_under=True)
         sorted_poses = sort_by_height(filtered_poses)
         grasps = self.create_grasps_from_poses(sorted_poses)
         tend = rospy.Time.now()
         rospy.loginfo("Generated " + str(len(grasps)) +
                       " grasps in " + str((tend - tini).to_sec()))
         # Publishing PoseArrays for debugging pourposes
-        self.publish_poses(sphere_poses)
+        # self.publish_poses(sphere_poses)
+        self.publish_poses(filtered_poses)
         self.publish_grasps(grasps)
         self.publish_object_marker(object_pose)
         return grasps

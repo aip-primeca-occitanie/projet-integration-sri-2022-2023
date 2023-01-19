@@ -56,7 +56,7 @@ def createPickupGoal(group="arm_torso", target="part",
 	pug.planning_options.planning_scene_diff.robot_state.is_diff = True
 	pug.planning_options.plan_only = False
 	pug.planning_options.replan = True
-	pug.planning_options.replan_attempts = 1  # 10
+	pug.planning_options.replan_attempts = 3  # 10
 	pug.allowed_touch_objects = []
 	pug.attached_object_touch_links = ['<octomap>']
 	pug.attached_object_touch_links.extend(links_to_allow_contact)
