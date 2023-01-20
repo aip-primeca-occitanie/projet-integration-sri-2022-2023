@@ -14,7 +14,7 @@ Commande pour faire bouger le robot sur RViz.
 rosrun key_teleop key_teleop.py
 ```
 
-## Deuxième étape : création d'un service pour publier sur le topic /move_base_simple/goal, pour faire bouger le robot à une pose précise (X,Y, theta) selon le repère de la carte 
+## Deuxième étape : création d'un service pour publier sur le topic /move_base_simple/goal, pour faire bouger le robot à une pose précise (X,Y, theta) selon le repère de la carte
 
 Compiler le paquet (catkin_make_isolated --pkg sri_transport_object_42), sans oublier de sourcer dans chaque terminal depuis le répertoire de travail ```./devel_isolated/sri_transport_object_42/setup.bash```
 
@@ -22,7 +22,6 @@ Se SSH au robot, récuperation de la carte : ```rosservice call /pal_map_manager
 (la carte a été upload sur le robot auparavant, les cartes se trouvent dans ```$HOME/.pal/maps/configurations```.)
 
 Lancement du service : ```rosrun sri_transport_object_42 server_move_rotate_42.py```
-
 
 Appel au service en spécifiant la pose : ```rosservice call /sri23/move_rotate_base_42  "x: 0.0
 y: 0.0
@@ -47,8 +46,9 @@ geometry_msgs/Pose pose
     float64 w
 ```
 
+Note : Pour visualiser la trajectoire du robot sur RViz, utiliser la commande : ```rosrun rviz rviz -d `rospack find tiago_2dnav`/config/rviz/navigation.rviz``̀ .
 
 ## Position du robot 42
 
-Init : x = 2.0 ; y = -1.0 ; theta = -2.5
+Init : x = 2.0 ; y = -1.0 ; theta = -2.5 </br>
 End : x = -6 ; y = -6 ; theta = -2.5

@@ -21,6 +21,6 @@ if __name__ == '__main__':
 
     conveyorController = ConveyorController(safe_start=True)
 
-    conveyorController.activate_convoyer(duration_seconds, speed, reverse)
+    conveyorController.activate_conveyor(duration_seconds, speed, reverse)
 
     rospy.loginfo("Conveyor execution done!")
