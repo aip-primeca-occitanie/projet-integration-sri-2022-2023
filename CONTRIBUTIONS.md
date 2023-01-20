@@ -29,3 +29,13 @@ conveyor_controller_msgs/RunConveyorGoal goal
 Exemple:
 
 > Voir les exemples fournis dans le README associé au package ``pmb2_conveyor_control``: [Lien](pmb2_conveyor_control/README.md)
+
+## Rémi LABORIE, Fatima EL-HANTATI, Kahina CHALABI
+
+Tâche désignée : PMB 42 transporte l'objet de PMB 46 au Tiago 155.
+
+- Création du package sri_transport_object_42.
+- Cartographie des salles 314 et 315 de la MFJA avec le Tiago 42 (sri_transport_object_42/data/mfja_314_315).
+- Récupération du fichier launch tiago_navigation_AIP_gazebo.launch et adaptation à notre carte (tiago_navigation_MFJA_gazebo.launch).
+- Récupération du script python server_move_rotate.py du package sri_tiago_navigation et adaptation à notre tâche.
+- Le multi-Tiago ne fonctionne pas pour l'instant, par conséquent, nous avons créé le point initial et final du robot pour qu'il transporte l'objet entre les deux.
