@@ -14,13 +14,17 @@ roslaunch sri_tiago_navigation aip_tiago_mapping.launch
 
 Compiler le paquet, sans oublier de sourcer dans chaque terminal depuis le répertoire de travail ```./devel/setup.bash``` 
 
-Se SSH au robot, récuperation de la carte : ```rosservice call /pal_map_manager/change_map "input: 'salle_groix'"```
+Se SSH au robot, récuperation de la carte : ```rosservice call /pal_map_manager/change_map "input: 'salle_314_mfja'"```
 
 (Les cartes se trouvent dans ```$HOME/.pal/maps/configurations```.)
 
-Lancement du service : ```rosrun navigation server_move.py```
+(Lancement du service : ```rosrun navigation server_move.py```)
+Lancement du service : ```rosrun sri_tiago_navigation server_move_rotate.py```
 
-Appel au service : ```rosservice call /sri22/move_base  "x: 0.0
+(Appel au service : ```rosservice call /sri23/move_base  "x: 0.0
+y: 0.0
+theta: 0.0"```)
+Appel au service : ```rosservice call /sri23/move_rotate_base  "x: 0.0
 y: 0.0
 theta: 0.0"```
 
@@ -43,6 +47,23 @@ geometry_msgs/Pose pose
     float64 w
 ```
 
-```theta``` n'a pas d'influence sur l'orientation demandée, le quaternion transmis vaut (0,0,0,1), ```z``` vaut ```0```. ```seq```, ```stamp``` sont gérés automatiquement, ```frame_id``` vaut ```"map"```.
+(```theta``` n'a pas d'influence sur l'orientation demandée, le quaternion transmis vaut (0,0,0,1), ```z``` vaut ```0```. ```seq```, ```stamp``` sont gérés automatiquement, ```frame_id``` vaut ```"map"```.)
+```theta``` est pris en compte dans l'orientation demandée dans le repère de la map.
 
 [Lien démo](https://www.youtube.com/watch?v=SU8ofjLCdqI)
+
+## PMB2 Navigation repère monde
+
+Après avoir source le package ``sri_tiago_navigation``:
+
+Vous pouvez lancer RVIZ et le serveur de naviguation via la commande suivante:
+```bash
+roslaunch sri_tiago_navigation pmb2_navigation_MFJA.launch
+```
+
+Et lancer une commande de naviguation par le client:
+```bash
+rosrun sri_tiago_navigation client_move_to_goal.py <location_name>
+```
+
+(locations: ``milieu``, ``milieu-test``)

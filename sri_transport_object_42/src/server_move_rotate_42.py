@@ -9,12 +9,11 @@ import math
 
 import actionlib
 import actionlib_tutorials.msg
-import sri_tiago_navigation.msg
 import std_msgs
 
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from geometry_msgs.msg import Pose, Point, Quaternion, PoseStamped
-from sri_tiago_navigation.srv import *
+from sri_transport_object_42.srv import *
 
 
 pub = rospy.Publisher('/move_base_simple/goal', PoseStamped, queue_size=1)
@@ -29,18 +28,19 @@ def handle_move(req):
     pose.pose.position.x = req.x #  kinect Z value, [2], is X in TF of camera_link
     pose.pose.position.y = req.y # kinect X value, [0], is -Y in TF of camera_link
     pose.pose.position.z = 0.0 # kinect Y value, [1], is -Z in TF of camera_link
+
     pose.pose.orientation.x = 0.0
     pose.pose.orientation.y = 0.0
-    pose.pose.orientation.z = 0.0
-    pose.pose.orientation.w = 1.0
+    pose.pose.orientation.z = math.sin(req.theta/2)
+    pose.pose.orientation.w = math.cos(req.theta/2)
     pub.publish(pose)
     return 0
 
 
 def add_move_server():
     
-    rospy.init_node('move_base_server')
-    s = rospy.Service('/sri23/move_base',move_base,handle_move)
+    rospy.init_node('move_rotate_base_server')
+    s = rospy.Service('/sri23/move_rotate_base_42',move_base,handle_move)
     rospy.spin()
 
 if __name__=="__main__":
