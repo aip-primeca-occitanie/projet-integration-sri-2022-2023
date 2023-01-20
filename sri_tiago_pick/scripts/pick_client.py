@@ -105,7 +105,6 @@ class PickAruco(object):
 
 		rospy.sleep(2.0)
 		rospy.loginfo("spherical_grasp_gui: Waiting for an aruco detection")
-
 		aruco_pose = rospy.wait_for_message('/aruco_single/pose', PoseStamped)
 		aruco_pose.header.frame_id = self.strip_leading_slash(aruco_pose.header.frame_id)
 		rospy.loginfo("Got: " + str(aruco_pose))
@@ -121,8 +120,8 @@ class PickAruco(object):
 		while not transform_ok and not rospy.is_shutdown():
 			try:
 				transform = self.tfBuffer.lookup_transform("base_footprint", 
-									   ps.header.frame_id,
-									   rospy.Time(0))
+									ps.header.frame_id,
+									rospy.Time(0))
 				aruco_ps = do_transform_pose(ps, transform)
 				transform_ok = True
 			except tf2_ros.ExtrapolationException as e:
@@ -132,8 +131,10 @@ class PickAruco(object):
 				rospy.sleep(0.01)
 				ps.header.stamp = self.tfBuffer.get_latest_common_time("base_footprint", aruco_pose.header.frame_id)
 			pick_g = PickUpPoseGoal()
+		
 
 		if string_operation == "pick":
+
 
                         rospy.loginfo("Setting cube pose based on ArUco detection")
 			pick_g.object_pose.pose.position = aruco_ps.pose.position
@@ -170,11 +171,13 @@ class PickAruco(object):
 
                         # Place the object back to its position
 			# rospy.loginfo("Gonna place near where it was")
-			#pick_g.object_pose.pose.position.z += 0.05
+			pick_g.object_pose.pose.position.z -= 0.05
 			# self.place_as.send_goal_and_wait(pick_g)
 			# rospy.loginfo("Done!")
 
 		if string_operation == "place":
+
+			
 
 			rospy.loginfo("Setting cube pose based on ArUco detection")
 			pick_g.object_pose.pose.position = aruco_ps.pose.position
@@ -211,7 +214,7 @@ class PickAruco(object):
 
                         # Place the object back to its position
 			rospy.loginfo("Gonna place near where it was")
-			#pick_g.object_pose.pose.position.z += 0.05
+			pick_g.object_pose.pose.position.z += 0.17
 			self.place_as.send_goal_and_wait(pick_g)
 			rospy.loginfo("Done!")
 
