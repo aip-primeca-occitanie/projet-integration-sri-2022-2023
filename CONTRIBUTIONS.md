@@ -29,3 +29,13 @@ conveyor_controller_msgs/RunConveyorGoal goal
 Exemple:
 
 > Voir les exemples fournis dans le README associé au package ``pmb2_conveyor_control``: [Lien](pmb2_conveyor_control/README.md)
+
+
+## Zineddine OUALI & Alexandre LOTTE (resp @ZineddineOuali et @AlexLtte)
+
+- Correction de l'estimation de la position de l'objet
+- Filtrage des configurations par contraintes sur la sphère des configurations accessibles par le bras du robot et affichage des configurations filtrées sur RVIZ
+- Réglage des offsets selon les objets manipulés
+- Modification de l'objet pour une meilleure prise (Canette Lipton© Pastèque-Menthe auto-financée (investissement))
+Milestone : La tâche de pick est opérationnelle sur Tiago.
+```
