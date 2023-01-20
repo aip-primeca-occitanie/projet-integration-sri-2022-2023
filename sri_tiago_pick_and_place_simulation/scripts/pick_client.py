@@ -22,7 +22,7 @@
 
 import rospy
 import time
-from tiago_pick_demo.msg import PickUpPoseAction, PickUpPoseGoal
+from sri_tiago_pick_and_place_simulation.msg import PickUpPoseAction, PickUpPoseGoal
 from geometry_msgs.msg import PoseStamped, Pose
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 from play_motion_msgs.msg import PlayMotionAction, PlayMotionGoal
@@ -50,7 +50,7 @@ class SphericalService(object):
 		self.pick_type = PickAruco()
 		rospy.loginfo("Finished SphericalService constructor")
                 self.place_gui = rospy.Service("/place_gui", Empty, self.start_aruco_place)
-                self.pick_gui = rospy.Service("/pick_gui", Empty, self.start_aruco_pick)
+                self.pick_and_place_gui = rospy.Service("/pick_and_place_gui", Empty, self.start_aruco_pick)
 
 	def start_aruco_pick(self, req):
 		self.pick_type.pick_aruco("pick")
@@ -110,7 +110,7 @@ class PickAruco(object):
 		aruco_pose.header.frame_id = self.strip_leading_slash(aruco_pose.header.frame_id)
 		rospy.loginfo("Got: " + str(aruco_pose))
 
-
+		
 		rospy.loginfo("spherical_grasp_gui: Transforming from frame: " +
 		aruco_pose.header.frame_id + " to 'base_footprint'")
 		ps = PoseStamped()
@@ -137,14 +137,77 @@ class PickAruco(object):
 
                         rospy.loginfo("Setting cube pose based on ArUco detection")
 			pick_g.object_pose.pose.position = aruco_ps.pose.position
+                        #pick_g.object_pose.pose.position.z -= 0.1*(1.0/2.0)
+
+                        rospy.loginfo("aruco pose in base_footprint:" + str(pick_g))
+
+			pick_g.object_pose.header.frame_id = 'base_footprint'
+			pick_g.object_pose.pose.orientation.w = 1.0
+			# modif x
+			# on decale legerement la position en x
+                        #pick_g.object_pose.pose.position.x += 0.022
+			# end modif x
+			self.detected_pose_pub.publish(pick_g.object_pose)
+			rospy.loginfo("Gonna pick:" + str(pick_g))
+			self.pick_as.send_goal_and_wait(pick_g)
+			rospy.loginfo("Done!")
+
+			result = self.pick_as.get_result()
+			if str(moveit_error_dict[result.error_code]) != "SUCCESS":
+				rospy.logerr("Failed to pick, not trying further")
+				return
+
+			# Move torso to its maximum height
+                        self.lift_torso()
+
+                        # Raise arm
+			rospy.loginfo("Moving arm to a safe pose")
+			pmg = PlayMotionGoal()
+                        pmg.motion_name = 'pick_final_pose'
+			pmg.skip_planning = False
+			self.play_m_as.send_goal_and_wait(pmg)
+			rospy.loginfo("Raise object done.")
+
+                        # Place the object back to its position
+			# rospy.loginfo("Gonna place near where it was")
+			# pick_g.object_pose.pose.position.z += 0.05
+			# self.place_as.send_goal_and_wait(pick_g)
+			# rospy.loginfo("Done!")
+
+		#if string_operation == "place":
+
+			rospy.loginfo("Setting cube pose based on ArUco detection")
+			pick_g.object_pose.pose.position = aruco_ps.pose.position
                         pick_g.object_pose.pose.position.z -= 0.1*(1.0/2.0)
 
                         rospy.loginfo("aruco pose in base_footprint:" + str(pick_g))
 
 			pick_g.object_pose.header.frame_id = 'base_footprint'
 			pick_g.object_pose.pose.orientation.w = 1.0
+			# modif x
+			# on decale legerement la position en x
+                        #pick_g.object_pose.pose.position.x += 0.022
+			# end modif x
 			self.detected_pose_pub.publish(pick_g.object_pose)
+			#rospy.loginfo("Gonna pick:" + str(pick_g))
+			#self.pick_as.send_goal_and_wait(pick_g)
+			#rospy.loginfo("Done!")
 
+			#result = self.pick_as.get_result()
+			#if str(moveit_error_dict[result.error_code]) != "SUCCESS":
+			#	rospy.logerr("Failed to pick, not trying further")
+			#	return
+
+			# Move torso to its maximum height
+                        #self.lift_torso()
+
+                        # Raise arm
+			#rospy.loginfo("Moving arm to a safe pose")
+			#pmg = PlayMotionGoal()
+                        #pmg.motion_name = 'pick_final_pose'
+			#pmg.skip_planning = False
+			#self.play_m_as.send_goal_and_wait(pmg)
+			#rospy.loginfo("Raise object done.")
 
                         # Place the object back to its position
 			rospy.loginfo("Gonna place near where it was")

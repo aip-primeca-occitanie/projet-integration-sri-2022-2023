@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(tiago_place)
+project(sri_tiago_pick_and_place_simulation)
 
 find_package(catkin REQUIRED COMPONENTS
   dynamic_reconfigure
