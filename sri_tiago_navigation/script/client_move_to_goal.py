@@ -53,6 +53,16 @@ if __name__ == '__main__':
                 "point": Point(-0.346, -2.286, 0),
                 "quaternion": Quaternion(0.0, 0.0, 0.871, -0.871),
                 "frame": "map"
+            },
+            "init-42": {
+                "point": Point(1.500, -4.399, 0),
+                "quaternion": Quaternion(0.0, 0.0, 0.791, 0.610),
+                "frame": "map"
+            },
+            "end-42": {
+                "point": Point(4.870, -10.777, 0),
+                "quaternion": Quaternion(0.0, 0.0, 0.996, -0.086),
+                "frame": "map"
             }
         }
 
