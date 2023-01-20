@@ -63,3 +63,6 @@ On a dû ajouter un support pour récupérer l'object donnée par Tiago 46 car c
 - Modification de l'objet pour une meilleure prise (Canette Lipton© Pastèque-Menthe auto-financée (investissement))
 Milestone : La tâche de pick est opérationnelle sur Tiago.
 ```
+Lien de la démo sur Tiago : https://youtu.be/VitLxm-OPfA 
+```
+Cette vidéo à été réalisée en collaboration avec @DorianBordes PAILLER Vincent (en binôme avec Dorian).
