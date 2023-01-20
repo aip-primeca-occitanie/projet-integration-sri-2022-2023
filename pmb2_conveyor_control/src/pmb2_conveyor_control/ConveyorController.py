@@ -17,8 +17,7 @@ RUN_CONVEYOR_GOAL_TOPIC_NAME = "/run_conveyor/goal"
 
 class ConveyorController():
 
-    def __init__(self, node_name="conveyor_control_node", safe_start=False, safe_sleep=0.4):
-        rospy.init_node(node_name)
+    def __init__(self, safe_start=False, safe_sleep=0.4):
         self.pub = rospy.Publisher(RUN_CONVEYOR_GOAL_TOPIC_NAME, RunConveyorActionGoal, queue_size=1)
         if safe_start:
             rospy.sleep(safe_sleep)
