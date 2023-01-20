@@ -31,6 +31,30 @@ Exemple:
 > Voir les exemples fournis dans le README associé au package ``pmb2_conveyor_control``: [Lien](pmb2_conveyor_control/README.md)
 
 
+## Rémi LABORIE, Fatima EL-HANTATI, Kahina CHALABI
+
+Le travail de ces trois personnes sont sous les commits de reminator329.
+
+### Travail réalisé
+
+Tâche désignée : PMB 42 transporte l'objet de PMB 46 au Tiago 155.
+
+- Création du package sri_transport_object_42 (voir le README de ce package).
+- Cartographie des salles 314 et 315 de la MFJA avec le Tiago 42 (sri_transport_object_42/data/mfja_314_315).
+- Récupération du fichier launch tiago_navigation_AIP_gazebo.launch et adaptation à notre carte (tiago_navigation_MFJA_gazebo.launch).
+- Récupération du script python server_move_rotate.py du package sri_tiago_navigation et adaptation à notre tâche.
+- Le multi-Tiago ne fonctionne pas pour l'instant, par conséquent, nous avons créé le point initial et final du robot pour qu'il transporte l'objet entre les deux.
+
+[Lien vers la vidéo démo](https://youtube.com/shorts/DFwC9F1DcuY?feature=share)
+
+### Difficultés rencontrées
+
+Le robot peut être perdu, c'est à dire qu'il ne bouge pas ou ne se dirige pas au bon endroit lors de l'appel du service ```move_rotate_base_42```.</br>
+Il faut penser à vérifier l'estimation de sa pose sur RViz. Il faudrait que le robot se rende compte qu'il est perdu, en analysant par exemple l'erreur d'estimation de la pose du robot : la covariance. </br>
+</br>
+On a dû ajouter un support pour récupérer l'object donnée par Tiago 46 car ce dernier voit le robot 42 comme un obstacle. Pour cette raison, le robot 46 s'arrête à une certaine distance du 42 ce qui empêche l'objet de tomber sur la base du robot.
+
+
 ## Zineddine OUALI & Alexandre LOTTE (resp @ZineddineOuali et @AlexLtte)
 
 - Correction de l'estimation de la position de l'objet
@@ -39,3 +63,5 @@ Exemple:
 - Modification de l'objet pour une meilleure prise (Canette Lipton© Pastèque-Menthe auto-financée (investissement))
 Milestone : La tâche de pick est opérationnelle sur Tiago.
 ```
+
+
