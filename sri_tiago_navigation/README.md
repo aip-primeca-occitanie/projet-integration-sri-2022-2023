@@ -1,34 +1,79 @@
 # README SRI_TIAGO_NAVIGATION
+# *Paquet pour la nvigation du robot reel et simulation sur Gazebo*
 
-## Première étape : launch mapping simulation
+Avant tout :
+Compiler le paquet, sans oublier de sourcer dans chaque terminal depuis le répertoire de travail ```./devel/setup.bash```
 
-Commande pour lancer le mapping dans la salle groix de l'aip
+## Mise a jour des cartes
+- La collecte du nuage de points de la carte se fait par la navigation manuelle du Tiago (ou Pal Mobile Base) autour de la piece. Elle doit etre sauvegardee et mise a jour au niveau du robot.
+
+Se SSH au robot, récuperation de la carte : ```rosservice call /pal_map_manager/change_map "input: 'mfja_314_315'"```
 
 ```code
-roslaunch sri_tiago_navigation aip_tiago_mapping.launch
+export ROS_MASTER_URI=http://<robot>:11311
+export ROS_IP=<ifconfig : IP ordinateur>
 ```
-
-(Ce fichier a été construit à partir des fichiers launch déjà fournis exploitant la map de l'aip, en y ajoutant l'appel à rviz ainsi qu'à navigation et definitions de variables (mapping notamment))
-
-## Deuxième étape : création d'un service pour publier sur le topic /move_base_simple/goal
-
-Compiler le paquet, sans oublier de sourcer dans chaque terminal depuis le répertoire de travail ```./devel/setup.bash``` 
-
-Se SSH au robot, récuperation de la carte : ```rosservice call /pal_map_manager/change_map "input: 'salle_314_mfja'"```
 
 (Les cartes se trouvent dans ```$HOME/.pal/maps/configurations```.)
 
-(Lancement du service : ```rosrun navigation server_move.py```)
-Lancement du service : ```rosrun sri_tiago_navigation server_move_rotate.py```
+## Simulation de la navigation sur Gazebo
+Apres avoir source le package sri_tiago_navigation :
 
-(Appel au service : ```rosservice call /sri23/move_base  "x: 0.0
-y: 0.0
-theta: 0.0"```)
-Appel au service : ```rosservice call /sri23/move_rotate_base  "x: 0.0
-y: 0.0
-theta: 0.0"```
+Afin de lancer la simulation Gazebo (PAS SUR LE ROBOT) avec la carte desiree, lancer la commande :
 
-Ce service publie sur le topic ROS pour ordre de navigation : ```move_base_simple/goal```
+```code
+roslaunch sri_tiago_navigation tiago_navigation_gazebo.launch world:=mfja_314_315
+```
+
+Le dossier 'mfja_314_315' dans le dossier data du package contient la carte des salles 314 et 315 de la MFJA. Pour changer de carte, il suffit d'assigner a world le nom d'un autre dossier de carte (a mettre dans le dossier data).
+
+## Visualisation et navigation du robot depuis RViz
+Afin de lancer Rviz (sur l'ordinateur local, ou sur le robot), lancer la commande :
+
+```code
+roslaunch sri_tiago_navigation tiago_navigation.launch world:=mfja_314_315
+```
+
+# Plannification de la trajectoire du robot reel (ou simule) depuis RViz
+D'abord lancer un node (RViz doit d'abord etre lance avec la commande precedente)
+
+```code
+rosrun sri_tiago_navigation positions_planner.py
+```
+
+Puis pointer sur RViz les points d'interets de la trajectoire a partir de l'outil 'Publish Point'
+Ensuite lancer dans un nouveau terminal (toujours source pour la package sri_tiago_navigation) le service pour que le robot effectue la trajectoire :
+
+```code
+rosservice call /sri23/trajectory_planner "{}"
+```
+## Services de navigation
+Il y a deux services de navigation :
+- Pour definir une position a atteindre (sans considerer l'orientation) :
+
+```code
+rosrun sri_tiago_navigation server_move.py
+```
+
+Apres, lancer le service associe
+
+```code
+rosservice call /sri23/move_base "x: 0.0 y: 0.0 theta: 0.0"
+```
+
+- Pour definir une pose a atteindre (Prise en compte de la position et de l'orientation) :
+
+```code
+rosrun sri_tiago_navigation server_move_rotate.py
+```
+
+Apres, lancer le service associe
+
+```code
+rosservice call /sri23/move_rotate_base "x: 0.0 y: 0.0 theta: 0.0"
+```
+
+Ces service publient sur le topic ROS pour ordre de navigation : ```move_base_simple/goal```
 
 ``` bash
 std_msgs/Header header
@@ -47,7 +92,6 @@ geometry_msgs/Pose pose
     float64 w
 ```
 
-(```theta``` n'a pas d'influence sur l'orientation demandée, le quaternion transmis vaut (0,0,0,1), ```z``` vaut ```0```. ```seq```, ```stamp``` sont gérés automatiquement, ```frame_id``` vaut ```"map"```.)
 ```theta``` est pris en compte dans l'orientation demandée dans le repère de la map.
 
 [Lien démo](https://www.youtube.com/watch?v=SU8ofjLCdqI)
@@ -67,3 +111,7 @@ rosrun sri_tiago_navigation client_move_to_goal.py <location_name>
 ```
 
 (locations: ``milieu``, ``milieu-test``)
+
+## NAVIGATION : Plannifier un parcours robot
+
+Sourcer le package sri_tiago_navigation
