@@ -28,7 +28,7 @@ from moveit_commander import PlanningSceneInterface
 from moveit_msgs.msg import Grasp, PickupAction, PickupGoal, PickupResult, MoveItErrorCodes
 from moveit_msgs.msg import PlaceAction, PlaceGoal, PlaceResult, PlaceLocation
 from geometry_msgs.msg import Pose, PoseStamped, PoseArray, Vector3Stamped, Vector3, Quaternion
-from tiago_pick_demo.msg import PickUpPoseAction, PickUpPoseGoal, PickUpPoseResult, PickUpPoseFeedback
+from sri_tiago_pick_and_place_simulation.msg import PickUpPoseAction, PickUpPoseGoal, PickUpPoseResult, PickUpPoseFeedback
 from moveit_msgs.srv import GetPlanningScene, GetPlanningSceneRequest, GetPlanningSceneResponse
 from std_srvs.srv import Empty, EmptyRequest
 from copy import deepcopy
@@ -226,40 +226,6 @@ class PickAndPlaceServer(object):
 		return result.error_code.val
 
 	def place_object(self, object_pose):
-
-#######################################
-		rospy.loginfo("Removing any previous 'part' object")
-		self.scene.remove_attached_object("arm_tool_link")
-		self.scene.remove_world_object("part")
-		self.scene.remove_world_object("table")
-		rospy.loginfo("Clearing octomap")
-		self.clear_octomap_srv.call(EmptyRequest())
-		rospy.sleep(2.0)  # Removing is fast
-		rospy.loginfo("Adding new 'part' object")
-
-		rospy.loginfo("Object pose: %s", object_pose.pose)
-		
-                #Add object description in scene
-		self.scene.add_box("part", object_pose, (self.object_depth, self.object_width, self.object_height))
-
-		rospy.loginfo("Second%s", object_pose.pose)
-		table_pose = copy.deepcopy(object_pose)
-
-                #define a virtual table below the object
-                table_height = object_pose.pose.position.z - self.object_width/2  
-                table_width  = 1.8
-                table_depth  = 0.5
-                table_pose.pose.position.z += -(2*self.object_width)/2 -table_height/2
-                table_height -= 0.008 #remove few milimeters to prevent contact between the object and the table
-
-		self.scene.add_box("table", table_pose, (table_depth, table_width, table_height))
-
-		# # We need to wait for the object part to appear
-		self.wait_for_planning_scene_object()
-		self.wait_for_planning_scene_object("table")
-
-########################################
-
 		rospy.loginfo("Clearing octomap")
 		self.clear_octomap_srv.call(EmptyRequest())
 		possible_placings = self.sg.create_placings_from_object_pose(
@@ -267,9 +233,8 @@ class PickAndPlaceServer(object):
 		# Try only with arm
 		rospy.loginfo("Trying to place using only arm")
 		goal = createPlaceGoal(
-			object_pose, possible_placings, "arm_torso", "part", self.links_to_allow_contact)
-		print("goal infos: ", goal)
-		rospy.loginfo("Sending goal with group:"+goal.group_name+"|")
+			object_pose, possible_placings, "arm", "part", self.links_to_allow_contact)
+		rospy.loginfo("Sending goal")
 		self.place_ac.send_goal(goal)
 		rospy.loginfo("Waiting for result")
 
