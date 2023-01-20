@@ -42,7 +42,7 @@ from tf import transformations
 from tf.transformations import quaternion_from_euler, euler_from_quaternion, quaternion_about_axis, unit_vector, quaternion_multiply
 
 from dynamic_reconfigure.server import Server
-from tiago_place.cfg import SphericalGraspConfig
+from sri_tiago_pick_and_place_simulation.cfg import SphericalGraspConfig
 
 def normalize(v):
     norm = np.linalg.norm(v)
@@ -79,7 +79,8 @@ def quaternion_from_vectors(v0, v1):
 
 def filter_poses(sphere_poses, object_pose,
                  filter_behind=False,
-                 filter_under=True):
+                 filter_under=True,
+                 filter_left=True):
     """Given the generated poses and the object pose
     filter out the poses that are behind or under (if set to True)
     :type sphere_poses: []
@@ -88,6 +89,9 @@ def filter_poses(sphere_poses, object_pose,
     :rtype: []"""
     new_list = []
     for pose in sphere_poses:
+        if filter_left:
+            if pose.position.y > object_pose.pose.position.y:
+                continue
         # if pose is further away than object, ditch it
         if filter_behind:
             if pose.position.x > object_pose.pose.position.x:
@@ -353,7 +357,7 @@ class SphericalGrasps(object):
         tini = rospy.Time.now()
         sphere_poses = self.generate_grasp_poses(object_pose)
         filtered_poses = filter_poses(sphere_poses, object_pose,
-                                      filter_behind=False, filter_under=True)
+                                      filter_behind=False, filter_under=True, filter_left=True)
         sorted_poses = sort_by_height(filtered_poses)
         grasps = self.create_grasps_from_poses(sorted_poses)
         tend = rospy.Time.now()
