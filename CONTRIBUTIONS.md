@@ -1,5 +1,35 @@
 # Liste des contributions par auteurs:
 
+## Sara MESSARA et Patrick RIVIERE--JOMBART  
+
+### Mise a jour de la carte de la MFJA
+Tous les commits ont ete realises en binome (Github @patrickrivierejombart) et concernent le package "sri_tiago_navigation"
+- Collecte des nuages de points de la carte (dossier "data/mfja_314_315") par navigation manuelle
+du Tiago-155 autour de la piece (dossier data/mfja_314_315) et mise a jour dans le
+dossier de config du Tiago-155.
+- Transfert de la carte sur la PMB-42 et update de sa carte courante dans le dossier config (ssh et scp).
+- Update du nom du package (navigation->sri_tiago_navigation).
+### Simulation de la navigation sur Gazebo
+- Mise a jour du dossier de simulation Gazebo (prise en compte des changements du nom
+du package, commande pour le changement automatique de la carte - variable world) "tiago_navigation_gazebo.launch".
+### Visualisation par RVIZ
+- Creation d'un launch file pour la visualisation RVIZ sans Gazebo "tiago_navigation.launch"
+- Commande du robot depuis RVIZ (avec 2dnav) pour atteindre des poses dans le repere "map".
+### Services de navigation
+- Mise a jour du servive "server_move.py" (adaptation aux changements de package) mais sans prendre en compte l'orientation.
+- Creation du service "server_move_rotate.py" pour prendre en compte l'orientation en plus de la position du robot dans la map.
+### Generation de trajectoire du robot reel/simule depuis RVIZ
+- Recuperation et memorisation des positions d'interet sur RVIZ (par topic) par le script "positions_planner.py"
+- Creation d'un service pour que le robot reel (ou simule) suive la trajectoire definie par l'ensemble des positions d'interet.
+- Gestion du sequencement de l'envoi des positions but (goal)  
+
+      - [Version 1] en utilisant un mecanisme publisher-subscriber. Cette version, ne garde que les positions terminales a cause de l'absence de feedback du server.  
+      - [Version 2] en utilsant le mecanisme ActionClient ROS. Les actions ROS integrent un feedback qui permet d'atteindre chaque position intermediaire sequentiellement.
+
+### Tuto/Demo
+- Mise a jour du README.md du package
+- Creation de videos de demonstration disponible sur 
+
 ## Martial BAILLY et Théo TRAFNY
 
 - Cartographie des salles 314 et 315 de la MFJA (fichiers .bmp et .yaml)

@@ -2,12 +2,12 @@
 # *Paquet pour la nvigation du robot reel et simulation sur Gazebo*
 
 Avant tout :
-Compiler le paquet, sans oublier de sourcer dans chaque terminal depuis le répertoire de travail ```./devel/setup.bash```
+Compiler le paquet, sans oublier de sourcer dans chaque terminal depuis le repertoire de travail ```./devel/setup.bash```
 
 ## Mise a jour des cartes
 - La collecte du nuage de points de la carte se fait par la navigation manuelle du Tiago (ou Pal Mobile Base) autour de la piece. Elle doit etre sauvegardee et mise a jour au niveau du robot.
 
-Se SSH au robot, récuperation de la carte : ```rosservice call /pal_map_manager/change_map "input: 'mfja_314_315'"```
+Se SSH au robot, recuperation de la carte : ```rosservice call /pal_map_manager/change_map "input: 'mfja_314_315'"```
 
 ```code
 export ROS_MASTER_URI=http://<robot>:11311
@@ -92,13 +92,13 @@ geometry_msgs/Pose pose
     float64 w
 ```
 
-```theta``` est pris en compte dans l'orientation demandée dans le repère de la map.
+```theta``` est pris en compte dans l'orientation demandee dans le repere de la map.
 
-[Lien démo](https://www.youtube.com/watch?v=SU8ofjLCdqI)
+[Lien demo](https://www.youtube.com/watch?v=SU8ofjLCdqI)
 
-## PMB2 Navigation repère monde
+## PMB2 Navigation repere monde
 
-Après avoir source le package ``sri_tiago_navigation``:
+Apres avoir source le package ``sri_tiago_navigation``:
 
 Vous pouvez lancer RVIZ et le serveur de naviguation via la commande suivante:
 ```bash
@@ -111,7 +111,3 @@ rosrun sri_tiago_navigation client_move_to_goal.py <location_name>
 ```
 
 (locations: ``milieu``, ``milieu-test``)
-
-## NAVIGATION : Plannifier un parcours robot
-
-Sourcer le package sri_tiago_navigation
