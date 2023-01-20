@@ -11,7 +11,7 @@ sudo apt install pal-ferrum-conveyor-controller pal-ferrum-conveyor-controller-m
 et n'oubliez pas de ``catkin_make`` le package associé, et de source:
 
 ```bash
-catkin_make_isolated --pkg pmb2_convoyer_control
+catkin_make_isolated --pkg pmb2_conveyor_control
 ```
 ```bash
 source devel_isolated/pmb2_convoyer_control/setup.bash
