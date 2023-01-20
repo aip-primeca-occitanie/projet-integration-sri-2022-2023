@@ -22,7 +22,7 @@ class ConveyorController():
         if safe_start:
             rospy.sleep(safe_sleep)
 
-    def activate_convoyer(self, duration_seconds, speed, reverse):
+    def activate_conveyor(self, duration_seconds, speed, reverse):
         """
         Enable the conveyor belt:
             - duration_seconds: duration in seconds

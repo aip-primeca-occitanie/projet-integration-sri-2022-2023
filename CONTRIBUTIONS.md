@@ -30,6 +30,7 @@ Exemple:
 
 > Voir les exemples fournis dans le README associé au package ``pmb2_conveyor_control``: [Lien](pmb2_conveyor_control/README.md)
 
+
 ## Rémi LABORIE, Fatima EL-HANTATI, Kahina CHALABI
 
 Le travail de ces trois personnes sont sous les commits de reminator329.
@@ -52,3 +53,15 @@ Le robot peut être perdu, c'est à dire qu'il ne bouge pas ou ne se dirige pas 
 Il faut penser à vérifier l'estimation de sa pose sur RViz. Il faudrait que le robot se rende compte qu'il est perdu, en analysant par exemple l'erreur d'estimation de la pose du robot : la covariance. </br>
 </br>
 On a dû ajouter un support pour récupérer l'object donnée par Tiago 46 car ce dernier voit le robot 42 comme un obstacle. Pour cette raison, le robot 46 s'arrête à une certaine distance du 42 ce qui empêche l'objet de tomber sur la base du robot.
+
+
+## Zineddine OUALI & Alexandre LOTTE (resp @ZineddineOuali et @AlexLtte)
+
+- Correction de l'estimation de la position de l'objet
+- Filtrage des configurations par contraintes sur la sphère des configurations accessibles par le bras du robot et affichage des configurations filtrées sur RVIZ
+- Réglage des offsets selon les objets manipulés
+- Modification de l'objet pour une meilleure prise (Canette Lipton© Pastèque-Menthe auto-financée (investissement))
+Milestone : La tâche de pick est opérationnelle sur Tiago.
+```
+
+
