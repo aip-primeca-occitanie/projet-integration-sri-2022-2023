@@ -39,7 +39,6 @@
 
   <group ns="$(arg namespace)">
 
-    <!--
     <include file="$(find tiago_gazebo)/launch/tiago_gazebo.launch">
       <arg name="world"      value="$(arg world)"/>
       <arg name="arm" value="$(arg arm)"/>
@@ -55,9 +54,7 @@
       <arg name="extra_gazebo_args" value="$(arg extra_gazebo_args)"/>
       <arg if="$(eval local_planner == 'teb')" name="use_dynamic_footprint" value="true"/>
     </include>
-    -->
 
-    <!--
     <include file="$(find tiago_2dnav_gazebo)/launch/navigation.launch">
       <arg name="state"          value="localization"/>
       <arg name="planner"        value="$(arg planner)"/>
@@ -69,7 +66,6 @@
       <arg name="rgbd_sensors"   value="$(arg advanced_navigation)"/>
       <arg name="laser_model"    value="$(arg laser_model)"/>
     </include>
-    -->
 
    <group if="$(arg advanced_navigation)">
       <node name="rviz" pkg="rviz" type="rviz" if="$(arg rviz)"
