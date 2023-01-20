@@ -24,7 +24,6 @@ def callbackS1(data):
     points.append(data)
 
 def callbackS2(req):
-    # rospy.loginfo(req)
     rospy.loginfo(points)
     for point in points:
         pose = PoseStamped()
@@ -61,7 +60,7 @@ sub_publishPoint = rospy.Subscriber('/clicked_point', PointStamped, callbackS1)
 
 def services_loader():
     rospy.init_node('pose_estimate')
-    s = rospy.Service('/sri23/estimate_pose_topic',Empty,callbackS2)
+    s = rospy.Service('/sri23/trajectory_planner',Empty,callbackS2)
     rospy.spin()
 
 if __name__=="__main__":

@@ -1,6 +1,6 @@
-image: map.pgm
+image: submap_0.pgm
 resolution: 0.025000
-origin: [-5.872982, -16.020020, 0.000000]
+origin: [-12.229907, -13.906042, 0.000000]
 negate: 0
 occupied_thresh: 0.65
 free_thresh: 0.196

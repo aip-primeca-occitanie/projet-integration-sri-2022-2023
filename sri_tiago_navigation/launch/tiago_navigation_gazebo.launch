@@ -39,6 +39,34 @@
 
   <group ns="$(arg namespace)">
 
+    <include file="$(find tiago_gazebo)/launch/tiago_gazebo.launch">
+      <arg name="world"      value="$(arg world)"/>
+      <arg name="arm" value="$(arg arm)"/>
+      <arg name="end_effector" value="$(arg end_effector)"/>
+      <arg name="ft_sensor" value="$(arg ft_sensor)"/>
+      <arg name="laser_model" value="$(arg laser_model)"/>
+      <arg name="camera_model" value="$(arg camera_model)"/>
+      <arg name="gzpose"     value="$(arg gzpose)"/>
+      <arg name="tuck_arm"   value="$(arg tuck_arm)"/>
+      <arg name="gui"        value="$(arg gzclient)"/>
+      <arg name="public_sim" value="$(arg public_sim)"/>
+      <arg name="recording"  value="$(arg recording)"/>
+      <arg name="extra_gazebo_args" value="$(arg extra_gazebo_args)"/>
+      <arg if="$(eval local_planner == 'teb')" name="use_dynamic_footprint" value="true"/>
+    </include>
+
+    <include file="$(find tiago_2dnav_gazebo)/launch/navigation.launch">
+      <arg name="state"          value="localization"/>
+      <arg name="planner"        value="$(arg planner)"/>
+      <arg name="global_planner" value="$(arg global_planner)"/>
+      <arg name="local_planner"  value="$(arg local_planner)"/>
+      <arg name="localization"   value="$(arg localization)"/>
+      <arg name="map"            value="$(arg map)"/>
+      <arg name="public_sim"     value="$(arg public_sim)"/>
+      <arg name="rgbd_sensors"   value="$(arg advanced_navigation)"/>
+      <arg name="laser_model"    value="$(arg laser_model)"/>
+    </include>
+
    <group if="$(arg advanced_navigation)">
       <node name="rviz" pkg="rviz" type="rviz" if="$(arg rviz)"
             args="-d $(find tiago_2dnav)/config/rviz/advanced_navigation.rviz"/>
