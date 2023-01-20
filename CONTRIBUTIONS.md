@@ -3,7 +3,7 @@
 ## Sara MESSARA et Patrick RIVIERE--JOMBART  
 
 ### Mise a jour de la carte de la MFJA
-Tous les commits ont ete realises en binome (Github @patrickrivierejombart) et concernent le package "sri_tiago_navigation"
+Tous les commits ont ete realises en binome (Github @patrickrivierejombart et @jrpprj) et concernent le package "sri_tiago_navigation"
 - Collecte des nuages de points de la carte (dossier "data/mfja_314_315") par navigation manuelle
 du Tiago-155 autour de la piece (dossier data/mfja_314_315) et mise a jour dans le
 dossier de config du Tiago-155.
