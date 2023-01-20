@@ -17,6 +17,8 @@ if __name__ == '__main__':
     speed = float(sys.argv[2])
     reverse = sys.argv[3].lower() == "true"
 
+    rospy.init_node("conveyor_control_node")
+
     conveyorController = ConveyorController(safe_start=True)
 
     conveyorController.activate_convoyer(duration_seconds, speed, reverse)
