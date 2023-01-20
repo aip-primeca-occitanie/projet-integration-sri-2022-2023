@@ -11,10 +11,11 @@ sudo apt install pal-ferrum-conveyor-controller pal-ferrum-conveyor-controller-m
 et n'oubliez pas de ``catkin_make`` le package associé, et de source:
 
 ```bash
-catkin_make_isolated --pkg pmb2_conveyor_control
+catkin install
+catkin build
 ```
 ```bash
-source devel_isolated/pmb2_convoyer_control/setup.bash
+source devel/setup.bash
 ```
 
 
@@ -48,7 +49,7 @@ if __name__ == '__main__':
 
     conveyorController = ConveyorController(safe_start=True)
 
-    conveyorController.activate_convoyer(duration_seconds, speed, reverse)
+    conveyorController.activate_conveyor(duration_seconds, speed, reverse)
 
     rospy.loginfo("Conveyor execution done!")
 ```
