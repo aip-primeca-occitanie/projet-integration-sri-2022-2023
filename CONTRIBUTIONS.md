@@ -60,7 +60,6 @@ Exemple:
 
 > Voir les exemples fournis dans le README associé au package ``pmb2_conveyor_control``: [Lien](pmb2_conveyor_control/README.md)
 
-<<<<<<< HEAD
 
 ## Rémi LABORIE, Fatima EL-HANTATI, Kahina CHALABI
 
@@ -100,7 +99,7 @@ Vidéo réalisée en collaboration avec BORDES Dorian et PAILLER Vincent
 =======
 ## Valentin Mounier et Tanguy Veyrenc de Lavalette
 
-Speudo github : @ValentinMounier et @HarpieRapace45 
+Speudo github : [@ValentinMounier](https://github.com/ValentinMounier) et [@HarpieRapace45](https://github.com/HarpieRapace45) 
 
 
 - Recherche de package pour le multi Robot &#9745;
@@ -111,4 +110,4 @@ Speudo github : @ValentinMounier et @HarpieRapace45
 - Essai du multiros sur les 2 TIAGO &#9745;
 - Test pour limiter la synchonisation à 1 seul topic sur un PC portable &#9745;
 - Test pour limiter la synchonisation à 1 seul topic sur 2 TIAGO &#x2612;
->>>>>>> Modification du CONTRIBUTION.md
+
