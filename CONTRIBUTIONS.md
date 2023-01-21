@@ -28,7 +28,13 @@ du package, commande pour le changement automatique de la carte - variable world
 
 ### Tuto/Demo
 - Mise a jour du README.md du package
-- Creation de videos de demonstration disponible sur 
+- Creation de videos de demonstration disponibles aux liens suivants :
+
+[[Demo positionnement du robot (YouTube)](https://www.youtube.com/watch?v=SOI0Vk1Yg6Y)]
+
+[[Demo positionnement et orientation du robot (YouTube)](https://www.youtube.com/watch?v=8ZN-PccFhlg)]
+
+[[Demo plannification de trajectoire du robot (YouTube)](https://www.youtube.com/watch?v=BwUm5gXk70Q)]
 
 ## Martial BAILLY et Théo TRAFNY
 
