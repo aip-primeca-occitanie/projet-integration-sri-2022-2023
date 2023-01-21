@@ -32,7 +32,7 @@ Exemple:
 
 ## Valentin Mounier et Tanguy Veyrenc de Lavalette
 
-Speudo github : et @HarpieRapace45 @ValentinMounier
+Speudo github : [@ValentinMounier](https://github.com/ValentinMounier) et [@HarpieRapace45](https://github.com/HarpieRapace45)
 
 
 - Recherche de package pour le multi Robot &#9745;
