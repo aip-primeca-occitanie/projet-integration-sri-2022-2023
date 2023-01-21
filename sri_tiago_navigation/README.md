@@ -100,11 +100,16 @@ geometry_msgs/Pose pose
 [Lien demo 2021-2022](https://www.youtube.com/watch?v=SU8ofjLCdqI)
 
 - Service pour positionner le robot sur la map
-[Demo positionnement du robot (YouTube)]()
+
+[[Demo positionnement du robot (YouTube)](https://www.youtube.com/watch?v=SOI0Vk1Yg6Y)]
+
 - Service pour positionner le robot sur la map avec une orientation desiree
-[Demo positionnement et orientation du robot (YouTube)]()
+
+[[Demo positionnement et orientation du robot (YouTube)](https://www.youtube.com/watch?v=8ZN-PccFhlg)]
+
 - Service pour plannifier la trajectoire du robot par des points successifs sur RViz
-[Demo plannification de trajectoire du robot (YouTube)]()
+
+[[Demo plannification de trajectoire du robot (YouTube)](https://www.youtube.com/watch?v=BwUm5gXk70Q)]
 
 ## PMB2 Navigation repere monde
 
