@@ -36,10 +36,10 @@ Speudo github : et @HarpieRapace45 @ValentinMounier
 
 
 - Recherche de package pour le multi Robot &#9745;
-- installation d'un packet sur les PC portable &#9745;
-- essaie du packet sur un PC portable en multiros local &#9745;
-- essaie du packet sur 2 PC portable en réseau &#9745;
-- installation du packet sur les 2 TIAGO &#9745;
-- essaie du multiros sur les 2 TIAGO &#9745;
-- essaie de limité la synchonisation à 1 seul topic sur un PC portable &#9745;
-- essaie de limité la synchonisation à 1 seul topic sur 2 ITAGO &#x2612;
+- installation d'un paquet sur les PC portable &#9745;
+- essai du paquet sur un PC portable en multiros local &#9745;
+- essai du paquet sur 2 PC portable en réseau &#9745;
+- installation du paquet sur les 2 TIAGO &#9745;
+- essai du multiros sur les 2 TIAGO &#9745;
+- essai de limiter la synchonisation à 1 seul topic sur un PC portable &#9745;
+- essai de limiter la synchonisation à 1 seul topic sur 2 ITAGO &#x2612;
