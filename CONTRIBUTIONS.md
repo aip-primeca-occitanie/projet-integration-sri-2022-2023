@@ -16,7 +16,7 @@ du package, commande pour le changement automatique de la carte - variable world
 - Creation d'un launch file pour la visualisation RVIZ sans Gazebo "tiago_navigation.launch"
 - Commande du robot depuis RVIZ (avec 2dnav) pour atteindre des poses dans le repere "map".
 ### Services de navigation
-- Mise a jour du servive "server_move.py" (adaptation aux changements de package) mais sans prendre en compte l'orientation.
+- Mise a jour du service "server_move.py" (adaptation aux changements de package) mais sans prendre en compte l'orientation.
 - Creation du service "server_move_rotate.py" pour prendre en compte l'orientation en plus de la position du robot dans la map.
 ### Generation de trajectoire du robot reel/simule depuis RVIZ
 - Recuperation et memorisation des positions d'interet sur RVIZ (par topic) par le script "positions_planner.py"
