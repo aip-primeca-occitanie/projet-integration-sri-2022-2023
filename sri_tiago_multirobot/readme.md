@@ -23,7 +23,7 @@ Si vous voulez plusieurs roscore sur différents robots, vous devrez activer 2 f
 
 ## Utilisation 
 
-Une fois installez sur les deux robots, vous pouvez lancer le paquet sur les deux robots :
+Une fois installé sur les deux robots, vous pouvez lancer le paquet sur les deux robots :
 
 `rosrun fkie_master_discovery master_discovery`
 
@@ -39,5 +39,5 @@ Pour synchroniser un certain nombre des topics, vous pouvez utiliser la commande
 
 Cette commande à été testée avec succès sur des PC portables mais les tests n'ont pas pu être menés correctement sur les TIAGO par manque de temps
 
-( Pour les PC le process d'installation étais différents, les commandes sont du types master_xxx_fkie au lioeu de fkie_master_xxx )
+( Pour les PC le process d'installation était différent, les commandes sont du types master_xxx_fkie au lieu de fkie_master_xxx )
 
