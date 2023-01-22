@@ -43,6 +43,7 @@ du package, commande pour le changement automatique de la carte - variable world
 - Correction des scripts ``server_move_to_goal.py`` ``client_move_to_goal.py``
 - Control du tapis roulant sur le PMB2 46C:
 > Ajout du package ``pmb2_conveyor_control`` et du module utilitaire ``ConveyorController``
+
 Topic: ``/run_conveyor/goal``
 Message: ``conveyor_controller_msgs/RunConveyorActionGoal``
 ```
@@ -64,6 +65,7 @@ conveyor_controller_msgs/RunConveyorGoal goal
 Exemple:
 
 > Voir les exemples fournis dans le README associé au package ``pmb2_conveyor_control``: [Lien](pmb2_conveyor_control/README.md)
+
 
 ## Rémi LABORIE, Fatima EL-HANTATI, Kahina CHALABI
 
