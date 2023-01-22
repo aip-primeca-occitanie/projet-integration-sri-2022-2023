@@ -102,17 +102,3 @@ Milestone : La tâche de pick est opérationnelle sur Tiago.
 [Lien vers la vidéo de démonstration] (https://youtu.be/VitLxm-OPfA)
 
 Vidéo réalisée en collaboration avec BORDES Dorian et PAILLER Vincent
-## Valentin Mounier et Tanguy Veyrenc de Lavalette
-
-Pseudo github : [@ValentinMounier](https://github.com/ValentinMounier) et [@HarpieRapace45](https://github.com/HarpieRapace45) 
-
-
-- Recherche de package pour le multi Robot &#9745;
-- Installation d'un paquet sur les PC portable &#9745;
-- Essai du paquet sur un PC portable en multiros local &#9745;
-- Essaie du paquet sur 2 PC portable en réseau &#9745;
-- Installation du paquet sur les 2 TIAGO &#9745;
-- Essai du multiros sur les 2 TIAGO &#9745;
-- Test pour limiter la synchonisation à 1 seul topic sur un PC portable &#9745;
-- Test pour limiter la synchonisation à 1 seul topic sur 2 TIAGO &#x2612;
-
