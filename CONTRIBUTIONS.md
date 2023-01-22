@@ -3,7 +3,7 @@
 ## Sara MESSARA et Patrick RIVIERE--JOMBART  
 
 ### Mise a jour de la carte de la MFJA
-Tous les commits ont ete realises en binome (Github @patrickrivierejombart) et concernent le package "sri_tiago_navigation"
+Tous les commits ont ete realises en binome (Github @patrickrivierejombart et @jrpprj) et concernent le package "sri_tiago_navigation"
 - Collecte des nuages de points de la carte (dossier "data/mfja_314_315") par navigation manuelle
 du Tiago-155 autour de la piece (dossier data/mfja_314_315) et mise a jour dans le
 dossier de config du Tiago-155.
@@ -16,7 +16,7 @@ du package, commande pour le changement automatique de la carte - variable world
 - Creation d'un launch file pour la visualisation RVIZ sans Gazebo "tiago_navigation.launch"
 - Commande du robot depuis RVIZ (avec 2dnav) pour atteindre des poses dans le repere "map".
 ### Services de navigation
-- Mise a jour du servive "server_move.py" (adaptation aux changements de package) mais sans prendre en compte l'orientation.
+- Mise a jour du service "server_move.py" (adaptation aux changements de package) mais sans prendre en compte l'orientation.
 - Creation du service "server_move_rotate.py" pour prendre en compte l'orientation en plus de la position du robot dans la map.
 ### Generation de trajectoire du robot reel/simule depuis RVIZ
 - Recuperation et memorisation des positions d'interet sur RVIZ (par topic) par le script "positions_planner.py"
@@ -28,7 +28,13 @@ du package, commande pour le changement automatique de la carte - variable world
 
 ### Tuto/Demo
 - Mise a jour du README.md du package
-- Creation de videos de demonstration disponible sur 
+- Creation de videos de demonstration disponibles aux liens suivants :
+
+[[Demo positionnement du robot (YouTube)](https://www.youtube.com/watch?v=SOI0Vk1Yg6Y)]
+
+[[Demo positionnement et orientation du robot (YouTube)](https://www.youtube.com/watch?v=8ZN-PccFhlg)]
+
+[[Demo plannification de trajectoire du robot (YouTube)](https://www.youtube.com/watch?v=BwUm5gXk70Q)]
 
 ## Martial BAILLY et Théo TRAFNY
 

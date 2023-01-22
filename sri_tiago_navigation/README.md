@@ -61,6 +61,8 @@ Apres, lancer le service associe
 rosservice call /sri23/move_base "x: 0.0 y: 0.0 theta: 0.0"
 ```
 
+```theta``` n'est pas pris en compte dans l'orientation demandee dans le repere de la map.
+
 - Pour definir une pose a atteindre (Prise en compte de la position et de l'orientation) :
 
 ```code
@@ -73,7 +75,9 @@ Apres, lancer le service associe
 rosservice call /sri23/move_rotate_base "x: 0.0 y: 0.0 theta: 0.0"
 ```
 
-Ces service publient sur le topic ROS pour ordre de navigation : ```move_base_simple/goal```
+```theta``` est pris en compte dans l'orientation demandee dans le repere de la map.
+
+Ces services publient sur le topic ROS : ```move_base_simple/goal```
 
 ``` bash
 std_msgs/Header header
@@ -92,9 +96,20 @@ geometry_msgs/Pose pose
     float64 w
 ```
 
-```theta``` est pris en compte dans l'orientation demandee dans le repere de la map.
+## Tuto / Demo
+[Lien demo 2021-2022](https://www.youtube.com/watch?v=SU8ofjLCdqI)
 
-[Lien demo](https://www.youtube.com/watch?v=SU8ofjLCdqI)
+- Service pour positionner le robot sur la map
+
+[[Demo positionnement du robot (YouTube)](https://www.youtube.com/watch?v=SOI0Vk1Yg6Y)]
+
+- Service pour positionner le robot sur la map avec une orientation desiree
+
+[[Demo positionnement et orientation du robot (YouTube)](https://www.youtube.com/watch?v=8ZN-PccFhlg)]
+
+- Service pour plannifier la trajectoire du robot par des points successifs sur RViz
+
+[[Demo plannification de trajectoire du robot (YouTube)](https://www.youtube.com/watch?v=BwUm5gXk70Q)]
 
 ## PMB2 Navigation repere monde
 
