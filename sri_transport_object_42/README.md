@@ -1,4 +1,4 @@
-# README SRI_TIAGO_NAVIGATION
+# README SRI_TRANSPORT_OBJECT_42
 
 ## Première étape : launch mapping simulation
 
