@@ -1,5 +1,13 @@
 # Liste des contributions par auteurs:
 
+## Dorian BORDES et Vincent PAILLER 
+Commmits au nom de DorianBordes sauf le premier commit intitulé 'Changement du nom de dossier 'navigation' en 'sri_tiago_navigation' par erreur au nom de waillyam23 
+
+- Réparation des conflits crées par le changement de nom du package 'sri_tiago_navigation'. Cela implique le changement des fichiers CMake, launch, ainsi que dans les scripts Python du package.
+- Travail sur la simulation du pick & place. Filtrage des positions d'approche possibles par l'organe terminal pour attraper l'objet. Cette partie a été travaillé en commun avec Zineddine Ouali et Alexandre Lotte. Suite à différents tests en simulation et en réel, nous avons découvert des différences entre les deux mondes. Pour cette raison, nous nous sommes dans un premier temps concentré sur la simulation sous Gazebo.
+- Adapation des nodes existantes pour avoir un scénario de pick & place. Ainsi, le robot était capable de prendre l'objet avant de le reposer à sa position initiale. Pour la suite, il faudrait remodéliser la table de la simulation sous Gazebo afin de s'adapter au nouveau contexte de la MFJA. Le scénario du place se prête mal à la simulation car il implique de simuler la présence d'un objet dans la pince du robot dès le début. Vidéo de démonstration : https://youtu.be/yLb6yYjDIJg
+- Travail sur la résalisation du pick & place sur le Tiago en collaboration avec Alexandre Lotte et Zineddine Ouali. Nous avons pu mettre en un scénario permettant au robot d'attraper une canette avec un Aruco code. Puis, à l'aide d'un second Aruco code, replacer l'objet sur cette table. Des diffficultés subsistent toujours à cause du mouvement fait par Tiago pour se replacer en configuration initiale sans prendre en compte son environnement entre les commandes de pick et de place. Vidéo de démonstration : https://youtu.be/VitLxm-OPfA
+
 ## Sara MESSARA et Patrick RIVIERE--JOMBART  
 
 ### Mise a jour de la carte de la MFJA
