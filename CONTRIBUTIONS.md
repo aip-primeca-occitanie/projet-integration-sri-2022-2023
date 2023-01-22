@@ -105,7 +105,7 @@ Vidéo réalisée en collaboration avec BORDES Dorian et PAILLER Vincent
 =======
 ## Valentin Mounier et Tanguy Veyrenc de Lavalette
 
-Speudo github : [@ValentinMounier](https://github.com/ValentinMounier) et [@HarpieRapace45](https://github.com/HarpieRapace45) 
+Pseudo github : [@ValentinMounier](https://github.com/ValentinMounier) et [@HarpieRapace45](https://github.com/HarpieRapace45) 
 
 
 - Recherche de package pour le multi Robot &#9745;
